@@ -1,6 +1,20 @@
 # AI Studies Aggregator — Configuration
 # Copy this file to config.yaml and fill in your values.
 
+# Claude API key for AI-powered analysis and insights.
+# Get one at https://console.anthropic.com/
+# You can also set the ANTHROPIC_API_KEY environment variable instead.
+anthropic_api_key: ""
+
+analysis:
+  enabled: true
+  # Model used to generate study summaries and insights.
+  # claude-opus-4-6  → highest quality (default)
+  # claude-haiku-4-5 → faster and cheaper, still good
+  model: claude-opus-4-6
+  # Max characters of study content sent to Claude (keeps cost predictable).
+  max_content_chars: 6000
+
 email:
   smtp_host: smtp.gmail.com
   smtp_port: 587

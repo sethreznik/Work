@@ -1,11 +1,13 @@
 """
 Core orchestration: fetch from all enabled sources, filter new items,
-send an email digest, then mark everything as seen.
+enrich with AI analysis, send an email digest, then mark everything as seen.
 """
 import logging
 from datetime import datetime
 from typing import Any
 
+from .analyzer import enrich_studies
+from .fetcher import fetch_full_text
 from .models import Study
 from .notifier import EmailNotifier
 from .sources.arxiv_source import ArXivSource
@@ -64,10 +66,24 @@ def run_once(cfg: dict[str, Any], dry_run: bool = False) -> int:
     # Sort newest-first (studies without a date go last)
     all_new.sort(key=lambda s: s.published or datetime.min, reverse=True)
 
+    # ── Enrich: fetch full text then run Claude analysis ──────────────────
+    max_chars = cfg.get("analysis", {}).get("max_content_chars", 6000)
+    logger.info("Fetching full text for %d studies …", len(all_new))
+    for study in all_new:
+        study.full_text = fetch_full_text(study.url, max_chars=max_chars)
+
+    logger.info("Running Claude analysis …")
+    enrich_studies(all_new, cfg)
+    # ──────────────────────────────────────────────────────────────────────
+
     if dry_run:
         logger.info("[dry-run] Would send email for:")
         for s in all_new:
             logger.info("  • [%s] %s", s.source, s.title)
+            if s.summary:
+                logger.info("    Summary: %s", s.summary[:120])
+            for insight in s.insights:
+                logger.info("    → %s", insight[:100])
     else:
         notifier.send(all_new)
         for s in all_new:
