@@ -1,0 +1,15 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+dist/
+build/
+
+# App state
+seen.db
+*.log
+
+# Config with credentials (copy config.yaml.example -> config.yaml and fill in)
+config.yaml

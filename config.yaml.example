@@ -1,0 +1,80 @@
+# AI Studies Aggregator — Configuration
+# Copy this file to config.yaml and fill in your values.
+
+email:
+  smtp_host: smtp.gmail.com
+  smtp_port: 587
+  username: you@gmail.com
+  # For Gmail: create an App Password at https://myaccount.google.com/apppasswords
+  # For other providers: use your regular SMTP password
+  password: your-app-password-here
+  from: you@gmail.com
+  to: you@gmail.com
+  subject_prefix: "[AI Studies]"
+
+# SQLite database path (relative to project root)
+database: seen.db
+
+schedule:
+  # Time to run the daily check (24-hour format, local time)
+  run_at: "08:00"
+
+sources:
+  stanford_hai:
+    enabled: true
+    # Keywords that must appear in the title or description (case-insensitive)
+    keywords:
+      - workforce
+      - labor
+      - labour
+      - employment
+      - jobs
+      - future of work
+      - automation
+      - worker
+
+  brookings:
+    enabled: true
+    keywords:
+      - artificial intelligence
+      - automation
+      - workforce
+      - labor
+      - employment
+      - future of work
+
+  mckinsey:
+    enabled: true
+    keywords:
+      - artificial intelligence
+      - automation
+      - workforce
+      - labor
+      - future of work
+      - generative AI
+
+  nber:
+    enabled: true
+    keywords:
+      - artificial intelligence
+      - automation
+      - workforce
+      - labor
+      - employment
+      - machine learning
+      - robot
+
+  arxiv:
+    enabled: true
+    # Max papers to retrieve per run
+    max_results: 30
+    # Keyword filters applied to title+abstract (any match passes)
+    keywords:
+      - workforce
+      - labor market
+      - labour market
+      - employment
+      - automation
+      - future of work
+      - wage
+      - worker
