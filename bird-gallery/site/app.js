@@ -357,6 +357,7 @@
     const [, famCommon = fam, famLatin = ""] = fam.match(/^(.*?)\s*\(([^)]+)\)\s*$/) || [];
     $("#lb-tab").textContent = famCommon.replace(/ & /g, " and ");
     const group = groupOf(fam);
+    const nGroup = group.name ? DATA.photos.filter((q) => q._group === group.name).length : 0;
     el.lb.style.setProperty("--rule", group.color);
     $("#lb-tab").title = group.name;
     const nPlaces = new Set(DATA.photos.filter((q) => q.species === p.species).map((q) => q.place).filter(Boolean)).size;
@@ -385,6 +386,7 @@
       ${links.length ? `<p class="links">${links.join("")}</p>` : ""}
       <div class="lb-actions">
         ${nSame > 1 && state.species !== p.species ? `<button class="btn primary" data-go-species="${esc(p.species)}">All ${nSame} photos of ${esc(p.species)}</button>` : ""}
+        ${nGroup > nSame && state.group !== group.name ? `<button class="btn" data-go-group="${esc(group.name)}">All ${nGroup} photos in ${esc(group.name)}</button>` : ""}
         ${nHere > 1 && state.place !== "p:" + p.place ? `<button class="btn" data-go-place="p:${esc(p.place)}">All ${nHere} photos at ${esc(p.place)}</button>` : ""}
         <button class="btn" data-share="${esc(p.id)}">Share this photo</button>
         <a class="btn" href="https://www.flickr.com/photos/sethreznik/${esc(p.id)}/" target="_blank" rel="noopener">View on Flickr ↗</a>
@@ -515,11 +517,12 @@
     if (sh) { sharePhoto(sh); return; }
     const s = e.target.closest("[data-go-species]");
     const pl = e.target.closest("[data-go-place]");
-    if (!s && !pl) return;
+    const gr = e.target.closest("[data-go-group]");
+    if (!s && !pl && !gr) return;
     // Close the photo and show the filtered gallery, scrolled to the results.
     closeLightbox();
-    const patch = s
-      ? { species: s.dataset.goSpecies, group: "", place: "", q: "" }
+    const patch = s ? { species: s.dataset.goSpecies, group: "", place: "", q: "" }
+      : gr ? { group: gr.dataset.goGroup, species: "", place: "", q: "" }
       : { place: pl.dataset.goPlace, group: "", species: "", q: "" };
     set({ ...patch, view: "photos", photo: null });
     window.scrollTo({ top: $(".masthead").offsetHeight, behavior: "instant" });
