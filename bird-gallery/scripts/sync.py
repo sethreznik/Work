@@ -495,7 +495,7 @@ def camera_info(exif, names):
                               "shutter_s": secs, "aperture": ap, "iso": iso}.items() if v is not None}
 
 
-def build_notbirds(raw, places_cfg, camera_names=None):
+def build_notbirds(raw, places_cfg, camera_names=None, notes=None):
     """Photo list for the Not Birds set: no species or filters, but place names
     and coordinates for geotagged photos (named the same way as the birds).
     Filename-style titles ("DSC04765-DxO...jpg") are dropped."""
@@ -505,9 +505,20 @@ def build_notbirds(raw, places_cfg, camera_names=None):
     for r in raw:
         place, area, region, country = place_for(r, places, region_names,
                                                  places_cfg.get("county_names"), places_cfg.get("locality_names"))
+        # Hand-written captions / locations (data/notbirds_notes.json)
+        note = (notes or {}).get(r["id"], {})
+        place_source = None
+        if note.get("place"):
+            if place is None and note.get("source"):      # no GPS: use the inferred location
+                place, area, region, country = note["place"], note.get("area"), note.get("region"), note.get("country")
+                place_source = note["source"]
+            elif place is not None:                       # GPS: just a better place name
+                place, area = note["place"], note.get("area") or area
         photos.append({
             "id": r["id"],
             "title": r["title"] if r.get("title") and not FILENAME_TITLE.search(r["title"]) else None,
+            "caption": note.get("caption"),
+            "place_source": place_source,
             "taken": r.get("date_taken"),
             "src": f"https://live.staticflickr.com/{r['server']}/{r['id']}_{r['secret']}",
             "w": r["width"], "h": r["height"],
@@ -570,7 +581,7 @@ def write_photo_pages(out, notbirds=None):
     for p in (notbirds or {}).get("photos", []):
         day = fmt_day(p["taken"])
         scale = 1024 / max(p["w"], p["h"])
-        label = p["title"] or "Not Birds"
+        label = p["title"] or p.get("caption") or "Not Birds"
         where = ", ".join(x for x in (p.get("place"), p.get("area") or p.get("region")) if x)
         bits = " ".join(x for x in (f"at {where}" if where else None, f"on {day}" if day else None) if x)
         page = PHOTO_PAGE.format(
@@ -662,7 +673,8 @@ def main():
 
     out = build(raw, species_index, places)
     write_json(SITE / "photos.json", out, indent=None)
-    nb = build_notbirds(raw_nb, places, load_json(DATA / "cameras.json", {}))
+    nb = build_notbirds(raw_nb, places, load_json(DATA / "cameras.json", {}),
+                        load_json(DATA / "notbirds_notes.json", {}).get("photos", {}))
     write_json(SITE / "notbirds.json", nb, indent=None)
     n_pages = write_photo_pages(out, nb)
     n_sp = len(out["species"])
