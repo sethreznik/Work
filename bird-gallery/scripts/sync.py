@@ -388,7 +388,7 @@ PHOTO_PAGE = """<!doctype html>
 <link rel="canonical" href="__SITE_URL__/p/{id}/">
 <link rel="icon" href="../../kestrel.svg" type="image/svg+xml">
 <meta http-equiv="refresh" content="0; url=../../#photo={id}">
-<script>location.replace("../../#photo={id}");</script>
+<script>var h=location.hash.slice(1);location.replace("../../#photo={id}"+(h?"&"+h:""));</script>
 <style>body{{margin:0;font:16px/1.5 system-ui,sans-serif;background:#f3eee2;color:#24261f;display:grid;place-items:center;min-height:100vh;text-align:center}}img{{max-width:min(90vw,640px);height:auto;border-radius:6px}}a{{color:#3d6b47}}</style>
 </head>
 <body>
