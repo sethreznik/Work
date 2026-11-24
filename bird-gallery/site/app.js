@@ -306,26 +306,34 @@
     const nSame = DATA.photos.filter((q) => q.species === p.species).length;
     const nHere = p.place ? DATA.photos.filter((q) => q.place === p.place).length : 0;
 
+    // Field-guide entry: NAME / Scientific / status line, a red rule, then
+    // the description and run-in italic labels ("Taken:", "Location:" ...).
+    const fam = info.family || "";
+    const [, famCommon = fam, famLatin = ""] = fam.match(/^(.*?)\s*\(([^)]+)\)\s*$/) || [];
+    $("#lb-tab").textContent = famCommon.replace(/ & /g, " and ");
+    const nPlaces = new Set(DATA.photos.filter((q) => q.species === p.species).map((q) => q.place).filter(Boolean)).size;
+    const status = [famLatin, plural(nSame, "photo"), nPlaces ? plural(nPlaces, "location") : ""].filter(Boolean).join(" · ");
     const where = p.place
-      ? `${esc(p.place)}<small>${esc([p.area, p.region, p.country].filter((x) => x && x !== p.place).join(", "))}${p.place_inferred ? " · approximate (from photos taken the same day)" : ""}</small>`
-      : `<span style="color:var(--muted)">Not recorded</span>`;
-    const coords = p.lat != null
-      ? `<div><dt>Map</dt><dd><a href="https://www.openstreetmap.org/?mlat=${p.lat}&mlon=${p.lon}#map=15/${p.lat}/${p.lon}" target="_blank" rel="noopener">${p.lat.toFixed(4)}, ${p.lon.toFixed(4)} ↗</a></dd></div>`
-      : "";
+      ? esc([p.place, p.area, p.region, p.country].reduce((out, x) =>
+          // skip empty parts and ones that repeat the previous ("Buenos Aires, Buenos Aires City")
+          x && !out.some((y) => x.startsWith(y) || y.startsWith(x)) ? [...out, x] : out, []).join(", ")) +
+        (p.place_inferred ? ` <span class="aside">(approximate, from photos taken the same day)</span>` : "")
+      : `<span class="aside">not recorded</span>`;
+    const fact = (label, html) => `<p class="fact"><em>${label}:</em> ${html}</p>`;
 
     el.lbInfo.innerHTML = `
-      <h2>${esc(p.species)}</h2>
-      ${info.scientific ? `<p class="sci">${esc(info.scientific)}</p>` : ""}
-      ${info.family ? `<p class="fam">${esc(info.family)}</p>` : ""}
-      ${p.note ? `<span class="badge">${esc(p.note)}</span>` : ""}
+      <header class="entry-h">
+        <h2>${esc(p.species)}</h2>
+        ${info.scientific ? `<p class="sci">${esc(info.scientific)}</p>` : ""}
+        <p class="status">${esc(status)}</p>
+      </header>
       ${info.about ? `<p class="about">${esc(info.about)}</p>` : p.species === UNIDENTIFIED ? `<p class="about">This bird hasn't been identified yet.</p>` : ""}
+      ${p.note ? fact("Note", esc(p.note)) : ""}
+      ${fact("Taken", p.taken ? esc(fmtDate(p.taken)) : `<span class="aside">unknown</span>`)}
+      ${fact("Location", where)}
+      ${p.lat != null ? fact("Map", `<a href="https://www.openstreetmap.org/?mlat=${p.lat}&mlon=${p.lon}#map=15/${p.lat}/${p.lon}" target="_blank" rel="noopener">${p.lat.toFixed(4)}, ${p.lon.toFixed(4)} ↗</a>`) : ""}
+      ${p.description ? fact("Notes", `<span class="desc">${esc(p.description)}</span>`) : ""}
       ${links.length ? `<p class="links">${links.join("")}</p>` : ""}
-      ${p.description ? `<p class="desc">${esc(p.description)}</p>` : ""}
-      <dl class="meta">
-        <div><dt>Taken</dt><dd>${p.taken ? esc(fmtDate(p.taken)) : "Unknown"}</dd></div>
-        <div><dt>Location</dt><dd>${where}</dd></div>
-        ${coords}
-      </dl>
       <div class="lb-actions">
         ${nSame > 1 && state.species !== p.species ? `<button class="btn primary" data-go-species="${esc(p.species)}">All ${nSame} photos of ${esc(p.species)}</button>` : ""}
         ${nHere > 1 && state.place !== "p:" + p.place ? `<button class="btn" data-go-place="p:${esc(p.place)}">All ${nHere} photos at ${esc(p.place)}</button>` : ""}
