@@ -10,6 +10,9 @@
   const UNIDENTIFIED = "Unidentified";
 
   const state = { view: "photos", q: "", species: "", place: "", sort: "new", photo: null };
+  // The gallery's own folder (e.g. "/Work/"), captured before we ever change the path.
+  const BASE = location.pathname.replace(/[^/]*$/, "");
+  const photoPath = (id) => `${BASE}p/${encodeURIComponent(id)}/`;
   let DATA = { photos: [], species: {} };
   let filtered = [];
   let lbIndex = -1;
@@ -82,9 +85,12 @@
     if (state.species) h.set("species", state.species);
     if (state.place) h.set("place", state.place);
     if (state.sort !== "new") h.set("sort", state.sort);
-    if (state.photo) h.set("photo", state.photo);
     const s = h.toString();
-    history.replaceState(null, "", s ? `#${s}` : location.pathname + location.search);
+    // While a photo is open, show its own page (p/<id>/) in the address bar:
+    // that URL has the photo's link preview, so copying it shares the photo.
+    // (A #photo= link can't: preview bots never see anything after the #.)
+    const path = state.photo ? photoPath(state.photo) : BASE;
+    history.replaceState(null, "", path + (s ? `#${s}` : ""));
   }
 
   // ------------------------------------------------------------ controls
@@ -372,7 +378,7 @@
   // link-preview tags; it redirects to the photo here. That's the link we share.
   async function sharePhoto(btn) {
     const p = DATA.photos.find((q) => q.id === btn.dataset.share);
-    const url = new URL(`p/${p.id}/`, location.origin + location.pathname).href;
+    const url = new URL(photoPath(p.id), location.origin).href;
     const title = `${p.species} · Seth Reznik Birds`;
     if (navigator.share && matchMedia("(pointer: coarse)").matches) {
       try { await navigator.share({ title, url }); } catch (_) { /* user cancelled */ }
