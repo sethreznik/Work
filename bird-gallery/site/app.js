@@ -9,7 +9,17 @@
     ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
   const UNIDENTIFIED = "Unidentified";
 
-  const state = { set: "birds", view: "photos", q: "", group: "", species: "", place: "", sort: "new", photo: null };
+  // Camera settings shown and filterable in Not Birds: [field, label, "all" option].
+  // (Focal length is shown but not filterable: too many distinct values.)
+  const CAM_FIELDS = [
+    ["camera", "Camera", "All cameras"],
+    ["lens", "Lens", "All lenses"],
+    ["shutter", "Shutter speed", "All shutter speeds"],
+    ["aperture", "Aperture", "All apertures"],
+    ["iso", "ISO", "All ISOs"],
+  ];
+  const NO_CAM = Object.fromEntries(CAM_FIELDS.map(([k]) => [k, ""]));
+  const state = { ...NO_CAM, set: "birds", view: "photos", q: "", group: "", species: "", place: "", sort: "new", photo: null };
   // The gallery's own folder (e.g. "/Work/"), captured before we ever change the path.
   const BASE = location.pathname.replace(/[^/]*$/, "");
   const photoPath = (id) => `${BASE}p/${encodeURIComponent(id)}/`;
@@ -75,6 +85,7 @@
   function readHash() {
     const h = new URLSearchParams(location.hash.slice(1));
     state.set = h.get("set") === "notbirds" ? "notbirds" : "birds";
+    CAM_FIELDS.forEach(([k]) => { state[k] = h.get(k) || ""; });
     state.view = ["photos", "species", "places"].includes(h.get("view")) ? h.get("view") : "photos";
     state.q = h.get("q") || "";
     state.group = h.get("group") || "";
@@ -87,6 +98,7 @@
   function writeHash() {
     const h = new URLSearchParams();
     if (isNB()) h.set("set", "notbirds");
+    CAM_FIELDS.forEach(([k]) => { if (state[k]) h.set(k, state[k]); });
     if (state.view !== "photos") h.set("view", state.view);
     if (state.q) h.set("q", state.q);
     if (state.group) h.set("group", state.group);
@@ -215,17 +227,55 @@
     if (fav && fav.getAttribute("href") !== icon) fav.setAttribute("href", icon);
   }
 
-  // Not Birds: just the photos, newest first; no filters, tabs or details.
+  // Sort a camera field's values: shutter fast -> slow, aperture/ISO ascending,
+  // camera/lens by how many photos use them.
+  function camValues(k) {
+    const counts = new Map();
+    NB.photos.forEach((p) => { if (p[k]) counts.set(p[k], (counts.get(p[k]) || 0) + 1); });
+    const num = (v) => parseFloat(String(v).replace(/^(f\/|ISO )/, ""));
+    const secs = new Map(NB.photos.filter((p) => p.shutter).map((p) => [p.shutter, p.shutter_s]));
+    const by = { shutter: (a, b) => secs.get(a[0]) - secs.get(b[0]),
+                 aperture: (a, b) => num(a[0]) - num(b[0]), iso: (a, b) => num(a[0]) - num(b[0]) }[k]
+      || ((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]));
+    return [...counts.entries()].sort(by);
+  }
+  let nbControlsBuilt = false;
+  function buildNBControls() {
+    if (nbControlsBuilt) return;
+    nbControlsBuilt = true;
+    $("#nb-filters").innerHTML = CAM_FIELDS.map(([k, label, all]) => `
+        <label class="field"><span class="sr">${label}</span>
+          <select class="w-${k}" data-cam="${k}"><option value="">${all}</option>${
+            camValues(k).map(([v, n]) => `<option value="${esc(v)}">${esc(v)} (${n})</option>`).join("")}</select>
+        </label>`).join("");
+    $("#nb-filters").addEventListener("change", (e) => {
+      const k = e.target.dataset.cam;
+      if (k) set({ [k]: e.target.value });
+    });
+  }
+  function syncNBControls() {
+    document.querySelectorAll("#nb-filters select").forEach((sel) => {
+      const k = sel.dataset.cam;
+      sel.value = state[k];
+      if (sel.value !== state[k]) state[k] = "";
+      sel.classList.toggle("active", !!state[k]);
+    });
+  }
+
+  // Not Birds: the photos newest first, filterable by camera settings.
   function renderNotBirds() {
     if (!NB) {
       el.summary.textContent = "Loading…";
       loadNB().then(render, () => { el.summary.textContent = "Couldn't load photos."; });
       return;
     }
-    filtered = NB.photos;
+    buildNBControls();
+    syncNBControls();
+    filtered = NB.photos.filter((p) => CAM_FIELDS.every(([k]) => !state[k] || p[k] === state[k]));
     writeHash();
-    el.summary.innerHTML = `<b>${plural(filtered.length, "photograph")}</b>`;
-    el.clear.hidden = true;
+    const active = CAM_FIELDS.filter(([k]) => state[k]).map(([k]) => `<b>${esc(state[k])}</b>`);
+    el.summary.innerHTML = `<b>${plural(filtered.length, "photograph")}</b>` + (active.length ? ` · ${active.join(" · ")}` : "");
+    el.clear.hidden = !active.length;
     el.photos.hidden = false;
     el.speciesView.hidden = el.placesView.hidden = true;
     el.empty.hidden = filtered.length > 0;
@@ -271,7 +321,7 @@
         <img loading="lazy" decoding="async" src="${img(p, "z")}" srcset="${srcset(p)}"
           sizes="(max-width: 640px) 50vw, 33vw" alt="${esc(label)}">
         ${p.species ? `<span class="cap"><strong>${esc(p.species)}</strong><span>${loc}${loc && p.taken ? " · " : ""}${p.taken ? fmtDate(p.taken, false) : ""}</span></span>`
-          : p.place ? `<span class="cap"><strong>${loc}</strong><span>${p.taken ? fmtDate(p.taken, false) : ""}</span></span>` : ""}
+          : isNB() ? `<span class="cap"><strong>${loc || (p.taken ? fmtDate(p.taken, false) : "")}</strong><span>${[loc && p.taken ? fmtDate(p.taken, false) : "", esc(p.camera || "")].filter(Boolean).join(" · ")}</span></span>` : ""}
       </button>`;
     }).join("");
     el.photos.querySelectorAll("img").forEach((im) => {
@@ -367,7 +417,7 @@
   const LB_SIZES = "(max-width: 900px) 100vw, (max-width: 1360px) calc(100vw - 340px), (max-width: 1640px) calc(78vw - 40px), calc(100vw - 400px)";
   function setLbSources(im, p) {
     const big = p.big || {};
-    im.sizes = isNB() && p.lat == null ? "100vw" : LB_SIZES;  // bare Not Birds photos use the full width
+    im.sizes = LB_SIZES;
     im.srcset = [`${img(p, "b")} 1024w`, big.h && `${big.h} 1600w`, big.k && `${big.k} 2048w`].filter(Boolean).join(", ");
     im.src = img(p, "b");
   }
@@ -399,23 +449,35 @@
     state.photo = p.id;
     writeHash();
 
-    // Not Birds: full width with no details, or, when the photo is geotagged,
-    // a slim page with the place, date and map (no species, no spine tab).
-    el.lb.classList.toggle("bare", isNB() && p.lat == null);
-    el.lb.classList.toggle("nb-entry", isNB() && p.lat != null);
+    // Not Birds: a slim page (no species or spine tab) with the place and map
+    // when the photo is geotagged, and its camera settings.
+    el.lb.classList.remove("bare");
+    el.lb.classList.toggle("nb-entry", isNB());
     if (isNB()) {
       setLbSources(el.lbImg, p);
       el.lbImg.alt = p.title || (p.place ? `Photograph, ${p.place}` : "Photograph");
       [i - 1, i + 1].forEach((j) => { if (filtered[j]) setLbSources(new Image(), filtered[j]); });
       $("#lb-tab").textContent = "";
-      el.lbInfo.innerHTML = p.lat == null ? "" : `
+      const heading = p.title || p.place || (p.taken ? fmtDate(p.taken, false) : "Not Birds");
+      const status = p.place ? (p.title ? placeParts(p) : placeParts(p).slice(1)).join(" · ") : "";
+      const camFacts = [["camera", "Camera"], ["lens", "Lens"], ["focal", "Focal length"],
+                        ["shutter", "Shutter speed"], ["aperture", "Aperture"], ["iso", "ISO"]]
+        .filter(([k]) => p[k]).map(([k, label]) => fact(label, esc(String(p[k]).replace(/^ISO /, "")))).join("");
+      // "More like this": one button per camera setting, with how many photos share it.
+      const pills = CAM_FIELDS.map(([k]) => {
+        if (!p[k] || state[k] === p[k]) return "";
+        const n = NB.photos.filter((q) => q[k] === p[k]).length;
+        return n > 1 ? `<button class="pill" data-go-cam="${k}" data-val="${esc(p[k])}">${esc(p[k])}<span>${n}</span></button>` : "";
+      }).join("");
+      el.lbInfo.innerHTML = `
       <header class="entry-h">
-        <h2>${esc(p.title || p.place)}</h2>
-        <p class="status">${esc((p.title ? placeParts(p) : placeParts(p).slice(1)).join(" · "))}</p>
+        <h2>${esc(heading)}</h2>
+        ${status ? `<p class="status">${esc(status)}</p>` : ""}
       </header>
       ${fact("Taken", p.taken ? esc(fmtDate(p.taken)) : `<span class="aside">unknown</span>`)}
-      ${fact("Location", whereHtml(p))}
-      ${mapHtml(p)}
+      ${p.place ? fact("Location", whereHtml(p)) + mapHtml(p) : ""}
+      ${camFacts}
+      ${pills ? `<div class="more"><h3>More like this</h3><div class="pills">${pills}</div></div>` : ""}
       <div class="lb-actions">${shareFlickrHtml(p)}</div>
       <p class="counter">${i + 1} of ${filtered.length}</p>`;
       el.lb.style.setProperty("--rule", NB_COLOR);
@@ -558,7 +620,7 @@
   el.species.addEventListener("change", () => set({ species: el.species.value }));
   el.place.addEventListener("change", () => set({ place: el.place.value }));
   el.sort.addEventListener("change", () => set({ sort: el.sort.value }));
-  el.clear.addEventListener("click", () => set({ q: "", group: "", species: "", place: "" }));
+  el.clear.addEventListener("click", () => set({ ...NO_CAM, q: "", group: "", species: "", place: "" }));
   document.querySelectorAll(".tabs button").forEach((b) =>
     b.addEventListener("click", () => set({ view: b.dataset.view })));
 
@@ -602,6 +664,13 @@
     const s = e.target.closest("[data-go-species]");
     const pl = e.target.closest("[data-go-place]");
     const gr = e.target.closest("[data-go-group]");
+    const cam = e.target.closest("[data-go-cam]");
+    if (cam) {  // Not Birds: show every photo sharing this camera setting
+      closeLightbox();
+      set({ ...NO_CAM, [cam.dataset.goCam]: cam.dataset.val, photo: null });
+      window.scrollTo({ top: $(".masthead").offsetHeight, behavior: "instant" });
+      return;
+    }
     if (!s && !pl && !gr) return;
     // Close the photo and show the filtered gallery, scrolled to the results.
     closeLightbox();
@@ -632,7 +701,7 @@
   // Header switch: Birds / Not Birds (filters belong to Birds, so they reset).
   document.querySelectorAll(".sets button").forEach((b) => b.addEventListener("click", () => {
     if (b.dataset.set === state.set) return;
-    set({ set: b.dataset.set, view: "photos", q: "", group: "", species: "", place: "", photo: null });
+    set({ ...NO_CAM, set: b.dataset.set, view: "photos", q: "", group: "", species: "", place: "", photo: null });
   }));
 
   window.addEventListener("hashchange", () => {

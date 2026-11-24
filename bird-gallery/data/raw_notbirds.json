@@ -19,7 +19,17 @@
   "locality": "Seattle",
   "county": "King",
   "region": "Washington",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-1M2",
+   "Make": "SONY",
+   "Model": "ILCE-1M2",
+   "ExposureTime": "0.001 sec (1/1000)",
+   "FNumber": "f/6.3",
+   "ISO": "2500",
+   "FocalLength": "52 mm",
+   "LensModel": "FE 24-70mm F2.8 GM"
+  }
  },
  {
   "id": "54745551455",
@@ -41,7 +51,18 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.017 sec (1/60)",
+   "FNumber": "f/6.3",
+   "ISO": "5000",
+   "FocalLength": "32 mm",
+   "LensModel": "FE 24-70mm F2.8 GM",
+   "Lens": "FE 24-70mm F2.8 GM"
+  }
  },
  {
   "id": "54744109859",
@@ -63,7 +84,18 @@
   "locality": "Vinegar Hill",
   "county": "Kings",
   "region": "New York",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.008 sec (1/125)",
+   "FNumber": "f/2.8",
+   "ISO": "6400",
+   "FocalLength": "24 mm",
+   "LensModel": "FE 24mm F2.8 G",
+   "Lens": "FE 24mm F2.8 G"
+  }
  },
  {
   "id": "54744106573",
@@ -85,7 +117,18 @@
   "locality": "Vinegar Hill",
   "county": "Kings",
   "region": "New York",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.008 sec (1/125)",
+   "FNumber": "f/2.8",
+   "ISO": "6400",
+   "FocalLength": "24 mm",
+   "LensModel": "FE 24mm F2.8 G",
+   "Lens": "FE 24mm F2.8 G"
+  }
  },
  {
   "id": "54744239835",
@@ -107,7 +150,18 @@
   "locality": "Blissville",
   "county": "Queens",
   "region": "New York",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.008 sec (1/125)",
+   "FNumber": "f/2.8",
+   "ISO": "6400",
+   "FocalLength": "24 mm",
+   "LensModel": "FE 24mm F2.8 G",
+   "Lens": "FE 24mm F2.8 G"
+  }
  },
  {
   "id": "54743044857",
@@ -129,7 +183,18 @@
   "locality": "Astoria Heights",
   "county": "Queens",
   "region": "New York",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.001 sec (1/1600)",
+   "FNumber": "f/7.1",
+   "ISO": "6400",
+   "FocalLength": "200 mm",
+   "LensModel": "FE 200-600mm F5.6-6.3 G OSS",
+   "Lens": "FE 200-600mm F5.6-6.3 G OSS"
+  }
  },
  {
   "id": "54743887351",
@@ -151,7 +216,18 @@
   "locality": "Astoria Heights",
   "county": "Queens",
   "region": "New York",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.001 sec (1/1600)",
+   "FNumber": "f/7.1",
+   "ISO": "6400",
+   "FocalLength": "200 mm",
+   "LensModel": "FE 200-600mm F5.6-6.3 G OSS",
+   "Lens": "FE 200-600mm F5.6-6.3 G OSS"
+  }
  },
  {
   "id": "54744239010",
@@ -173,7 +249,18 @@
   "locality": "Astoria",
   "county": "Queens",
   "region": "New York",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.001 sec (1/1600)",
+   "FNumber": "f/7.1",
+   "ISO": "6400",
+   "FocalLength": "200 mm",
+   "LensModel": "FE 200-600mm F5.6-6.3 G OSS",
+   "Lens": "FE 200-600mm F5.6-6.3 G OSS"
+  }
  },
  {
   "id": "54743042812",
@@ -195,7 +282,18 @@
   "locality": "Congressional District 12",
   "county": null,
   "region": "New York",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.001 sec (1/1600)",
+   "FNumber": "f/7.1",
+   "ISO": "5000",
+   "FocalLength": "205 mm",
+   "LensModel": "FE 200-600mm F5.6-6.3 G OSS",
+   "Lens": "FE 200-600mm F5.6-6.3 G OSS"
+  }
  },
  {
   "id": "54743042237",
@@ -217,7 +315,18 @@
   "locality": "Blissville",
   "county": "Queens",
   "region": "New York",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.001 sec (1/2000)",
+   "FNumber": "f/7.1",
+   "ISO": "3200",
+   "FocalLength": "202 mm",
+   "LensModel": "FE 200-600mm F5.6-6.3 G OSS",
+   "Lens": "FE 200-600mm F5.6-6.3 G OSS"
+  }
  },
  {
   "id": "54744105749",
@@ -239,7 +348,18 @@
   "locality": "Blissville",
   "county": "Queens",
   "region": "New York",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.001 sec (1/800)",
+   "FNumber": "f/8.0",
+   "ISO": "1250",
+   "FocalLength": "200 mm",
+   "LensModel": "FE 200-600mm F5.6-6.3 G OSS",
+   "Lens": "FE 200-600mm F5.6-6.3 G OSS"
+  }
  },
  {
   "id": "54648989804",
@@ -261,7 +381,18 @@
   "locality": "Prospect Heights",
   "county": "Kings",
   "region": "New York",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.006 sec (1/160)",
+   "FNumber": "f/5.6",
+   "ISO": "500",
+   "FocalLength": "231 mm",
+   "LensModel": "E 150-500mm F5-6.7 A057",
+   "Lens": "E 150-500mm F5-6.7 A057"
+  }
  },
  {
   "id": "54644889173",
@@ -283,7 +414,18 @@
   "locality": "Financial District",
   "county": "New York",
   "region": "New York",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.004 sec (1/250)",
+   "FNumber": "f/8.0",
+   "ISO": "250",
+   "FocalLength": "14 mm",
+   "LensModel": "FE 14mm F1.8 GM",
+   "Lens": "FE 14mm F1.8 GM"
+  }
  },
  {
   "id": "54644648856",
@@ -305,7 +447,18 @@
   "locality": "Financial District",
   "county": "New York",
   "region": "New York",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.01 sec (1/100)",
+   "FNumber": "f/8.0",
+   "ISO": "100",
+   "FocalLength": "14 mm",
+   "LensModel": "FE 14mm F1.8 GM",
+   "Lens": "FE 14mm F1.8 GM"
+  }
  },
  {
   "id": "54643804682",
@@ -327,7 +480,18 @@
   "locality": "Financial District",
   "county": "New York",
   "region": "New York",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.01 sec (1/100)",
+   "FNumber": "f/8.0",
+   "ISO": "100",
+   "FocalLength": "14 mm",
+   "LensModel": "FE 14mm F1.8 GM",
+   "Lens": "FE 14mm F1.8 GM"
+  }
  },
  {
   "id": "54643804502",
@@ -349,7 +513,18 @@
   "locality": "Wall Street",
   "county": "New York",
   "region": "New York",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.01 sec (1/100)",
+   "FNumber": "f/8.0",
+   "ISO": "100",
+   "FocalLength": "14 mm",
+   "LensModel": "FE 14mm F1.8 GM",
+   "Lens": "FE 14mm F1.8 GM"
+  }
  },
  {
   "id": "54644967795",
@@ -371,7 +546,18 @@
   "locality": "Wall Street",
   "county": "New York",
   "region": "New York",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.01 sec (1/100)",
+   "FNumber": "f/8.0",
+   "ISO": "200",
+   "FocalLength": "14 mm",
+   "LensModel": "FE 14mm F1.8 GM",
+   "Lens": "FE 14mm F1.8 GM"
+  }
  },
  {
   "id": "54644875719",
@@ -393,7 +579,18 @@
   "locality": "Wall Street",
   "county": "New York",
   "region": "New York",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.008 sec (1/125)",
+   "FNumber": "f/8.0",
+   "ISO": "500",
+   "FocalLength": "14 mm",
+   "LensModel": "FE 14mm F1.8 GM",
+   "Lens": "FE 14mm F1.8 GM"
+  }
  },
  {
   "id": "54000221699",
@@ -415,7 +612,18 @@
   "locality": "Clark Learning Office Center",
   "county": "Salt Lake",
   "region": "Utah",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.001 sec (1/1000)",
+   "FNumber": "f/7.1",
+   "ISO": "200",
+   "FocalLength": "50 mm",
+   "LensModel": "FE 50mm F2.5 G",
+   "Lens": "FE 50mm F2.5 G"
+  }
  },
  {
   "id": "54000221344",
@@ -437,7 +645,18 @@
   "locality": "Lakeview Hills",
   "county": "Davis",
   "region": "Utah",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.8",
+   "FNumber": "f/2.5",
+   "ISO": "125",
+   "FocalLength": "50 mm",
+   "LensModel": "FE 50mm F2.5 G",
+   "Lens": "FE 50mm F2.5 G"
+  }
  },
  {
   "id": "54000323640",
@@ -459,7 +678,18 @@
   "locality": "Lakeview Hills",
   "county": "Davis",
   "region": "Utah",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "2",
+   "FNumber": "f/2.5",
+   "ISO": "125",
+   "FocalLength": "50 mm",
+   "LensModel": "FE 50mm F2.5 G",
+   "Lens": "FE 50mm F2.5 G"
+  }
  },
  {
   "id": "53960176215",
@@ -481,7 +711,18 @@
   "locality": "Diamond District",
   "county": "New York",
   "region": "New York",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.004 sec (1/250)",
+   "FNumber": "f/7.1",
+   "ISO": "640",
+   "FocalLength": "58 mm",
+   "LensModel": "FE 24-70mm F2.8 GM",
+   "Lens": "FE 24-70mm F2.8 GM"
+  }
  },
  {
   "id": "53959719181",
@@ -503,7 +744,18 @@
   "locality": "Midtown Manhattan",
   "county": "New York",
   "region": "New York",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.004 sec (1/250)",
+   "FNumber": "f/7.1",
+   "ISO": "100",
+   "FocalLength": "35 mm",
+   "LensModel": "FE 24-70mm F2.8 GM",
+   "Lens": "FE 24-70mm F2.8 GM"
+  }
  },
  {
   "id": "53959718946",
@@ -525,7 +777,18 @@
   "locality": "Midtown Manhattan",
   "county": "New York",
   "region": "New York",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.004 sec (1/250)",
+   "FNumber": "f/7.1",
+   "ISO": "125",
+   "FocalLength": "41 mm",
+   "LensModel": "FE 24-70mm F2.8 GM",
+   "Lens": "FE 24-70mm F2.8 GM"
+  }
  },
  {
   "id": "53960175340",
@@ -547,7 +810,18 @@
   "locality": "Midtown Manhattan",
   "county": "New York",
   "region": "New York",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.004 sec (1/250)",
+   "FNumber": "f/7.1",
+   "ISO": "100",
+   "FocalLength": "53 mm",
+   "LensModel": "FE 24-70mm F2.8 GM",
+   "Lens": "FE 24-70mm F2.8 GM"
+  }
  },
  {
   "id": "53959964643",
@@ -569,7 +843,18 @@
   "locality": "Midtown Manhattan",
   "county": "New York",
   "region": "New York",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.004 sec (1/250)",
+   "FNumber": "f/7.1",
+   "ISO": "100",
+   "FocalLength": "53 mm",
+   "LensModel": "FE 24-70mm F2.8 GM",
+   "Lens": "FE 24-70mm F2.8 GM"
+  }
  },
  {
   "id": "53958825327",
@@ -591,7 +876,18 @@
   "locality": "Midtown Manhattan",
   "county": "New York",
   "region": "New York",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.004 sec (1/250)",
+   "FNumber": "f/7.1",
+   "ISO": "250",
+   "FocalLength": "48 mm",
+   "LensModel": "FE 24-70mm F2.8 GM",
+   "Lens": "FE 24-70mm F2.8 GM"
+  }
  },
  {
   "id": "53959717991",
@@ -613,7 +909,18 @@
   "locality": "Midtown Manhattan",
   "county": "New York",
   "region": "New York",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.004 sec (1/250)",
+   "FNumber": "f/7.1",
+   "ISO": "100",
+   "FocalLength": "28 mm",
+   "LensModel": "FE 24-70mm F2.8 GM",
+   "Lens": "FE 24-70mm F2.8 GM"
+  }
  },
  {
   "id": "53959963898",
@@ -635,7 +942,18 @@
   "locality": "Midtown Manhattan",
   "county": "New York",
   "region": "New York",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.004 sec (1/250)",
+   "FNumber": "f/7.1",
+   "ISO": "200",
+   "FocalLength": "69 mm",
+   "LensModel": "FE 24-70mm F2.8 GM",
+   "Lens": "FE 24-70mm F2.8 GM"
+  }
  },
  {
   "id": "53959963673",
@@ -657,7 +975,18 @@
   "locality": "Midtown Manhattan",
   "county": "New York",
   "region": "New York",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.004 sec (1/250)",
+   "FNumber": "f/7.1",
+   "ISO": "125",
+   "FocalLength": "70 mm",
+   "LensModel": "FE 24-70mm F2.8 GM",
+   "Lens": "FE 24-70mm F2.8 GM"
+  }
  },
  {
   "id": "53947914884",
@@ -679,7 +1008,18 @@
   "locality": "SoHo",
   "county": "New York",
   "region": "New York",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.004 sec (1/250)",
+   "FNumber": "f/7.1",
+   "ISO": "200",
+   "FocalLength": "24 mm",
+   "LensModel": "FE 24-70mm F2.8 GM",
+   "Lens": "FE 24-70mm F2.8 GM"
+  }
  },
  {
   "id": "53946686877",
@@ -701,7 +1041,18 @@
   "locality": "SoHo",
   "county": "New York",
   "region": "New York",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.01 sec (1/100)",
+   "FNumber": "f/7.1",
+   "ISO": "160",
+   "FocalLength": "24 mm",
+   "LensModel": "FE 24-70mm F2.8 GM",
+   "Lens": "FE 24-70mm F2.8 GM"
+  }
  },
  {
   "id": "53947584106",
@@ -723,7 +1074,18 @@
   "locality": "SoHo",
   "county": "New York",
   "region": "New York",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.003 sec (1/320)",
+   "FNumber": "f/7.1",
+   "ISO": "200",
+   "FocalLength": "70 mm",
+   "LensModel": "FE 24-70mm F2.8 GM",
+   "Lens": "FE 24-70mm F2.8 GM"
+  }
  },
  {
   "id": "53945937370",
@@ -745,7 +1107,18 @@
   "locality": "Prospect Heights",
   "county": "Kings",
   "region": "New York",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.006 sec (1/160)",
+   "FNumber": "f/5.0",
+   "ISO": "4000",
+   "FocalLength": "24 mm",
+   "LensModel": "FE 24-70mm F2.8 GM",
+   "Lens": "FE 24-70mm F2.8 GM"
+  }
  },
  {
   "id": "53945814379",
@@ -767,7 +1140,18 @@
   "locality": "Prospect Heights",
   "county": "Kings",
   "region": "New York",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.006 sec (1/160)",
+   "FNumber": "f/5.0",
+   "ISO": "1000",
+   "FocalLength": "24 mm",
+   "LensModel": "FE 24-70mm F2.8 GM",
+   "Lens": "FE 24-70mm F2.8 GM"
+  }
  },
  {
   "id": "53944506750",
@@ -789,7 +1173,18 @@
   "locality": "Chicago",
   "county": "Cook",
   "region": "Illinois",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.002 sec (1/640)",
+   "FNumber": "f/6.3",
+   "ISO": "250",
+   "FocalLength": "24 mm",
+   "LensModel": "FE 24mm F2.8 G",
+   "Lens": "FE 24mm F2.8 G"
+  }
  },
  {
   "id": "53944055721",
@@ -811,7 +1206,18 @@
   "locality": "Chicago",
   "county": "Cook",
   "region": "Illinois",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.002 sec (1/500)",
+   "FNumber": "f/6.3",
+   "ISO": "250",
+   "FocalLength": "24 mm",
+   "LensModel": "FE 24mm F2.8 G",
+   "Lens": "FE 24mm F2.8 G"
+  }
  },
  {
   "id": "53944506360",
@@ -833,7 +1239,18 @@
   "locality": "Chicago",
   "county": "Cook",
   "region": "Illinois",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.005 sec (1/200)",
+   "FNumber": "f/6.3",
+   "ISO": "250",
+   "FocalLength": "24 mm",
+   "LensModel": "FE 24mm F2.8 G",
+   "Lens": "FE 24mm F2.8 G"
+  }
  },
  {
   "id": "53944055316",
@@ -855,7 +1272,18 @@
   "locality": "Chicago",
   "county": "Cook",
   "region": "Illinois",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.006 sec (1/160)",
+   "FNumber": "f/6.3",
+   "ISO": "250",
+   "FocalLength": "24 mm",
+   "LensModel": "FE 24mm F2.8 G",
+   "Lens": "FE 24mm F2.8 G"
+  }
  },
  {
   "id": "53944384084",
@@ -877,7 +1305,18 @@
   "locality": "Chicago",
   "county": "Cook",
   "region": "Illinois",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.006 sec (1/160)",
+   "FNumber": "f/6.3",
+   "ISO": "250",
+   "FocalLength": "24 mm",
+   "LensModel": "FE 24mm F2.8 G",
+   "Lens": "FE 24mm F2.8 G"
+  }
  },
  {
   "id": "53944383854",
@@ -899,7 +1338,18 @@
   "locality": "Chicago",
   "county": "Cook",
   "region": "Illinois",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.002 sec (1/640)",
+   "FNumber": "f/3.5",
+   "ISO": "100",
+   "FocalLength": "24 mm",
+   "LensModel": "FE 24mm F2.8 G",
+   "Lens": "FE 24mm F2.8 G"
+  }
  },
  {
   "id": "53943155947",
@@ -921,7 +1371,18 @@
   "locality": "Chicago",
   "county": "Cook",
   "region": "Illinois",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.002 sec (1/640)",
+   "FNumber": "f/3.5",
+   "ISO": "320",
+   "FocalLength": "24 mm",
+   "LensModel": "FE 24mm F2.8 G",
+   "Lens": "FE 24mm F2.8 G"
+  }
  },
  {
   "id": "53931059944",
@@ -943,7 +1404,18 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Sony ILCE-7RM2",
+   "Make": "SONY",
+   "Model": "ILCE-7RM2",
+   "ExposureTime": "0.006 sec (1/160)",
+   "FNumber": "f/5.0",
+   "ISO": "100",
+   "FocalLength": "70 mm",
+   "LensModel": "FE 24-70mm F2.8 GM",
+   "Lens": "FE 24-70mm F2.8 GM"
+  }
  },
  {
   "id": "53931174510",
@@ -965,7 +1437,18 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Sony ILCE-7RM2",
+   "Make": "SONY",
+   "Model": "ILCE-7RM2",
+   "ExposureTime": "0.003 sec (1/400)",
+   "FNumber": "f/5.0",
+   "ISO": "100",
+   "FocalLength": "24 mm",
+   "LensModel": "FE 24-70mm F2.8 GM",
+   "Lens": "FE 24-70mm F2.8 GM"
+  }
  },
  {
   "id": "53930721191",
@@ -987,7 +1470,18 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Sony ILCE-7RM2",
+   "Make": "SONY",
+   "Model": "ILCE-7RM2",
+   "ExposureTime": "0.003 sec (1/400)",
+   "FNumber": "f/4.0",
+   "ISO": "125",
+   "FocalLength": "24 mm",
+   "LensModel": "FE 24-70mm F2.8 GM",
+   "Lens": "FE 24-70mm F2.8 GM"
+  }
  },
  {
   "id": "53928351237",
@@ -1009,7 +1503,18 @@
   "locality": "Lafayette Houses",
   "county": "Kings",
   "region": "New York",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.017 sec (1/60)",
+   "FNumber": "f/5.6",
+   "ISO": "100",
+   "FocalLength": "24 mm",
+   "LensModel": "FE 24mm F2.8 G",
+   "Lens": "FE 24mm F2.8 G"
+  }
  },
  {
   "id": "53929114598",
@@ -1031,7 +1536,18 @@
   "locality": "Riverside Apt",
   "county": "New York",
   "region": "New York",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.002 sec (1/640)",
+   "FNumber": "f/7.1",
+   "ISO": "100",
+   "FocalLength": "14 mm",
+   "LensModel": "FE 14mm F1.8 GM",
+   "Lens": "FE 14mm F1.8 GM"
+  }
  },
  {
   "id": "53929272955",
@@ -1053,7 +1569,18 @@
   "locality": "Clinton Hill",
   "county": "Kings",
   "region": "New York",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.001 sec (1/2000)",
+   "FNumber": "f/7.1",
+   "ISO": "2000",
+   "FocalLength": "14 mm",
+   "LensModel": "FE 14mm F1.8 GM",
+   "Lens": "FE 14mm F1.8 GM"
+  }
  },
  {
   "id": "53929272550",
@@ -1075,7 +1602,18 @@
   "locality": "Fort Greene",
   "county": "Kings",
   "region": "New York",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.004 sec (1/250)",
+   "FNumber": "f/7.1",
+   "ISO": "400",
+   "FocalLength": "14 mm",
+   "LensModel": "FE 14mm F1.8 GM",
+   "Lens": "FE 14mm F1.8 GM"
+  }
  },
  {
   "id": "53925842977",
@@ -1097,7 +1635,18 @@
   "locality": "Koreatown",
   "county": "New York",
   "region": "New York",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.003 sec (1/400)",
+   "FNumber": "f/6.3",
+   "ISO": "200",
+   "FocalLength": "14 mm",
+   "LensModel": "FE 14mm F1.8 GM",
+   "Lens": "FE 14mm F1.8 GM"
+  }
  },
  {
   "id": "53925636591",
@@ -1119,7 +1668,18 @@
   "locality": "Clinton Hill",
   "county": "Kings",
   "region": "New York",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.002 sec (1/640)",
+   "FNumber": "f/7.1",
+   "ISO": "320",
+   "FocalLength": "14 mm",
+   "LensModel": "FE 14mm F1.8 GM",
+   "Lens": "FE 14mm F1.8 GM"
+  }
  },
  {
   "id": "53925886018",
@@ -1141,7 +1701,18 @@
   "locality": "Prospect Heights",
   "county": "Kings",
   "region": "New York",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.001 sec (1/1000)",
+   "FNumber": "f/7.1",
+   "ISO": "320",
+   "FocalLength": "14 mm",
+   "LensModel": "FE 14mm F1.8 GM",
+   "Lens": "FE 14mm F1.8 GM"
+  }
  },
  {
   "id": "53925953984",
@@ -1163,7 +1734,18 @@
   "locality": "Clinton Hill",
   "county": "Kings",
   "region": "New York",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.02 sec (1/50)",
+   "FNumber": "f/3.2",
+   "ISO": "2500",
+   "FocalLength": "14 mm",
+   "LensModel": "FE 14mm F1.8 GM",
+   "Lens": "FE 14mm F1.8 GM"
+  }
  },
  {
   "id": "53925602969",
@@ -1185,7 +1767,18 @@
   "locality": "Lafayette Houses",
   "county": "Kings",
   "region": "New York",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.002 sec (1/500)",
+   "FNumber": "f/7.1",
+   "ISO": "160",
+   "FocalLength": "14 mm",
+   "LensModel": "FE 14mm F1.8 GM",
+   "Lens": "FE 14mm F1.8 GM"
+  }
  },
  {
   "id": "53925702255",
@@ -1207,7 +1800,18 @@
   "locality": "Lafayette Houses",
   "county": "Kings",
   "region": "New York",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.002 sec (1/500)",
+   "FNumber": "f/7.1",
+   "ISO": "250",
+   "FocalLength": "14 mm",
+   "LensModel": "FE 14mm F1.8 GM",
+   "Lens": "FE 14mm F1.8 GM"
+  }
  },
  {
   "id": "53924125304",
@@ -1229,7 +1833,18 @@
   "locality": "Fort Greene",
   "county": "Kings",
   "region": "New York",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.003 sec (1/400)",
+   "FNumber": "f/7.1",
+   "ISO": "200",
+   "FocalLength": "14 mm",
+   "LensModel": "FE 14mm F1.8 GM",
+   "Lens": "FE 14mm F1.8 GM"
+  }
  },
  {
   "id": "53924223915",
@@ -1251,7 +1866,18 @@
   "locality": "Fort Greene",
   "county": "Kings",
   "region": "New York",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.001 sec (1/800)",
+   "FNumber": "f/7.1",
+   "ISO": "1250",
+   "FocalLength": "14 mm",
+   "LensModel": "FE 14mm F1.8 GM",
+   "Lens": "FE 14mm F1.8 GM"
+  }
  },
  {
   "id": "53922878612",
@@ -1273,7 +1899,18 @@
   "locality": "Fort Greene",
   "county": "Kings",
   "region": "New York",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.001 sec (1/800)",
+   "FNumber": "f/7.1",
+   "ISO": "1000",
+   "FocalLength": "14 mm",
+   "LensModel": "FE 14mm F1.8 GM",
+   "Lens": "FE 14mm F1.8 GM"
+  }
  },
  {
   "id": "53923770316",
@@ -1295,7 +1932,18 @@
   "locality": "Fort Greene",
   "county": "Kings",
   "region": "New York",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.004 sec (1/250)",
+   "FNumber": "f/7.1",
+   "ISO": "100",
+   "FocalLength": "14 mm",
+   "LensModel": "FE 14mm F1.8 GM",
+   "Lens": "FE 14mm F1.8 GM"
+  }
  },
  {
   "id": "53920726619",
@@ -1317,7 +1965,18 @@
   "locality": "Clinton Hill",
   "county": "Kings",
   "region": "New York",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.006 sec (1/160)",
+   "FNumber": "f/1.8",
+   "ISO": "3200",
+   "FocalLength": "14 mm",
+   "LensModel": "FE 14mm F1.8 GM",
+   "Lens": "FE 14mm F1.8 GM"
+  }
  },
  {
   "id": "53918682187",
@@ -1339,7 +1998,18 @@
   "locality": "Clinton Hill",
   "county": "Kings",
   "region": "New York",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "1/3200 sec",
+   "FNumber": "f/1.8",
+   "ISO": "6400",
+   "FocalLength": "14 mm",
+   "LensModel": "FE 14mm F1.8 GM",
+   "Lens": "FE 14mm F1.8 GM"
+  }
  },
  {
   "id": "53918681807",
@@ -1361,7 +2031,18 @@
   "locality": "Clinton Hill",
   "county": "Kings",
   "region": "New York",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.017 sec (1/60)",
+   "FNumber": "f/4.0",
+   "ISO": "2000",
+   "FocalLength": "14 mm",
+   "LensModel": "FE 14mm F1.8 GM",
+   "Lens": "FE 14mm F1.8 GM"
+  }
  },
  {
   "id": "53918855381",
@@ -1383,7 +2064,18 @@
   "locality": "Murray Hill",
   "county": "New York",
   "region": "New York",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.001 sec (1/1000)",
+   "FNumber": "f/7.1",
+   "ISO": "1000",
+   "FocalLength": "14 mm",
+   "LensModel": "FE 14mm F1.8 GM",
+   "Lens": "FE 14mm F1.8 GM"
+  }
  },
  {
   "id": "53918134521",
@@ -1405,7 +2097,18 @@
   "locality": "Tudor City",
   "county": "New York",
   "region": "New York",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.001 sec (1/1000)",
+   "FNumber": "f/7.1",
+   "ISO": "400",
+   "FocalLength": "14 mm",
+   "LensModel": "FE 14mm F1.8 GM",
+   "Lens": "FE 14mm F1.8 GM"
+  }
  },
  {
   "id": "53918579580",
@@ -1427,7 +2130,18 @@
   "locality": "Midtown East",
   "county": "New York",
   "region": "New York",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.003 sec (1/400)",
+   "FNumber": "f/7.1",
+   "ISO": "100",
+   "FocalLength": "14 mm",
+   "LensModel": "FE 14mm F1.8 GM",
+   "Lens": "FE 14mm F1.8 GM"
+  }
  },
  {
   "id": "53918579470",
@@ -1449,7 +2163,18 @@
   "locality": "Sutton Place",
   "county": "New York",
   "region": "New York",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.002 sec (1/640)",
+   "FNumber": "f/7.1",
+   "ISO": "160",
+   "FocalLength": "14 mm",
+   "LensModel": "FE 14mm F1.8 GM",
+   "Lens": "FE 14mm F1.8 GM"
+  }
  },
  {
   "id": "53918381388",
@@ -1471,7 +2196,18 @@
   "locality": "Sutton Place",
   "county": "New York",
   "region": "New York",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.002 sec (1/640)",
+   "FNumber": "f/7.1",
+   "ISO": "160",
+   "FocalLength": "14 mm",
+   "LensModel": "FE 14mm F1.8 GM",
+   "Lens": "FE 14mm F1.8 GM"
+  }
  },
  {
   "id": "53918485674",
@@ -1493,7 +2229,18 @@
   "locality": "Riverside Apt",
   "county": "New York",
   "region": "New York",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.002 sec (1/640)",
+   "FNumber": "f/7.1",
+   "ISO": "100",
+   "FocalLength": "14 mm",
+   "LensModel": "FE 14mm F1.8 GM",
+   "Lens": "FE 14mm F1.8 GM"
+  }
  },
  {
   "id": "53918380683",
@@ -1515,7 +2262,18 @@
   "locality": "Sutton Place",
   "county": "New York",
   "region": "New York",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.002 sec (1/640)",
+   "FNumber": "f/7.1",
+   "ISO": "160",
+   "FocalLength": "14 mm",
+   "LensModel": "FE 14mm F1.8 GM",
+   "Lens": "FE 14mm F1.8 GM"
+  }
  },
  {
   "id": "53918484919",
@@ -1537,7 +2295,18 @@
   "locality": "Sutton Place",
   "county": "New York",
   "region": "New York",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.002 sec (1/640)",
+   "FNumber": "f/7.1",
+   "ISO": "160",
+   "FocalLength": "14 mm",
+   "LensModel": "FE 14mm F1.8 GM",
+   "Lens": "FE 14mm F1.8 GM"
+  }
  },
  {
   "id": "53918484579",
@@ -1559,7 +2328,18 @@
   "locality": "Sutton Place",
   "county": "New York",
   "region": "New York",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.002 sec (1/640)",
+   "FNumber": "f/7.1",
+   "ISO": "250",
+   "FocalLength": "14 mm",
+   "LensModel": "FE 14mm F1.8 GM",
+   "Lens": "FE 14mm F1.8 GM"
+  }
  },
  {
   "id": "53917241122",
@@ -1581,7 +2361,18 @@
   "locality": "Riverside Apt",
   "county": "New York",
   "region": "New York",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.003 sec (1/320)",
+   "FNumber": "f/7.1",
+   "ISO": "250",
+   "FocalLength": "14 mm",
+   "LensModel": "FE 14mm F1.8 GM",
+   "Lens": "FE 14mm F1.8 GM"
+  }
  },
  {
   "id": "53918379433",
@@ -1603,7 +2394,18 @@
   "locality": "Riverside Apt",
   "county": "New York",
   "region": "New York",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.003 sec (1/320)",
+   "FNumber": "f/7.1",
+   "ISO": "160",
+   "FocalLength": "14 mm",
+   "LensModel": "FE 14mm F1.8 GM",
+   "Lens": "FE 14mm F1.8 GM"
+  }
  },
  {
   "id": "53917240487",
@@ -1625,7 +2427,18 @@
   "locality": "Sutton Place",
   "county": "New York",
   "region": "New York",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.003 sec (1/320)",
+   "FNumber": "f/7.1",
+   "ISO": "100",
+   "FocalLength": "14 mm",
+   "LensModel": "FE 14mm F1.8 GM",
+   "Lens": "FE 14mm F1.8 GM"
+  }
  },
  {
   "id": "53914197257",
@@ -1647,7 +2460,18 @@
   "locality": "Lafayette Houses",
   "county": "Kings",
   "region": "New York",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.006 sec (1/160)",
+   "FNumber": "f/1.8",
+   "ISO": "6400",
+   "FocalLength": "14 mm",
+   "LensModel": "FE 14mm F1.8 GM",
+   "Lens": "FE 14mm F1.8 GM"
+  }
  },
  {
   "id": "53915432814",
@@ -1669,7 +2493,18 @@
   "locality": "Clinton Hill",
   "county": "Kings",
   "region": "New York",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.006 sec (1/160)",
+   "FNumber": "f/1.8",
+   "ISO": "6400",
+   "FocalLength": "14 mm",
+   "LensModel": "FE 14mm F1.8 GM",
+   "Lens": "FE 14mm F1.8 GM"
+  }
  },
  {
   "id": "53915432049",
@@ -1691,7 +2526,18 @@
   "locality": "Clinton Hill",
   "county": "Kings",
   "region": "New York",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.001 sec (1/800)",
+   "FNumber": "f/1.8",
+   "ISO": "6400",
+   "FocalLength": "14 mm",
+   "LensModel": "FE 14mm F1.8 GM",
+   "Lens": "FE 14mm F1.8 GM"
+  }
  },
  {
   "id": "53915327798",
@@ -1713,7 +2559,18 @@
   "locality": "Clinton Hill",
   "county": "Kings",
   "region": "New York",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.004 sec (1/250)",
+   "FNumber": "f/7.1",
+   "ISO": "200",
+   "FocalLength": "14 mm",
+   "LensModel": "FE 14mm F1.8 GM",
+   "Lens": "FE 14mm F1.8 GM"
+  }
  },
  {
   "id": "53914193047",
@@ -1735,7 +2592,18 @@
   "locality": "Atlantic Terminal Houses",
   "county": "Kings",
   "region": "New York",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.01 sec (1/100)",
+   "FNumber": "f/7.1",
+   "ISO": "640",
+   "FocalLength": "14 mm",
+   "LensModel": "FE 14mm F1.8 GM",
+   "Lens": "FE 14mm F1.8 GM"
+  }
  },
  {
   "id": "53914209223",
@@ -1757,7 +2625,18 @@
   "locality": "NoMad",
   "county": "New York",
   "region": "New York",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.001 sec (1/1600)",
+   "FNumber": "f/7.1",
+   "ISO": "3200",
+   "FocalLength": "14 mm",
+   "LensModel": "FE 14mm F1.8 GM",
+   "Lens": "FE 14mm F1.8 GM"
+  }
  },
  {
   "id": "53914208598",
@@ -1779,7 +2658,18 @@
   "locality": "Koreatown",
   "county": "New York",
   "region": "New York",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.003 sec (1/400)",
+   "FNumber": "f/6.3",
+   "ISO": "400",
+   "FocalLength": "14 mm",
+   "LensModel": "FE 14mm F1.8 GM",
+   "Lens": "FE 14mm F1.8 GM"
+  }
  },
  {
   "id": "53913962831",
@@ -1801,7 +2691,18 @@
   "locality": "Koreatown",
   "county": "New York",
   "region": "New York",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.003 sec (1/400)",
+   "FNumber": "f/6.3",
+   "ISO": "500",
+   "FocalLength": "14 mm",
+   "LensModel": "FE 14mm F1.8 GM",
+   "Lens": "FE 14mm F1.8 GM"
+  }
  },
  {
   "id": "53913073867",
@@ -1823,7 +2724,18 @@
   "locality": "Times Square",
   "county": "New York",
   "region": "New York",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.003 sec (1/400)",
+   "FNumber": "f/6.3",
+   "ISO": "800",
+   "FocalLength": "14 mm",
+   "LensModel": "FE 14mm F1.8 GM",
+   "Lens": "FE 14mm F1.8 GM"
+  }
  },
  {
   "id": "53913962036",
@@ -1845,7 +2757,18 @@
   "locality": "Times Square",
   "county": "New York",
   "region": "New York",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.003 sec (1/400)",
+   "FNumber": "f/11.0",
+   "ISO": "1000",
+   "FocalLength": "14 mm",
+   "LensModel": "FE 14mm F1.8 GM",
+   "Lens": "FE 14mm F1.8 GM"
+  }
  },
  {
   "id": "53913961826",
@@ -1867,7 +2790,18 @@
   "locality": "Times Square",
   "county": "New York",
   "region": "New York",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.008 sec (1/125)",
+   "FNumber": "f/4.5",
+   "ISO": "6400",
+   "FocalLength": "14 mm",
+   "LensModel": "FE 14mm F1.8 GM",
+   "Lens": "FE 14mm F1.8 GM"
+  }
  },
  {
   "id": "53913073072",
@@ -1889,7 +2823,18 @@
   "locality": "Times Square",
   "county": "New York",
   "region": "New York",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.005 sec (1/200)",
+   "FNumber": "f/7.1",
+   "ISO": "160",
+   "FocalLength": "14 mm",
+   "LensModel": "FE 14mm F1.8 GM",
+   "Lens": "FE 14mm F1.8 GM"
+  }
  },
  {
   "id": "53913071977",
@@ -1911,7 +2856,18 @@
   "locality": "Times Square",
   "county": "New York",
   "region": "New York",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.005 sec (1/200)",
+   "FNumber": "f/7.1",
+   "ISO": "250",
+   "FocalLength": "14 mm",
+   "LensModel": "FE 14mm F1.8 GM",
+   "Lens": "FE 14mm F1.8 GM"
+  }
  },
  {
   "id": "53914407895",
@@ -1933,7 +2889,18 @@
   "locality": "Koreatown",
   "county": "New York",
   "region": "New York",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.01 sec (1/100)",
+   "FNumber": "f/7.1",
+   "ISO": "400",
+   "FocalLength": "14 mm",
+   "LensModel": "FE 14mm F1.8 GM",
+   "Lens": "FE 14mm F1.8 GM"
+  }
  },
  {
   "id": "53914310264",
@@ -1955,7 +2922,18 @@
   "locality": "Koreatown",
   "county": "New York",
   "region": "New York",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.01 sec (1/100)",
+   "FNumber": "f/7.1",
+   "ISO": "125",
+   "FocalLength": "14 mm",
+   "LensModel": "FE 14mm F1.8 GM",
+   "Lens": "FE 14mm F1.8 GM"
+  }
  },
  {
   "id": "53908319137",
@@ -1977,7 +2955,18 @@
   "locality": "Chelsea",
   "county": "New York",
   "region": "New York",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.017 sec (1/60)",
+   "FNumber": "f/2.5",
+   "ISO": "1250",
+   "FocalLength": "50 mm",
+   "LensModel": "FE 50mm F2.5 G",
+   "Lens": "FE 50mm F2.5 G"
+  }
  },
  {
   "id": "53909211766",
@@ -1999,7 +2988,18 @@
   "locality": "Chelsea",
   "county": "New York",
   "region": "New York",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.017 sec (1/60)",
+   "FNumber": "f/2.5",
+   "ISO": "6400",
+   "FocalLength": "50 mm",
+   "LensModel": "FE 50mm F2.5 G",
+   "Lens": "FE 50mm F2.5 G"
+  }
  },
  {
   "id": "53909554404",
@@ -2021,7 +3021,18 @@
   "locality": "NoMad",
   "county": "New York",
   "region": "New York",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.004 sec (1/250)",
+   "FNumber": "f/4.0",
+   "ISO": "6400",
+   "FocalLength": "50 mm",
+   "LensModel": "FE 50mm F2.5 G",
+   "Lens": "FE 50mm F2.5 G"
+  }
  },
  {
   "id": "53909209686",
@@ -2043,7 +3054,18 @@
   "locality": "NoMad",
   "county": "New York",
   "region": "New York",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.017 sec (1/60)",
+   "FNumber": "f/4.5",
+   "ISO": "4000",
+   "FocalLength": "50 mm",
+   "LensModel": "FE 50mm F2.5 G",
+   "Lens": "FE 50mm F2.5 G"
+  }
  },
  {
   "id": "53907091730",
@@ -2065,7 +3087,18 @@
   "locality": "Lafayette Houses",
   "county": "Kings",
   "region": "New York",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.017 sec (1/60)",
+   "FNumber": "f/6.3",
+   "ISO": "125",
+   "FocalLength": "24 mm",
+   "LensModel": "FE 24mm F2.8 G",
+   "Lens": "FE 24mm F2.8 G"
+  }
  },
  {
   "id": "53902530453",
@@ -2087,7 +3120,18 @@
   "locality": "Greenwich Village",
   "county": "New York",
   "region": "New York",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.017 sec (1/60)",
+   "FNumber": "f/3.2",
+   "ISO": "500",
+   "FocalLength": "24 mm",
+   "LensModel": "FE 24mm F2.8 G",
+   "Lens": "FE 24mm F2.8 G"
+  }
  },
  {
   "id": "53900353977",
@@ -2109,7 +3153,18 @@
   "locality": "Koreatown",
   "county": "New York",
   "region": "New York",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.001 sec (1/1600)",
+   "FNumber": "f/8.0",
+   "ISO": "640",
+   "FocalLength": "24 mm",
+   "LensModel": "FE 24mm F2.8 G",
+   "Lens": "FE 24mm F2.8 G"
+  }
  },
  {
   "id": "53898451116",
@@ -2131,7 +3186,18 @@
   "locality": "Lafayette Houses",
   "county": "Kings",
   "region": "New York",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.003 sec (1/320)",
+   "FNumber": "f/7.1",
+   "ISO": "100",
+   "FocalLength": "24 mm",
+   "LensModel": "FE 24mm F2.8 G",
+   "Lens": "FE 24mm F2.8 G"
+  }
  },
  {
   "id": "53898878820",
@@ -2153,7 +3219,18 @@
   "locality": "Lafayette Houses",
   "county": "Kings",
   "region": "New York",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.002 sec (1/500)",
+   "FNumber": "f/7.1",
+   "ISO": "100",
+   "FocalLength": "24 mm",
+   "LensModel": "FE 24mm F2.8 G",
+   "Lens": "FE 24mm F2.8 G"
+  }
  },
  {
   "id": "53898875020",
@@ -2175,7 +3252,18 @@
   "locality": "Prospect Heights",
   "county": "Kings",
   "region": "New York",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.003 sec (1/320)",
+   "FNumber": "f/7.1",
+   "ISO": "100",
+   "FocalLength": "24 mm",
+   "LensModel": "FE 24mm F2.8 G",
+   "Lens": "FE 24mm F2.8 G"
+  }
  },
  {
   "id": "53898695713",
@@ -2197,7 +3285,18 @@
   "locality": "Lafayette Houses",
   "county": "Kings",
   "region": "New York",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.003 sec (1/320)",
+   "FNumber": "f/5.6",
+   "ISO": "100",
+   "FocalLength": "24 mm",
+   "LensModel": "FE 24mm F2.8 G",
+   "Lens": "FE 24mm F2.8 G"
+  }
  },
  {
   "id": "53897943535",
@@ -2219,7 +3318,18 @@
   "locality": "Thomas Circle",
   "county": "Washington",
   "region": "Washington, D.C.",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.017 sec (1/60)",
+   "FNumber": "f/2.8",
+   "ISO": "6400",
+   "FocalLength": "24 mm",
+   "LensModel": "FE 24mm F2.8 G",
+   "Lens": "FE 24mm F2.8 G"
+  }
  },
  {
   "id": "53897914660",
@@ -2241,7 +3351,18 @@
   "locality": "Chelsea",
   "county": "New York",
   "region": "New York",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.017 sec (1/60)",
+   "FNumber": "f/2.8",
+   "ISO": "6400",
+   "FocalLength": "24 mm",
+   "LensModel": "FE 24mm F2.8 G",
+   "Lens": "FE 24mm F2.8 G"
+  }
  },
  {
   "id": "53897735453",
@@ -2263,7 +3384,18 @@
   "locality": "Chelsea",
   "county": "New York",
   "region": "New York",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.017 sec (1/60)",
+   "FNumber": "f/2.8",
+   "ISO": "2000",
+   "FocalLength": "24 mm",
+   "LensModel": "FE 24mm F2.8 G",
+   "Lens": "FE 24mm F2.8 G"
+  }
  },
  {
   "id": "53896572377",
@@ -2285,7 +3417,18 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.017 sec (1/60)",
+   "FNumber": "f/2.8",
+   "ISO": "640",
+   "FocalLength": "24 mm",
+   "LensModel": "FE 24mm F2.8 G",
+   "Lens": "FE 24mm F2.8 G"
+  }
  },
  {
   "id": "53897833164",
@@ -2307,7 +3450,18 @@
   "locality": "Mount Vernon Square",
   "county": "Washington",
   "region": "Washington, D.C.",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.002 sec (1/640)",
+   "FNumber": "f/2.8",
+   "ISO": "6400",
+   "FocalLength": "24 mm",
+   "LensModel": "FE 24mm F2.8 G",
+   "Lens": "FE 24mm F2.8 G"
+  }
  },
  {
   "id": "53897734173",
@@ -2329,7 +3483,18 @@
   "locality": "Elinor (historical)",
   "county": "Washington",
   "region": "Washington, D.C.",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.017 sec (1/60)",
+   "FNumber": "f/2.8",
+   "ISO": "5000",
+   "FocalLength": "24 mm",
+   "LensModel": "FE 24mm F2.8 G",
+   "Lens": "FE 24mm F2.8 G"
+  }
  },
  {
   "id": "53897733813",
@@ -2351,7 +3516,18 @@
   "locality": "Gordons Meadow (historical)",
   "county": "Washington",
   "region": "Washington, D.C.",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.017 sec (1/60)",
+   "FNumber": "f/2.8",
+   "ISO": "2500",
+   "FocalLength": "24 mm",
+   "LensModel": "FE 24mm F2.8 G",
+   "Lens": "FE 24mm F2.8 G"
+  }
  },
  {
   "id": "53897533738",
@@ -2373,7 +3549,18 @@
   "locality": "Chelsea",
   "county": "New York",
   "region": "New York",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.017 sec (1/60)",
+   "FNumber": "f/2.8",
+   "ISO": "640",
+   "FocalLength": "24 mm",
+   "LensModel": "FE 24mm F2.8 G",
+   "Lens": "FE 24mm F2.8 G"
+  }
  },
  {
   "id": "53897286051",
@@ -2395,7 +3582,18 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.017 sec (1/60)",
+   "FNumber": "f/2.8",
+   "ISO": "100",
+   "FocalLength": "24 mm",
+   "LensModel": "FE 24mm F2.8 G",
+   "Lens": "FE 24mm F2.8 G"
+  }
  },
  {
   "id": "53897710215",
@@ -2417,7 +3615,18 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.017 sec (1/60)",
+   "FNumber": "f/2.8",
+   "ISO": "125",
+   "FocalLength": "24 mm",
+   "LensModel": "FE 24mm F2.8 G",
+   "Lens": "FE 24mm F2.8 G"
+  }
  },
  {
   "id": "53897630649",
@@ -2439,7 +3648,18 @@
   "locality": "Elinor (historical)",
   "county": "Washington",
   "region": "Washington, D.C.",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.006 sec (1/160)",
+   "FNumber": "f/2.8",
+   "ISO": "4000",
+   "FocalLength": "24 mm",
+   "LensModel": "FE 24mm F2.8 G",
+   "Lens": "FE 24mm F2.8 G"
+  }
  },
  {
   "id": "53896366412",
@@ -2461,7 +3681,18 @@
   "locality": "Elinor (historical)",
   "county": "Washington",
   "region": "Washington, D.C.",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.017 sec (1/60)",
+   "FNumber": "f/2.8",
+   "ISO": "4000",
+   "FocalLength": "24 mm",
+   "LensModel": "FE 24mm F2.8 G",
+   "Lens": "FE 24mm F2.8 G"
+  }
  },
  {
   "id": "53897705250",
@@ -2483,7 +3714,18 @@
   "locality": "Koreatown",
   "county": "New York",
   "region": "New York",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.003 sec (1/400)",
+   "FNumber": "f/7.1",
+   "ISO": "160",
+   "FocalLength": "24 mm",
+   "LensModel": "FE 24mm F2.8 G",
+   "Lens": "FE 24mm F2.8 G"
+  }
  },
  {
   "id": "53891884308",
@@ -2505,7 +3747,18 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.01 sec (1/100)",
+   "FNumber": "f/5.6",
+   "ISO": "250",
+   "FocalLength": "24 mm",
+   "LensModel": "FE 24mm F2.8 G",
+   "Lens": "FE 24mm F2.8 G"
+  }
  },
  {
   "id": "53892059140",
@@ -2527,7 +3780,18 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.003 sec (1/400)",
+   "FNumber": "f/7.1",
+   "ISO": "640",
+   "FocalLength": "24 mm",
+   "LensModel": "FE 24mm F2.8 G",
+   "Lens": "FE 24mm F2.8 G"
+  }
  },
  {
   "id": "53890727002",
@@ -2549,7 +3813,18 @@
   "locality": "Phipps Houses",
   "county": "New York",
   "region": "New York",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.003 sec (1/400)",
+   "FNumber": "f/7.1",
+   "ISO": "500",
+   "FocalLength": "24 mm",
+   "LensModel": "FE 24mm F2.8 G",
+   "Lens": "FE 24mm F2.8 G"
+  }
  },
  {
   "id": "53891641426",
@@ -2571,7 +3846,18 @@
   "locality": "Bed-Stuy",
   "county": "Kings",
   "region": "New York",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.002 sec (1/500)",
+   "FNumber": "f/6.3",
+   "ISO": "160",
+   "FocalLength": "24 mm",
+   "LensModel": "FE 24mm F2.8 G",
+   "Lens": "FE 24mm F2.8 G"
+  }
  },
  {
   "id": "53892056810",
@@ -2593,7 +3879,18 @@
   "locality": "Lafayette Houses",
   "county": "Kings",
   "region": "New York",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.004 sec (1/250)",
+   "FNumber": "f/6.3",
+   "ISO": "640",
+   "FocalLength": "24 mm",
+   "LensModel": "FE 24mm F2.8 G",
+   "Lens": "FE 24mm F2.8 G"
+  }
  },
  {
   "id": "53889898225",
@@ -2615,7 +3912,18 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.017 sec (1/60)",
+   "FNumber": "f/6.3",
+   "ISO": "100",
+   "FocalLength": "30 mm",
+   "LensModel": "FE 24-70mm F2.8 GM",
+   "Lens": "FE 24-70mm F2.8 GM"
+  }
  },
  {
   "id": "53888263395",
@@ -2637,7 +3945,18 @@
   "locality": "Meat Packing District",
   "county": null,
   "region": "New York",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.008 sec (1/125)",
+   "FNumber": "f/6.3",
+   "ISO": "100",
+   "FocalLength": "66 mm",
+   "LensModel": "FE 24-70mm F2.8 GM",
+   "Lens": "FE 24-70mm F2.8 GM"
+  }
  },
  {
   "id": "53886926862",
@@ -2659,7 +3978,18 @@
   "locality": "Flatiron District",
   "county": "New York",
   "region": "New York",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.005 sec (1/200)",
+   "FNumber": "f/6.3",
+   "ISO": "100",
+   "FocalLength": "24 mm",
+   "LensModel": "FE 24-70mm F2.8 GM",
+   "Lens": "FE 24-70mm F2.8 GM"
+  }
  },
  {
   "id": "53888261375",
@@ -2681,7 +4011,18 @@
   "locality": "Chelsea",
   "county": "New York",
   "region": "New York",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.003 sec (1/320)",
+   "FNumber": "f/6.3",
+   "ISO": "160",
+   "FocalLength": "38 mm",
+   "LensModel": "FE 24-70mm F2.8 GM",
+   "Lens": "FE 24-70mm F2.8 GM"
+  }
  },
  {
   "id": "53886926172",
@@ -2703,7 +4044,18 @@
   "locality": "Chelsea",
   "county": "New York",
   "region": "New York",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.006 sec (1/160)",
+   "FNumber": "f/6.3",
+   "ISO": "100",
+   "FocalLength": "24 mm",
+   "LensModel": "FE 24-70mm F2.8 GM",
+   "Lens": "FE 24-70mm F2.8 GM"
+  }
  },
  {
   "id": "53888069733",
@@ -2725,7 +4077,18 @@
   "locality": "NoMad",
   "county": "New York",
   "region": "New York",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.001 sec (1/1250)",
+   "FNumber": "f/6.3",
+   "ISO": "2500",
+   "FocalLength": "39 mm",
+   "LensModel": "FE 24-70mm F2.8 GM",
+   "Lens": "FE 24-70mm F2.8 GM"
+  }
  },
  {
   "id": "53886068720",
@@ -2747,7 +4110,18 @@
   "locality": "Prospect Heights",
   "county": "Kings",
   "region": "New York",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.006 sec (1/160)",
+   "FNumber": "f/4.5",
+   "ISO": "400",
+   "FocalLength": "24 mm",
+   "LensModel": "FE 24mm F2.8 G",
+   "Lens": "FE 24mm F2.8 G"
+  }
  },
  {
   "id": "53885978384",
@@ -2769,7 +4143,18 @@
   "locality": "Prospect Heights",
   "county": "Kings",
   "region": "New York",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.017 sec (1/60)",
+   "FNumber": "f/5.6",
+   "ISO": "100",
+   "FocalLength": "24 mm",
+   "LensModel": "FE 24mm F2.8 G",
+   "Lens": "FE 24mm F2.8 G"
+  }
  },
  {
   "id": "53885619725",
@@ -2791,7 +4176,18 @@
   "locality": "San Juan Hill",
   "county": "New York",
   "region": "New York",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.002 sec (1/640)",
+   "FNumber": "f/5.6",
+   "ISO": "100",
+   "FocalLength": "24 mm",
+   "LensModel": "FE 24mm F2.8 G",
+   "Lens": "FE 24mm F2.8 G"
+  }
  },
  {
   "id": "53884292727",
@@ -2813,7 +4209,18 @@
   "locality": "Phipps Houses",
   "county": "New York",
   "region": "New York",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.001 sec (1/1600)",
+   "FNumber": "f/7.1",
+   "ISO": "500",
+   "FocalLength": "24 mm",
+   "LensModel": "FE 24mm F2.8 G",
+   "Lens": "FE 24mm F2.8 G"
+  }
  },
  {
   "id": "53885200846",
@@ -2835,7 +4242,18 @@
   "locality": "San Juan Hill",
   "county": "New York",
   "region": "New York",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.001 sec (1/1600)",
+   "FNumber": "f/7.1",
+   "ISO": "500",
+   "FocalLength": "24 mm",
+   "LensModel": "FE 24mm F2.8 G",
+   "Lens": "FE 24mm F2.8 G"
+  }
  },
  {
   "id": "53885429078",
@@ -2857,7 +4275,18 @@
   "locality": "San Juan Hill",
   "county": "New York",
   "region": "New York",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.001 sec (1/1600)",
+   "FNumber": "f/7.1",
+   "ISO": "640",
+   "FocalLength": "24 mm",
+   "LensModel": "FE 24mm F2.8 G",
+   "Lens": "FE 24mm F2.8 G"
+  }
  },
  {
   "id": "53883081336",
@@ -2879,7 +4308,18 @@
   "locality": "Lafayette Houses",
   "county": "Kings",
   "region": "New York",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.002 sec (1/640)",
+   "FNumber": "f/6.3",
+   "ISO": "160",
+   "FocalLength": "24 mm",
+   "LensModel": "FE 24mm F2.8 G",
+   "Lens": "FE 24mm F2.8 G"
+  }
  },
  {
   "id": "53883080361",
@@ -2901,7 +4341,18 @@
   "locality": "Lafayette Houses",
   "county": "Kings",
   "region": "New York",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.004 sec (1/250)",
+   "FNumber": "f/6.3",
+   "ISO": "100",
+   "FocalLength": "24 mm",
+   "LensModel": "FE 24mm F2.8 G",
+   "Lens": "FE 24mm F2.8 G"
+  }
  },
  {
   "id": "53883417614",
@@ -2923,7 +4374,18 @@
   "locality": "Lafayette Houses",
   "county": "Kings",
   "region": "New York",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.004 sec (1/250)",
+   "FNumber": "f/6.3",
+   "ISO": "100",
+   "FocalLength": "24 mm",
+   "LensModel": "FE 24mm F2.8 G",
+   "Lens": "FE 24mm F2.8 G"
+  }
  },
  {
   "id": "53880582427",
@@ -2945,7 +4407,18 @@
   "locality": "Prospect Heights",
   "county": "Kings",
   "region": "New York",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.008 sec (1/125)",
+   "FNumber": "f/6.3",
+   "ISO": "1250",
+   "FocalLength": "24 mm",
+   "LensModel": "FE 24mm F2.8 G",
+   "Lens": "FE 24mm F2.8 G"
+  }
  },
  {
   "id": "53881899870",
@@ -2967,7 +4440,18 @@
   "locality": "Prospect Heights",
   "county": "Kings",
   "region": "New York",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.008 sec (1/125)",
+   "FNumber": "f/6.3",
+   "ISO": "640",
+   "FocalLength": "24 mm",
+   "LensModel": "FE 24mm F2.8 G",
+   "Lens": "FE 24mm F2.8 G"
+  }
  },
  {
   "id": "53880581952",
@@ -2989,7 +4473,18 @@
   "locality": "Prospect Heights",
   "county": "Kings",
   "region": "New York",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.004 sec (1/250)",
+   "FNumber": "f/6.3",
+   "ISO": "800",
+   "FocalLength": "24 mm",
+   "LensModel": "FE 24mm F2.8 G",
+   "Lens": "FE 24mm F2.8 G"
+  }
  },
  {
   "id": "53881821264",
@@ -3011,7 +4506,18 @@
   "locality": "Prospect Heights",
   "county": "Kings",
   "region": "New York",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.004 sec (1/250)",
+   "FNumber": "f/6.3",
+   "ISO": "800",
+   "FocalLength": "24 mm",
+   "LensModel": "FE 24mm F2.8 G",
+   "Lens": "FE 24mm F2.8 G"
+  }
  },
  {
   "id": "53881821069",
@@ -3033,7 +4539,18 @@
   "locality": "Atlantic Terminal Houses",
   "county": "Kings",
   "region": "New York",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.004 sec (1/250)",
+   "FNumber": "f/7.1",
+   "ISO": "640",
+   "FocalLength": "24 mm",
+   "LensModel": "FE 24mm F2.8 G",
+   "Lens": "FE 24mm F2.8 G"
+  }
  },
  {
   "id": "53881459845",
@@ -3055,7 +4572,18 @@
   "locality": "Prospect Heights",
   "county": "Kings",
   "region": "New York",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.002 sec (1/500)",
+   "FNumber": "f/7.1",
+   "ISO": "100",
+   "FocalLength": "24 mm",
+   "LensModel": "FE 24mm F2.8 G",
+   "Lens": "FE 24mm F2.8 G"
+  }
  },
  {
   "id": "53879563627",
@@ -3077,7 +4605,18 @@
   "locality": "Flatiron District",
   "county": "New York",
   "region": "New York",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.033 sec (1/30)",
+   "FNumber": "f/8.0",
+   "ISO": "1250",
+   "FocalLength": "24 mm",
+   "LensModel": "FE 24mm F2.8 G",
+   "Lens": "FE 24mm F2.8 G"
+  }
  },
  {
   "id": "53880874880",
@@ -3099,7 +4638,18 @@
   "locality": "NoMad",
   "county": "New York",
   "region": "New York",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.04 sec (1/25)",
+   "FNumber": "f/8.0",
+   "ISO": "1000",
+   "FocalLength": "24 mm",
+   "LensModel": "FE 24mm F2.8 G",
+   "Lens": "FE 24mm F2.8 G"
+  }
  },
  {
   "id": "53880698308",
@@ -3121,7 +4671,18 @@
   "locality": "NoMad",
   "county": "New York",
   "region": "New York",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.04 sec (1/25)",
+   "FNumber": "f/8.0",
+   "ISO": "800",
+   "FocalLength": "24 mm",
+   "LensModel": "FE 24mm F2.8 G",
+   "Lens": "FE 24mm F2.8 G"
+  }
  },
  {
   "id": "53880799784",
@@ -3143,7 +4704,18 @@
   "locality": "NoMad",
   "county": "New York",
   "region": "New York",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.04 sec (1/25)",
+   "FNumber": "f/8.0",
+   "ISO": "800",
+   "FocalLength": "24 mm",
+   "LensModel": "FE 24mm F2.8 G",
+   "Lens": "FE 24mm F2.8 G"
+  }
  },
  {
   "id": "53880874105",
@@ -3165,7 +4737,18 @@
   "locality": "NoMad",
   "county": "New York",
   "region": "New York",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.04 sec (1/25)",
+   "FNumber": "f/8.0",
+   "ISO": "800",
+   "FocalLength": "24 mm",
+   "LensModel": "FE 24mm F2.8 G",
+   "Lens": "FE 24mm F2.8 G"
+  }
  },
  {
   "id": "53880460026",
@@ -3187,7 +4770,18 @@
   "locality": "NoMad",
   "county": "New York",
   "region": "New York",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.04 sec (1/25)",
+   "FNumber": "f/8.0",
+   "ISO": "160",
+   "FocalLength": "24 mm",
+   "LensModel": "FE 24mm F2.8 G",
+   "Lens": "FE 24mm F2.8 G"
+  }
  },
  {
   "id": "53880459611",
@@ -3209,7 +4803,18 @@
   "locality": "NoMad",
   "county": "New York",
   "region": "New York",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.04 sec (1/25)",
+   "FNumber": "f/8.0",
+   "ISO": "500",
+   "FocalLength": "24 mm",
+   "LensModel": "FE 24mm F2.8 G",
+   "Lens": "FE 24mm F2.8 G"
+  }
  },
  {
   "id": "53880696038",
@@ -3231,7 +4836,18 @@
   "locality": "NoMad",
   "county": "New York",
   "region": "New York",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.013 sec (1/80)",
+   "FNumber": "f/8.0",
+   "ISO": "320",
+   "FocalLength": "24 mm",
+   "LensModel": "FE 24mm F2.8 G",
+   "Lens": "FE 24mm F2.8 G"
+  }
  },
  {
   "id": "53877037430",
@@ -3253,7 +4869,18 @@
   "locality": "Atlantic Terminal Houses",
   "county": "Kings",
   "region": "New York",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.02 sec (1/50)",
+   "FNumber": "f/4.5",
+   "ISO": "1000",
+   "FocalLength": "42 mm",
+   "LensModel": "FE 24-70mm F2.8 GM",
+   "Lens": "FE 24-70mm F2.8 GM"
+  }
  },
  {
   "id": "53877036375",
@@ -3275,7 +4902,18 @@
   "locality": "Atlantic Terminal Houses",
   "county": "Kings",
   "region": "New York",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.033 sec (1/30)",
+   "FNumber": "f/5.0",
+   "ISO": "800",
+   "FocalLength": "24 mm",
+   "LensModel": "FE 24-70mm F2.8 GM",
+   "Lens": "FE 24-70mm F2.8 GM"
+  }
  },
  {
   "id": "53873816970",
@@ -3297,7 +4935,18 @@
   "locality": "Meat Packing District",
   "county": null,
   "region": "New York",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.033 sec (1/30)",
+   "FNumber": "f/8.0",
+   "ISO": "3200",
+   "FocalLength": "24 mm",
+   "LensModel": "FE 24mm F2.8 G",
+   "Lens": "FE 24mm F2.8 G"
+  }
  },
  {
   "id": "53873816655",
@@ -3319,7 +4968,18 @@
   "locality": "Chelsea",
   "county": "New York",
   "region": "New York",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.005 sec (1/200)",
+   "FNumber": "f/8.0",
+   "ISO": "200",
+   "FocalLength": "24 mm",
+   "LensModel": "FE 24mm F2.8 G",
+   "Lens": "FE 24mm F2.8 G"
+  }
  },
  {
   "id": "53873755269",
@@ -3341,7 +5001,18 @@
   "locality": "Chelsea",
   "county": "New York",
   "region": "New York",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.001 sec (1/1000)",
+   "FNumber": "f/8.0",
+   "ISO": "320",
+   "FocalLength": "24 mm",
+   "LensModel": "FE 24mm F2.8 G",
+   "Lens": "FE 24mm F2.8 G"
+  }
  },
  {
   "id": "53873406316",
@@ -3363,7 +5034,18 @@
   "locality": "NoMad",
   "county": "New York",
   "region": "New York",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.033 sec (1/30)",
+   "FNumber": "f/8.0",
+   "ISO": "160",
+   "FocalLength": "24 mm",
+   "LensModel": "FE 24mm F2.8 G",
+   "Lens": "FE 24mm F2.8 G"
+  }
  },
  {
   "id": "53871209590",
@@ -3385,7 +5067,18 @@
   "locality": "Lafayette Houses",
   "county": "Kings",
   "region": "New York",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.1 sec (1/10)",
+   "FNumber": "f/8.0",
+   "ISO": "6400",
+   "FocalLength": "24 mm",
+   "LensModel": "FE 24mm F2.8 G",
+   "Lens": "FE 24mm F2.8 G"
+  }
  },
  {
   "id": "53871209135",
@@ -3407,7 +5100,18 @@
   "locality": "Clinton Hill",
   "county": "Kings",
   "region": "New York",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.033 sec (1/30)",
+   "FNumber": "f/8.0",
+   "ISO": "2500",
+   "FocalLength": "24 mm",
+   "LensModel": "FE 24mm F2.8 G",
+   "Lens": "FE 24mm F2.8 G"
+  }
  },
  {
   "id": "53871044428",
@@ -3429,7 +5133,18 @@
   "locality": "Clinton Hill",
   "county": "Kings",
   "region": "New York",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.033 sec (1/30)",
+   "FNumber": "f/8.0",
+   "ISO": "1000",
+   "FocalLength": "24 mm",
+   "LensModel": "FE 24mm F2.8 G",
+   "Lens": "FE 24mm F2.8 G"
+  }
  },
  {
   "id": "53869890947",
@@ -3451,7 +5166,18 @@
   "locality": "Fort Greene",
   "county": "Kings",
   "region": "New York",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.033 sec (1/30)",
+   "FNumber": "f/8.0",
+   "ISO": "6400",
+   "FocalLength": "24 mm",
+   "LensModel": "FE 24mm F2.8 G",
+   "Lens": "FE 24mm F2.8 G"
+  }
  },
  {
   "id": "53869589041",
@@ -3473,7 +5199,18 @@
   "locality": "Downtown Brooklyn",
   "county": "Kings",
   "region": "New York",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.002 sec (1/500)",
+   "FNumber": "f/8.0",
+   "ISO": "100",
+   "FocalLength": "24 mm",
+   "LensModel": "FE 24mm F2.8 G",
+   "Lens": "FE 24mm F2.8 G"
+  }
  },
  {
   "id": "53869980515",
@@ -3495,7 +5232,18 @@
   "locality": "Downtown Brooklyn",
   "county": "Kings",
   "region": "New York",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.002 sec (1/640)",
+   "FNumber": "f/8.0",
+   "ISO": "100",
+   "FocalLength": "24 mm",
+   "LensModel": "FE 24mm F2.8 G",
+   "Lens": "FE 24mm F2.8 G"
+  }
  },
  {
   "id": "53867841521",
@@ -3517,7 +5265,18 @@
   "locality": "Prospect Heights",
   "county": "Kings",
   "region": "New York",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.005 sec (1/200)",
+   "FNumber": "f/8.0",
+   "ISO": "100",
+   "FocalLength": "50 mm",
+   "LensModel": "FE 50mm F2.5 G",
+   "Lens": "FE 50mm F2.5 G"
+  }
  },
  {
   "id": "53866938427",
@@ -3539,7 +5298,18 @@
   "locality": "Prospect Heights",
   "county": "Kings",
   "region": "New York",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.02 sec (1/50)",
+   "FNumber": "f/8.0",
+   "ISO": "160",
+   "FocalLength": "50 mm",
+   "LensModel": "FE 50mm F2.5 G",
+   "Lens": "FE 50mm F2.5 G"
+  }
  },
  {
   "id": "53866938312",
@@ -3561,7 +5331,18 @@
   "locality": "Prospect Heights",
   "county": "Kings",
   "region": "New York",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.02 sec (1/50)",
+   "FNumber": "f/8.0",
+   "ISO": "100",
+   "FocalLength": "50 mm",
+   "LensModel": "FE 50mm F2.5 G",
+   "Lens": "FE 50mm F2.5 G"
+  }
  },
  {
   "id": "53867600608",
@@ -3583,7 +5364,16 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Panasonic DMC-LX100",
+   "Make": "Panasonic",
+   "Model": "DMC-LX100",
+   "ExposureTime": "0.005 sec (1/200)",
+   "FNumber": "f/5.6",
+   "ISO": "200",
+   "FocalLength": "34 mm"
+  }
  },
  {
   "id": "53866447492",
@@ -3605,7 +5395,16 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Panasonic DMC-LX100",
+   "Make": "Panasonic",
+   "Model": "DMC-LX100",
+   "ExposureTime": "0.001 sec (1/1600)",
+   "FNumber": "f/8.0",
+   "ISO": "200",
+   "FocalLength": "19.3 mm"
+  }
  },
  {
   "id": "53867703924",
@@ -3627,7 +5426,18 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Sony ILCE-7RM2",
+   "Make": "SONY",
+   "Model": "ILCE-7RM2",
+   "ExposureTime": "0.001 sec (1/2000)",
+   "FNumber": "f/4.5",
+   "ISO": "250",
+   "FocalLength": "65 mm",
+   "LensModel": "FE 24-70mm F2.8 GM",
+   "Lens": "FE 24-70mm F2.8 GM"
+  }
  },
  {
   "id": "53865833096",
@@ -3649,7 +5459,18 @@
   "locality": "Fort Greene",
   "county": "Kings",
   "region": "New York",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.033 sec (1/30)",
+   "FNumber": "f/8.0",
+   "ISO": "400",
+   "FocalLength": "24 mm",
+   "LensModel": "FE 24mm F2.8 G",
+   "Lens": "FE 24mm F2.8 G"
+  }
  },
  {
   "id": "53865832571",
@@ -3671,7 +5492,18 @@
   "locality": "Fort Greene",
   "county": "Kings",
   "region": "New York",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.02 sec (1/50)",
+   "FNumber": "f/8.0",
+   "ISO": "100",
+   "FocalLength": "24 mm",
+   "LensModel": "FE 24mm F2.8 G",
+   "Lens": "FE 24mm F2.8 G"
+  }
  },
  {
   "id": "53861939693",
@@ -3693,7 +5525,18 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.017 sec (1/60)",
+   "FNumber": "f/8.0",
+   "ISO": "100",
+   "FocalLength": "24 mm",
+   "LensModel": "FE 24mm F2.8 G",
+   "Lens": "FE 24mm F2.8 G"
+  }
  },
  {
   "id": "53861111569",
@@ -3715,7 +5558,18 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.033 sec (1/30)",
+   "FNumber": "f/8.0",
+   "ISO": "1000",
+   "FocalLength": "24 mm",
+   "LensModel": "FE 24mm F2.8 G",
+   "Lens": "FE 24mm F2.8 G"
+  }
  },
  {
   "id": "53864497189",
@@ -3737,7 +5591,18 @@
   "locality": "Fort Greene",
   "county": "Kings",
   "region": "New York",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.006 sec (1/160)",
+   "FNumber": "f/8.0",
+   "ISO": "100",
+   "FocalLength": "24 mm",
+   "LensModel": "FE 24mm F2.8 G",
+   "Lens": "FE 24mm F2.8 G"
+  }
  },
  {
   "id": "53864496814",
@@ -3759,7 +5624,18 @@
   "locality": "Fort Greene",
   "county": "Kings",
   "region": "New York",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.033 sec (1/30)",
+   "FNumber": "f/8.0",
+   "ISO": "160",
+   "FocalLength": "24 mm",
+   "LensModel": "FE 24mm F2.8 G",
+   "Lens": "FE 24mm F2.8 G"
+  }
  },
  {
   "id": "53859368430",
@@ -3781,7 +5657,18 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.003 sec (1/320)",
+   "FNumber": "f/8.0",
+   "ISO": "100",
+   "FocalLength": "24 mm",
+   "LensModel": "FE 24mm F2.8 G",
+   "Lens": "FE 24mm F2.8 G"
+  }
  },
  {
   "id": "53859076725",
@@ -3803,7 +5690,18 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.008 sec (1/125)",
+   "FNumber": "f/8.0",
+   "ISO": "100",
+   "FocalLength": "24 mm",
+   "LensModel": "FE 24mm F2.8 G",
+   "Lens": "FE 24mm F2.8 G"
+  }
  },
  {
   "id": "53857535503",
@@ -3825,7 +5723,18 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.033 sec (1/30)",
+   "FNumber": "f/8.0",
+   "ISO": "100",
+   "FocalLength": "24 mm",
+   "LensModel": "FE 24mm F2.8 G",
+   "Lens": "FE 24mm F2.8 G"
+  }
  },
  {
   "id": "53852719371",
@@ -3847,7 +5756,18 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Sony ILCE-7RM2",
+   "Make": "SONY",
+   "Model": "ILCE-7RM2",
+   "ExposureTime": "0.008 sec (1/125)",
+   "FNumber": "f/9.0",
+   "ISO": "100",
+   "FocalLength": "50 mm",
+   "LensModel": "FE 50mm F2.5 G",
+   "Lens": "FE 50mm F2.5 G"
+  }
  },
  {
   "id": "53849052625",
@@ -3869,7 +5789,18 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Sony ILCE-7RM2",
+   "Make": "SONY",
+   "Model": "ILCE-7RM2",
+   "ExposureTime": "0.001 sec (1/2000)",
+   "FNumber": "f/4.5",
+   "ISO": "320",
+   "FocalLength": "35 mm",
+   "LensModel": "FE 24-70mm F2.8 GM",
+   "Lens": "FE 24-70mm F2.8 GM"
+  }
  },
  {
   "id": "53847913446",
@@ -3891,7 +5822,16 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Panasonic DMC-LX100",
+   "Make": "Panasonic",
+   "Model": "DMC-LX100",
+   "ExposureTime": "0.001 sec (1/1000)",
+   "FNumber": "f/5.6",
+   "ISO": "200",
+   "FocalLength": "10.9 mm"
+  }
  },
  {
   "id": "53847744831",
@@ -3913,7 +5853,18 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Sony ILCE-7RM2",
+   "Make": "SONY",
+   "Model": "ILCE-7RM2",
+   "ExposureTime": "0.017 sec (1/60)",
+   "FNumber": "f/4.5",
+   "ISO": "100",
+   "FocalLength": "58 mm",
+   "LensModel": "FE 24-70mm F2.8 GM",
+   "Lens": "FE 24-70mm F2.8 GM"
+  }
  },
  {
   "id": "53844372660",
@@ -3935,7 +5886,18 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Sony ILCE-7RM2",
+   "Make": "SONY",
+   "Model": "ILCE-7RM2",
+   "ExposureTime": "0.003 sec (1/400)",
+   "FNumber": "f/5.0",
+   "ISO": "100",
+   "FocalLength": "50 mm",
+   "LensModel": "EF50/1.8 II",
+   "Lens": "EF50/1.8 II"
+  }
  },
  {
   "id": "53839659474",
@@ -3957,7 +5919,18 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Sony ILCE-7RM2",
+   "Make": "SONY",
+   "Model": "ILCE-7RM2",
+   "ExposureTime": "0.001 sec (1/1000)",
+   "FNumber": "f/5.0",
+   "ISO": "100",
+   "FocalLength": "50 mm",
+   "LensModel": "EF50/1.8 II",
+   "Lens": "EF50/1.8 II"
+  }
  },
  {
   "id": "53836973753",
@@ -3979,7 +5952,16 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Panasonic DMC-LX100",
+   "Make": "Panasonic",
+   "Model": "DMC-LX100",
+   "ExposureTime": "0.013 sec (1/80)",
+   "FNumber": "f/2.2",
+   "ISO": "500",
+   "FocalLength": "14.4 mm"
+  }
  },
  {
   "id": "51138393031",
@@ -4001,7 +5983,16 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Panasonic DMC-LX100",
+   "Make": "Panasonic",
+   "Model": "DMC-LX100",
+   "ExposureTime": "0.003 sec (1/400)",
+   "FNumber": "f/5.6",
+   "ISO": "200",
+   "FocalLength": "13.9 mm"
+  }
  },
  {
   "id": "49539115741",
@@ -4023,7 +6014,18 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Sony ILCE-7RM2",
+   "Make": "SONY",
+   "Model": "ILCE-7RM2",
+   "ExposureTime": "0.013 sec (1/80)",
+   "FNumber": "f/4.0",
+   "ISO": "640",
+   "FocalLength": "70 mm",
+   "LensModel": "FE 24-70mm F2.8 GM",
+   "Lens": "FE 24-70mm F2.8 GM"
+  }
  },
  {
   "id": "37143713622",
@@ -4045,7 +6047,16 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Panasonic DMC-LX100",
+   "Make": "Panasonic",
+   "Model": "DMC-LX100",
+   "ExposureTime": "0.003 sec (1/320)",
+   "FNumber": "f/5.6",
+   "ISO": "200",
+   "FocalLength": "10.9 mm"
+  }
  },
  {
   "id": "37143704272",
@@ -4067,7 +6078,18 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Sony ILCE-7RM2",
+   "Make": "SONY",
+   "Model": "ILCE-7RM2",
+   "ExposureTime": "0.001 sec (1/800)",
+   "FNumber": "f/4.5",
+   "ISO": "100",
+   "FocalLength": "26 mm",
+   "LensModel": "FE 24-70mm F2.8 GM",
+   "Lens": "FE 24-70mm F2.8 GM"
+  }
  },
  {
   "id": "37316826645",
@@ -4089,7 +6111,16 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Panasonic DMC-LX100",
+   "Make": "Panasonic",
+   "Model": "DMC-LX100",
+   "ExposureTime": "0.025 sec (1/40)",
+   "FNumber": "f/1.8",
+   "ISO": "3200",
+   "FocalLength": "11.4 mm"
+  }
  },
  {
   "id": "37316823695",
@@ -4111,7 +6142,18 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Sony ILCE-7RM2",
+   "Make": "SONY",
+   "Model": "ILCE-7RM2",
+   "ExposureTime": "0.001 sec (1/1000)",
+   "FNumber": "f/2.8",
+   "ISO": "100",
+   "FocalLength": "31 mm",
+   "LensModel": "FE 24-70mm F2.8 GM",
+   "Lens": "FE 24-70mm F2.8 GM"
+  }
  },
  {
   "id": "37173831611",
@@ -4133,7 +6175,16 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Panasonic DMC-LX100",
+   "Make": "Panasonic",
+   "Model": "DMC-LX100",
+   "ExposureTime": "0.002 sec (1/500)",
+   "FNumber": "f/5.6",
+   "ISO": "200",
+   "FocalLength": "24.5 mm"
+  }
  },
  {
   "id": "37173830091",
@@ -4155,7 +6206,18 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Sony ILCE-7RM2",
+   "Make": "SONY",
+   "Model": "ILCE-7RM2",
+   "ExposureTime": "0.002 sec (1/500)",
+   "FNumber": "f/4.5",
+   "ISO": "100",
+   "FocalLength": "35 mm",
+   "LensModel": "FE 24-70mm F2.8 GM",
+   "Lens": "FE 24-70mm F2.8 GM"
+  }
  },
  {
   "id": "36918887410",
@@ -4177,7 +6239,18 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Sony ILCE-7RM2",
+   "Make": "SONY",
+   "Model": "ILCE-7RM2",
+   "ExposureTime": "0.001 sec (1/2000)",
+   "FNumber": "f/5.0",
+   "ISO": "200",
+   "FocalLength": "70 mm",
+   "LensModel": "FE 24-70mm F2.8 GM",
+   "Lens": "FE 24-70mm F2.8 GM"
+  }
  },
  {
   "id": "36479002664",
@@ -4199,7 +6272,18 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Sony ILCE-7RM2",
+   "Make": "SONY",
+   "Model": "ILCE-7RM2",
+   "ExposureTime": "0.001 sec (1/1000)",
+   "FNumber": "f/5.0",
+   "ISO": "100",
+   "FocalLength": "70 mm",
+   "LensModel": "FE 24-70mm F2.8 GM",
+   "Lens": "FE 24-70mm F2.8 GM"
+  }
  },
  {
   "id": "33964940484",
@@ -4221,7 +6305,18 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Sony ILCE-7RM2",
+   "Make": "SONY",
+   "Model": "ILCE-7RM2",
+   "ExposureTime": "0.001 sec (1/1000)",
+   "FNumber": "f/4.5",
+   "ISO": "100",
+   "FocalLength": "100 mm",
+   "LensModel": "EF100-400/4.5-5.6L IS USM",
+   "Lens": "EF100-400/4.5-5.6L IS USM"
+  }
  },
  {
   "id": "33823798113",
@@ -4243,7 +6338,18 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Sony ILCE-7RM2",
+   "Make": "SONY",
+   "Model": "ILCE-7RM2",
+   "ExposureTime": "0.2 sec (1/5)",
+   "FNumber": "f/2.8",
+   "ISO": "200",
+   "FocalLength": "24 mm",
+   "LensModel": "FE 24-70mm F2.8 GM",
+   "Lens": "FE 24-70mm F2.8 GM"
+  }
  },
  {
   "id": "33823795063",
@@ -4265,7 +6371,18 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Sony ILCE-7RM2",
+   "Make": "SONY",
+   "Model": "ILCE-7RM2",
+   "ExposureTime": "0.017 sec (1/60)",
+   "FNumber": "f/3.2",
+   "ISO": "640",
+   "FocalLength": "70 mm",
+   "LensModel": "FE 24-70mm F2.8 GM",
+   "Lens": "FE 24-70mm F2.8 GM"
+  }
  },
  {
   "id": "34471596352",
@@ -4287,7 +6404,18 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Sony ILCE-7RM2",
+   "Make": "SONY",
+   "Model": "ILCE-7RM2",
+   "ExposureTime": "0.017 sec (1/60)",
+   "FNumber": "f/2.8",
+   "ISO": "500",
+   "FocalLength": "55 mm",
+   "LensModel": "FE 24-70mm F2.8 GM",
+   "Lens": "FE 24-70mm F2.8 GM"
+  }
  },
  {
   "id": "34471594762",
@@ -4309,7 +6437,18 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Sony ILCE-7RM2",
+   "Make": "SONY",
+   "Model": "ILCE-7RM2",
+   "ExposureTime": "0.02 sec (1/50)",
+   "FNumber": "f/4.0",
+   "ISO": "400",
+   "FocalLength": "70 mm",
+   "LensModel": "FE 24-70mm F2.8 GM",
+   "Lens": "FE 24-70mm F2.8 GM"
+  }
  },
  {
   "id": "34471593042",
@@ -4331,7 +6470,18 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Sony ILCE-7RM2",
+   "Make": "SONY",
+   "Model": "ILCE-7RM2",
+   "ExposureTime": "0.017 sec (1/60)",
+   "FNumber": "f/2.8",
+   "ISO": "160",
+   "FocalLength": "57 mm",
+   "LensModel": "FE 24-70mm F2.8 GM",
+   "Lens": "FE 24-70mm F2.8 GM"
+  }
  },
  {
   "id": "34471589282",
@@ -4353,7 +6503,18 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Sony ILCE-7RM2",
+   "Make": "SONY",
+   "Model": "ILCE-7RM2",
+   "ExposureTime": "0.017 sec (1/60)",
+   "FNumber": "f/2.8",
+   "ISO": "500",
+   "FocalLength": "24 mm",
+   "LensModel": "FE 24-70mm F2.8 GM",
+   "Lens": "FE 24-70mm F2.8 GM"
+  }
  },
  {
   "id": "34471587492",
@@ -4375,7 +6536,18 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Sony ILCE-7RM2",
+   "Make": "SONY",
+   "Model": "ILCE-7RM2",
+   "ExposureTime": "0.017 sec (1/60)",
+   "FNumber": "f/4.5",
+   "ISO": "100",
+   "FocalLength": "70 mm",
+   "LensModel": "FE 24-70mm F2.8 GM",
+   "Lens": "FE 24-70mm F2.8 GM"
+  }
  },
  {
   "id": "33790610644",
@@ -4397,7 +6569,18 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Sony ILCE-7RM2",
+   "Make": "SONY",
+   "Model": "ILCE-7RM2",
+   "ExposureTime": "0.017 sec (1/60)",
+   "FNumber": "f/4.5",
+   "ISO": "100",
+   "FocalLength": "61 mm",
+   "LensModel": "FE 24-70mm F2.8 GM",
+   "Lens": "FE 24-70mm F2.8 GM"
+  }
  },
  {
   "id": "33790607724",
@@ -4419,7 +6602,18 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Sony ILCE-7RM2",
+   "Make": "SONY",
+   "Model": "ILCE-7RM2",
+   "ExposureTime": "0.017 sec (1/60)",
+   "FNumber": "f/4.0",
+   "ISO": "100",
+   "FocalLength": "24 mm",
+   "LensModel": "FE 24-70mm F2.8 GM",
+   "Lens": "FE 24-70mm F2.8 GM"
+  }
  },
  {
   "id": "34592504796",
@@ -4441,7 +6635,18 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Sony ILCE-7RM2",
+   "Make": "SONY",
+   "Model": "ILCE-7RM2",
+   "ExposureTime": "0.005 sec (1/200)",
+   "FNumber": "f/3.2",
+   "ISO": "100",
+   "FocalLength": "40 mm",
+   "LensModel": "FE 24-70mm F2.8 GM",
+   "Lens": "FE 24-70mm F2.8 GM"
+  }
  },
  {
   "id": "33585171313",
@@ -4463,7 +6668,18 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Sony ILCE-7RM2",
+   "Make": "SONY",
+   "Model": "ILCE-7RM2",
+   "ExposureTime": "0.002 sec (1/640)",
+   "FNumber": "f/5.0",
+   "ISO": "100",
+   "FocalLength": "40 mm",
+   "LensModel": "FE 24-70mm F2.8 GM",
+   "Lens": "FE 24-70mm F2.8 GM"
+  }
  },
  {
   "id": "33585168373",
@@ -4485,7 +6701,18 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Sony ILCE-7RM2",
+   "Make": "SONY",
+   "Model": "ILCE-7RM2",
+   "ExposureTime": "0.003 sec (1/320)",
+   "FNumber": "f/5.0",
+   "ISO": "160",
+   "FocalLength": "38 mm",
+   "LensModel": "FE 24-70mm F2.8 GM",
+   "Lens": "FE 24-70mm F2.8 GM"
+  }
  },
  {
   "id": "34264672741",
@@ -4507,7 +6734,18 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Sony ILCE-7RM2",
+   "Make": "SONY",
+   "Model": "ILCE-7RM2",
+   "ExposureTime": "0.002 sec (1/500)",
+   "FNumber": "f/4.5",
+   "ISO": "250",
+   "FocalLength": "32 mm",
+   "LensModel": "FE 24-70mm F2.8 GM",
+   "Lens": "FE 24-70mm F2.8 GM"
+  }
  },
  {
   "id": "34232294745",
@@ -4529,7 +6767,18 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Sony ILCE-7RM2",
+   "Make": "SONY",
+   "Model": "ILCE-7RM2",
+   "ExposureTime": "0.001 sec (1/1250)",
+   "FNumber": "f/4.5",
+   "ISO": "100",
+   "FocalLength": "70 mm",
+   "LensModel": "FE 24-70mm F2.8 GM",
+   "Lens": "FE 24-70mm F2.8 GM"
+  }
  },
  {
   "id": "34232290375",
@@ -4551,7 +6800,18 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Sony ILCE-7RM2",
+   "Make": "SONY",
+   "Model": "ILCE-7RM2",
+   "ExposureTime": "0.001 sec (1/1600)",
+   "FNumber": "f/4.5",
+   "ISO": "160",
+   "FocalLength": "70 mm",
+   "LensModel": "FE 24-70mm F2.8 GM",
+   "Lens": "FE 24-70mm F2.8 GM"
+  }
  },
  {
   "id": "33421739103",
@@ -4573,7 +6833,18 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Sony ILCE-7RM2",
+   "Make": "SONY",
+   "Model": "ILCE-7RM2",
+   "ExposureTime": "1/4000 sec",
+   "FNumber": "f/3.5",
+   "ISO": "125",
+   "FocalLength": "37 mm",
+   "LensModel": "FE 24-70mm F2.8 GM",
+   "Lens": "FE 24-70mm F2.8 GM"
+  }
  },
  {
   "id": "34075324862",
@@ -4595,7 +6866,18 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Sony ILCE-7RM2",
+   "Make": "SONY",
+   "Model": "ILCE-7RM2",
+   "ExposureTime": "0.013 sec (1/80)",
+   "FNumber": "f/5.0",
+   "ISO": "2500",
+   "FocalLength": "70 mm",
+   "LensModel": "FE 24-70mm F2.8 GM",
+   "Lens": "FE 24-70mm F2.8 GM"
+  }
  },
  {
   "id": "33786508741",
@@ -4617,7 +6899,18 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Sony ILCE-7RM2",
+   "Make": "SONY",
+   "Model": "ILCE-7RM2",
+   "ExposureTime": "0.002 sec (1/500)",
+   "FNumber": "f/4.0",
+   "ISO": "100",
+   "FocalLength": "39 mm",
+   "LensModel": "FE 24-70mm F2.8 GM",
+   "Lens": "FE 24-70mm F2.8 GM"
+  }
  },
  {
   "id": "32621767344",
@@ -4639,7 +6932,18 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Sony ILCE-7RM2",
+   "Make": "SONY",
+   "Model": "ILCE-7RM2",
+   "ExposureTime": "1/2500 sec",
+   "FNumber": "f/4.5",
+   "ISO": "100",
+   "FocalLength": "70 mm",
+   "LensModel": "FE 24-70mm F2.8 GM",
+   "Lens": "FE 24-70mm F2.8 GM"
+  }
  },
  {
   "id": "33081732200",
@@ -4661,7 +6965,18 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Sony ILCE-7RM2",
+   "Make": "SONY",
+   "Model": "ILCE-7RM2",
+   "ExposureTime": "0.001 sec (1/1600)",
+   "FNumber": "f/4.0",
+   "ISO": "100",
+   "FocalLength": "54 mm",
+   "LensModel": "FE 24-70mm F2.8 GM",
+   "Lens": "FE 24-70mm F2.8 GM"
+  }
  },
  {
   "id": "33081730470",
@@ -4683,7 +6998,18 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Sony ILCE-7RM2",
+   "Make": "SONY",
+   "Model": "ILCE-7RM2",
+   "ExposureTime": "0.001 sec (1/1600)",
+   "FNumber": "f/4.0",
+   "ISO": "100",
+   "FocalLength": "70 mm",
+   "LensModel": "FE 24-70mm F2.8 GM",
+   "Lens": "FE 24-70mm F2.8 GM"
+  }
  },
  {
   "id": "32621751514",
@@ -4705,7 +7031,18 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Sony ILCE-7RM2",
+   "Make": "SONY",
+   "Model": "ILCE-7RM2",
+   "ExposureTime": "1/2500 sec",
+   "FNumber": "f/3.5",
+   "ISO": "100",
+   "FocalLength": "70 mm",
+   "LensModel": "FE 24-70mm F2.8 GM",
+   "Lens": "FE 24-70mm F2.8 GM"
+  }
  },
  {
   "id": "32621744144",
@@ -4727,7 +7064,18 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Sony ILCE-7RM2",
+   "Make": "SONY",
+   "Model": "ILCE-7RM2",
+   "ExposureTime": "1/2500 sec",
+   "FNumber": "f/4.5",
+   "ISO": "100",
+   "FocalLength": "70 mm",
+   "LensModel": "FE 24-70mm F2.8 GM",
+   "Lens": "FE 24-70mm F2.8 GM"
+  }
  },
  {
   "id": "33096008726",
@@ -4749,7 +7097,18 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Sony ILCE-7RM2",
+   "Make": "SONY",
+   "Model": "ILCE-7RM2",
+   "ExposureTime": "0.02 sec (1/50)",
+   "FNumber": "f/2.8",
+   "ISO": "1000",
+   "FocalLength": "32 mm",
+   "LensModel": "FE 24-70mm F2.8 GM",
+   "Lens": "FE 24-70mm F2.8 GM"
+  }
  },
  {
   "id": "33005175655",
@@ -4771,7 +7130,18 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Sony ILCE-7RM2",
+   "Make": "SONY",
+   "Model": "ILCE-7RM2",
+   "ExposureTime": "0.002 sec (1/640)",
+   "FNumber": "f/2.8",
+   "ISO": "160",
+   "FocalLength": "70 mm",
+   "LensModel": "FE 24-70mm F2.8 GM",
+   "Lens": "FE 24-70mm F2.8 GM"
+  }
  },
  {
   "id": "32963771486",
@@ -4793,7 +7163,18 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Sony ILCE-7RM2",
+   "Make": "SONY",
+   "Model": "ILCE-7RM2",
+   "ExposureTime": "0.001 sec (1/800)",
+   "FNumber": "f/2.8",
+   "ISO": "160",
+   "FocalLength": "70 mm",
+   "LensModel": "FE 24-70mm F2.8 GM",
+   "Lens": "FE 24-70mm F2.8 GM"
+  }
  },
  {
   "id": "32849798842",
@@ -4815,7 +7196,18 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Sony ILCE-7RM2",
+   "Make": "SONY",
+   "Model": "ILCE-7RM2",
+   "ExposureTime": "0.008 sec (1/125)",
+   "FNumber": "f/2.8",
+   "ISO": "125",
+   "FocalLength": "39 mm",
+   "LensModel": "FE 24-70mm F2.8 GM",
+   "Lens": "FE 24-70mm F2.8 GM"
+  }
  },
  {
   "id": "32879321031",
@@ -4837,7 +7229,18 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Sony ILCE-7RM2",
+   "Make": "SONY",
+   "Model": "ILCE-7RM2",
+   "ExposureTime": "1/3200 sec",
+   "FNumber": "f/2.8",
+   "ISO": "100",
+   "FocalLength": "66 mm",
+   "LensModel": "FE 24-70mm F2.8 GM",
+   "Lens": "FE 24-70mm F2.8 GM"
+  }
  },
  {
   "id": "32184611691",
@@ -4859,7 +7262,18 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Sony ILCE-7RM2",
+   "Make": "SONY",
+   "Model": "ILCE-7RM2",
+   "ExposureTime": "0.02 sec (1/50)",
+   "FNumber": "f/2.8",
+   "ISO": "400",
+   "FocalLength": "36 mm",
+   "LensModel": "FE 24-70mm F2.8 GM",
+   "Lens": "FE 24-70mm F2.8 GM"
+  }
  },
  {
   "id": "32168762805",
@@ -4881,7 +7295,18 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Sony ILCE-7RM2",
+   "Make": "SONY",
+   "Model": "ILCE-7RM2",
+   "ExposureTime": "0.017 sec (1/60)",
+   "FNumber": "f/7.1",
+   "ISO": "320",
+   "FocalLength": "68 mm",
+   "LensModel": "FE 24-70mm F2.8 GM",
+   "Lens": "FE 24-70mm F2.8 GM"
+  }
  },
  {
   "id": "31922567901",
@@ -4903,7 +7328,18 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Sony ILCE-7RM2",
+   "Make": "SONY",
+   "Model": "ILCE-7RM2",
+   "ExposureTime": "0.025 sec (1/40)",
+   "FNumber": "f/2.8",
+   "ISO": "160",
+   "FocalLength": "70 mm",
+   "LensModel": "FE 24-70mm F2.8 GM",
+   "Lens": "FE 24-70mm F2.8 GM"
+  }
  },
  {
   "id": "31598660560",
@@ -4925,7 +7361,18 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Sony ILCE-7RM2",
+   "Make": "SONY",
+   "Model": "ILCE-7RM2",
+   "ExposureTime": "0.025 sec (1/40)",
+   "FNumber": "f/2.8",
+   "ISO": "500",
+   "FocalLength": "52 mm",
+   "LensModel": "FE 24-70mm F2.8 GM",
+   "Lens": "FE 24-70mm F2.8 GM"
+  }
  },
  {
   "id": "31160460313",
@@ -4947,7 +7394,18 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Sony ILCE-7RM2",
+   "Make": "SONY",
+   "Model": "ILCE-7RM2",
+   "ExposureTime": "0.025 sec (1/40)",
+   "FNumber": "f/2.8",
+   "ISO": "250",
+   "FocalLength": "61 mm",
+   "LensModel": "FE 24-70mm F2.8 GM",
+   "Lens": "FE 24-70mm F2.8 GM"
+  }
  },
  {
   "id": "31821926552",
@@ -4969,7 +7427,18 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Sony ILCE-7RM2",
+   "Make": "SONY",
+   "Model": "ILCE-7RM2",
+   "ExposureTime": "0.025 sec (1/40)",
+   "FNumber": "f/2.8",
+   "ISO": "400",
+   "FocalLength": "31 mm",
+   "LensModel": "FE 24-70mm F2.8 GM",
+   "Lens": "FE 24-70mm F2.8 GM"
+  }
  },
  {
   "id": "31853267301",
@@ -4991,7 +7460,18 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Sony ILCE-7RM2",
+   "Make": "SONY",
+   "Model": "ILCE-7RM2",
+   "ExposureTime": "0.025 sec (1/40)",
+   "FNumber": "f/2.8",
+   "ISO": "500",
+   "FocalLength": "70 mm",
+   "LensModel": "FE 24-70mm F2.8 GM",
+   "Lens": "FE 24-70mm F2.8 GM"
+  }
  },
  {
   "id": "31148283071",
@@ -5013,7 +7493,18 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Sony ILCE-7RM2",
+   "Make": "SONY",
+   "Model": "ILCE-7RM2",
+   "ExposureTime": "0.017 sec (1/60)",
+   "FNumber": "f/4.5",
+   "ISO": "4000",
+   "FocalLength": "70 mm",
+   "LensModel": "FE 24-70mm F2.8 GM",
+   "Lens": "FE 24-70mm F2.8 GM"
+  }
  },
  {
   "id": "31118991282",
@@ -5035,7 +7526,18 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Sony ILCE-7RM2",
+   "Make": "SONY",
+   "Model": "ILCE-7RM2",
+   "ExposureTime": "0.002 sec (1/500)",
+   "FNumber": "f/2.8",
+   "ISO": "100",
+   "FocalLength": "53 mm",
+   "LensModel": "FE 24-70mm F2.8 GM",
+   "Lens": "FE 24-70mm F2.8 GM"
+  }
  },
  {
   "id": "31226744946",
@@ -5057,7 +7559,18 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Sony ILCE-7RM2",
+   "Make": "SONY",
+   "Model": "ILCE-7RM2",
+   "ExposureTime": "0.004 sec (1/250)",
+   "FNumber": "f/5.6",
+   "ISO": "100",
+   "FocalLength": "70 mm",
+   "LensModel": "FE 24-70mm F2.8 GM",
+   "Lens": "FE 24-70mm F2.8 GM"
+  }
  },
  {
   "id": "30827753232",
@@ -5079,7 +7592,18 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Sony ILCE-7RM2",
+   "Make": "SONY",
+   "Model": "ILCE-7RM2",
+   "ExposureTime": "0.025 sec (1/40)",
+   "FNumber": "f/2.8",
+   "ISO": "125",
+   "FocalLength": "24 mm",
+   "LensModel": "FE 24-70mm F2.8 GM",
+   "Lens": "FE 24-70mm F2.8 GM"
+  }
  },
  {
   "id": "30944566995",
@@ -5101,7 +7625,18 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Sony ILCE-7RM2",
+   "Make": "SONY",
+   "Model": "ILCE-7RM2",
+   "ExposureTime": "0.025 sec (1/40)",
+   "FNumber": "f/2.8",
+   "ISO": "125",
+   "FocalLength": "45 mm",
+   "LensModel": "FE 24-70mm F2.8 GM",
+   "Lens": "FE 24-70mm F2.8 GM"
+  }
  },
  {
   "id": "30944551555",
@@ -5123,7 +7658,18 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Sony ILCE-7RM2",
+   "Make": "SONY",
+   "Model": "ILCE-7RM2",
+   "ExposureTime": "0.017 sec (1/60)",
+   "FNumber": "f/2.8",
+   "ISO": "200",
+   "FocalLength": "51 mm",
+   "LensModel": "FE 24-70mm F2.8 GM",
+   "Lens": "FE 24-70mm F2.8 GM"
+  }
  },
  {
   "id": "30944548465",
@@ -5145,7 +7691,18 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Sony ILCE-7RM2",
+   "Make": "SONY",
+   "Model": "ILCE-7RM2",
+   "ExposureTime": "0.013 sec (1/80)",
+   "FNumber": "f/5.6",
+   "ISO": "1250",
+   "FocalLength": "41 mm",
+   "LensModel": "FE 24-70mm F2.8 GM",
+   "Lens": "FE 24-70mm F2.8 GM"
+  }
  },
  {
   "id": "30734219041",
@@ -5167,7 +7724,16 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Panasonic DMC-LX100",
+   "Make": "Panasonic",
+   "Model": "DMC-LX100",
+   "ExposureTime": "0.25 sec (1/4)",
+   "FNumber": "f/16.0",
+   "ISO": "200",
+   "FocalLength": "23.6 mm"
+  }
  },
  {
   "id": "30147454033",
@@ -5189,7 +7755,18 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Sony ILCE-7RM2",
+   "Make": "SONY",
+   "Model": "ILCE-7RM2",
+   "ExposureTime": "0.017 sec (1/60)",
+   "FNumber": "f/2.8",
+   "ISO": "6400",
+   "FocalLength": "70 mm",
+   "LensModel": "FE 24-70mm F2.8 GM",
+   "Lens": "FE 24-70mm F2.8 GM"
+  }
  },
  {
   "id": "30502541521",
@@ -5211,7 +7788,18 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Sony ILCE-7RM2",
+   "Make": "SONY",
+   "Model": "ILCE-7RM2",
+   "ExposureTime": "0.033 sec (1/30)",
+   "FNumber": "f/2.8",
+   "ISO": "3200",
+   "FocalLength": "30 mm",
+   "LensModel": "FE 24-70mm F2.8 GM",
+   "Lens": "FE 24-70mm F2.8 GM"
+  }
  },
  {
   "id": "29956754893",
@@ -5233,7 +7821,18 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Sony ILCE-7RM2",
+   "Make": "SONY",
+   "Model": "ILCE-7RM2",
+   "ExposureTime": "0.033 sec (1/30)",
+   "FNumber": "f/2.8",
+   "ISO": "2500",
+   "FocalLength": "48 mm",
+   "LensModel": "FE 24-70mm F2.8 GM",
+   "Lens": "FE 24-70mm F2.8 GM"
+  }
  },
  {
   "id": "29956750313",
@@ -5255,7 +7854,18 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Sony ILCE-7RM2",
+   "Make": "SONY",
+   "Model": "ILCE-7RM2",
+   "ExposureTime": "0.033 sec (1/30)",
+   "FNumber": "f/3.5",
+   "ISO": "800",
+   "FocalLength": "48 mm",
+   "LensModel": "FE 24-70mm F2.8 GM",
+   "Lens": "FE 24-70mm F2.8 GM"
+  }
  },
  {
   "id": "29956748343",
@@ -5277,7 +7887,18 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Sony ILCE-7RM2",
+   "Make": "SONY",
+   "Model": "ILCE-7RM2",
+   "ExposureTime": "0.033 sec (1/30)",
+   "FNumber": "f/3.5",
+   "ISO": "4000",
+   "FocalLength": "29 mm",
+   "LensModel": "FE 24-70mm F2.8 GM",
+   "Lens": "FE 24-70mm F2.8 GM"
+  }
  },
  {
   "id": "29956746443",
@@ -5299,7 +7920,18 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Sony ILCE-7RM2",
+   "Make": "SONY",
+   "Model": "ILCE-7RM2",
+   "ExposureTime": "0.025 sec (1/40)",
+   "FNumber": "f/3.5",
+   "ISO": "800",
+   "FocalLength": "36 mm",
+   "LensModel": "FE 24-70mm F2.8 GM",
+   "Lens": "FE 24-70mm F2.8 GM"
+  }
  },
  {
   "id": "29956745033",
@@ -5321,7 +7953,18 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Sony ILCE-7RM2",
+   "Make": "SONY",
+   "Model": "ILCE-7RM2",
+   "ExposureTime": "0.025 sec (1/40)",
+   "FNumber": "f/3.5",
+   "ISO": "800",
+   "FocalLength": "42 mm",
+   "LensModel": "FE 24-70mm F2.8 GM",
+   "Lens": "FE 24-70mm F2.8 GM"
+  }
  },
  {
   "id": "30590564875",
@@ -5343,7 +7986,18 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Sony ILCE-7RM2",
+   "Make": "SONY",
+   "Model": "ILCE-7RM2",
+   "ExposureTime": "0.033 sec (1/30)",
+   "FNumber": "f/2.8",
+   "ISO": "250",
+   "FocalLength": "52 mm",
+   "LensModel": "FE 24-70mm F2.8 GM",
+   "Lens": "FE 24-70mm F2.8 GM"
+  }
  },
  {
   "id": "30590562285",
@@ -5365,7 +8019,18 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Sony ILCE-7RM2",
+   "Make": "SONY",
+   "Model": "ILCE-7RM2",
+   "ExposureTime": "0.033 sec (1/30)",
+   "FNumber": "f/2.8",
+   "ISO": "640",
+   "FocalLength": "39 mm",
+   "LensModel": "FE 24-70mm F2.8 GM",
+   "Lens": "FE 24-70mm F2.8 GM"
+  }
  },
  {
   "id": "30590560175",
@@ -5387,7 +8052,18 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Sony ILCE-7RM2",
+   "Make": "SONY",
+   "Model": "ILCE-7RM2",
+   "ExposureTime": "0.033 sec (1/30)",
+   "FNumber": "f/2.8",
+   "ISO": "100",
+   "FocalLength": "52 mm",
+   "LensModel": "FE 24-70mm F2.8 GM",
+   "Lens": "FE 24-70mm F2.8 GM"
+  }
  },
  {
   "id": "30590558175",
@@ -5409,7 +8085,18 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Sony ILCE-7RM2",
+   "Make": "SONY",
+   "Model": "ILCE-7RM2",
+   "ExposureTime": "0.033 sec (1/30)",
+   "FNumber": "f/6.3",
+   "ISO": "5000",
+   "FocalLength": "70 mm",
+   "LensModel": "FE 24-70mm F2.8 GM",
+   "Lens": "FE 24-70mm F2.8 GM"
+  }
  },
  {
   "id": "30222669200",
@@ -5431,7 +8118,18 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Sony ILCE-7RM2",
+   "Make": "SONY",
+   "Model": "ILCE-7RM2",
+   "ExposureTime": "0.033 sec (1/30)",
+   "FNumber": "f/9.0",
+   "ISO": "100",
+   "FocalLength": "36 mm",
+   "LensModel": "FE 24-70mm F2.8 GM",
+   "Lens": "FE 24-70mm F2.8 GM"
+  }
  },
  {
   "id": "30484332346",
@@ -5453,7 +8151,18 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Sony ILCE-7RM2",
+   "Make": "SONY",
+   "Model": "ILCE-7RM2",
+   "ExposureTime": "0.003 sec (1/320)",
+   "FNumber": "f/6.3",
+   "ISO": "500",
+   "FocalLength": "70 mm",
+   "LensModel": "FE 24-70mm F2.8 GM",
+   "Lens": "FE 24-70mm F2.8 GM"
+  }
  },
  {
   "id": "29887940543",
@@ -5475,7 +8184,18 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Sony ILCE-7RM2",
+   "Make": "SONY",
+   "Model": "ILCE-7RM2",
+   "ExposureTime": "0.001 sec (1/800)",
+   "FNumber": "f/6.3",
+   "ISO": "250",
+   "FocalLength": "70 mm",
+   "LensModel": "FE 24-70mm F2.8 GM",
+   "Lens": "FE 24-70mm F2.8 GM"
+  }
  },
  {
   "id": "29887937803",
@@ -5497,7 +8217,18 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Sony ILCE-7RM2",
+   "Make": "SONY",
+   "Model": "ILCE-7RM2",
+   "ExposureTime": "0.001 sec (1/800)",
+   "FNumber": "f/2.8",
+   "ISO": "100",
+   "FocalLength": "70 mm",
+   "LensModel": "FE 24-70mm F2.8 GM",
+   "Lens": "FE 24-70mm F2.8 GM"
+  }
  },
  {
   "id": "30441930986",
@@ -5519,7 +8250,18 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Sony ILCE-7RM2",
+   "Make": "SONY",
+   "Model": "ILCE-7RM2",
+   "ExposureTime": "0.02 sec (1/50)",
+   "FNumber": "f/2.8",
+   "ISO": "160",
+   "FocalLength": "24 mm",
+   "LensModel": "FE 24-70mm F2.8 GM",
+   "Lens": "FE 24-70mm F2.8 GM"
+  }
  },
  {
   "id": "30458397425",
@@ -5541,7 +8283,18 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Sony ILCE-7RM2",
+   "Make": "SONY",
+   "Model": "ILCE-7RM2",
+   "ExposureTime": "0.033 sec (1/30)",
+   "FNumber": "f/2.8",
+   "ISO": "1000",
+   "FocalLength": "70 mm",
+   "LensModel": "FE 24-70mm F2.8 GM",
+   "Lens": "FE 24-70mm F2.8 GM"
+  }
  },
  {
   "id": "30371558531",
@@ -5563,7 +8316,18 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Sony ILCE-7RM2",
+   "Make": "SONY",
+   "Model": "ILCE-7RM2",
+   "ExposureTime": "0.033 sec (1/30)",
+   "FNumber": "f/2.8",
+   "ISO": "320",
+   "FocalLength": "52 mm",
+   "LensModel": "FE 24-70mm F2.8 GM",
+   "Lens": "FE 24-70mm F2.8 GM"
+  }
  },
  {
   "id": "30458391575",
@@ -5585,7 +8349,18 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Sony ILCE-7RM2",
+   "Make": "SONY",
+   "Model": "ILCE-7RM2",
+   "ExposureTime": "0.033 sec (1/30)",
+   "FNumber": "f/2.8",
+   "ISO": "3200",
+   "FocalLength": "35 mm",
+   "LensModel": "FE 24-70mm F2.8 GM",
+   "Lens": "FE 24-70mm F2.8 GM"
+  }
  },
  {
   "id": "29825716343",
@@ -5607,7 +8382,18 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Sony ILCE-7RM2",
+   "Make": "SONY",
+   "Model": "ILCE-7RM2",
+   "ExposureTime": "0.02 sec (1/50)",
+   "FNumber": "f/4.0",
+   "ISO": "1000",
+   "FocalLength": "34 mm",
+   "LensModel": "FE 24-70mm F2.8 GM",
+   "Lens": "FE 24-70mm F2.8 GM"
+  }
  },
  {
   "id": "30458371185",
@@ -5629,7 +8415,18 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Sony ILCE-7RM2",
+   "Make": "SONY",
+   "Model": "ILCE-7RM2",
+   "ExposureTime": "0.017 sec (1/60)",
+   "FNumber": "f/4.0",
+   "ISO": "640",
+   "FocalLength": "70 mm",
+   "LensModel": "FE 24-70mm F2.8 GM",
+   "Lens": "FE 24-70mm F2.8 GM"
+  }
  },
  {
   "id": "30421695966",
@@ -5651,7 +8448,18 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Sony ILCE-7RM2",
+   "Make": "SONY",
+   "Model": "ILCE-7RM2",
+   "ExposureTime": "0.02 sec (1/50)",
+   "FNumber": "f/2.8",
+   "ISO": "100",
+   "FocalLength": "67 mm",
+   "LensModel": "FE 24-70mm F2.8 GM",
+   "Lens": "FE 24-70mm F2.8 GM"
+  }
  },
  {
   "id": "30321964482",
@@ -5673,7 +8481,18 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Sony ILCE-7RM2",
+   "Make": "SONY",
+   "Model": "ILCE-7RM2",
+   "ExposureTime": "0.017 sec (1/60)",
+   "FNumber": "f/2.8",
+   "ISO": "4000",
+   "FocalLength": "70 mm",
+   "LensModel": "FE 24-70mm F2.8 GM",
+   "Lens": "FE 24-70mm F2.8 GM"
+  }
  },
  {
   "id": "30352052141",
@@ -5695,7 +8514,18 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Sony ILCE-7RM2",
+   "Make": "SONY",
+   "Model": "ILCE-7RM2",
+   "ExposureTime": "0.017 sec (1/60)",
+   "FNumber": "f/2.8",
+   "ISO": "2000",
+   "FocalLength": "24 mm",
+   "LensModel": "FE 24-70mm F2.8 GM",
+   "Lens": "FE 24-70mm F2.8 GM"
+  }
  },
  {
   "id": "29807505774",
@@ -5717,7 +8547,18 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Sony ILCE-7RM2",
+   "Make": "SONY",
+   "Model": "ILCE-7RM2",
+   "ExposureTime": "0.017 sec (1/60)",
+   "FNumber": "f/2.8",
+   "ISO": "2000",
+   "FocalLength": "70 mm",
+   "LensModel": "FE 24-70mm F2.8 GM",
+   "Lens": "FE 24-70mm F2.8 GM"
+  }
  },
  {
   "id": "30438734675",
@@ -5739,7 +8580,18 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Sony ILCE-7RM2",
+   "Make": "SONY",
+   "Model": "ILCE-7RM2",
+   "ExposureTime": "0.017 sec (1/60)",
+   "FNumber": "f/2.8",
+   "ISO": "4000",
+   "FocalLength": "32 mm",
+   "LensModel": "FE 24-70mm F2.8 GM",
+   "Lens": "FE 24-70mm F2.8 GM"
+  }
  },
  {
   "id": "30401987966",
@@ -5761,7 +8613,18 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Sony ILCE-7RM2",
+   "Make": "SONY",
+   "Model": "ILCE-7RM2",
+   "ExposureTime": "0.017 sec (1/60)",
+   "FNumber": "f/2.8",
+   "ISO": "2500",
+   "FocalLength": "70 mm",
+   "LensModel": "FE 24-70mm F2.8 GM",
+   "Lens": "FE 24-70mm F2.8 GM"
+  }
  },
  {
   "id": "29807492404",
@@ -5783,7 +8646,18 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Sony ILCE-7RM2",
+   "Make": "SONY",
+   "Model": "ILCE-7RM2",
+   "ExposureTime": "0.017 sec (1/60)",
+   "FNumber": "f/2.8",
+   "ISO": "1250",
+   "FocalLength": "36 mm",
+   "LensModel": "FE 24-70mm F2.8 GM",
+   "Lens": "FE 24-70mm F2.8 GM"
+  }
  },
  {
   "id": "30352028061",
@@ -5805,7 +8679,18 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Sony ILCE-7RM2",
+   "Make": "SONY",
+   "Model": "ILCE-7RM2",
+   "ExposureTime": "0.017 sec (1/60)",
+   "FNumber": "f/2.8",
+   "ISO": "2500",
+   "FocalLength": "70 mm",
+   "LensModel": "FE 24-70mm F2.8 GM",
+   "Lens": "FE 24-70mm F2.8 GM"
+  }
  },
  {
   "id": "30401958346",
@@ -5827,7 +8712,18 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Sony ILCE-7RM2",
+   "Make": "SONY",
+   "Model": "ILCE-7RM2",
+   "ExposureTime": "0.017 sec (1/60)",
+   "FNumber": "f/2.8",
+   "ISO": "1250",
+   "FocalLength": "37 mm",
+   "LensModel": "FE 24-70mm F2.8 GM",
+   "Lens": "FE 24-70mm F2.8 GM"
+  }
  },
  {
   "id": "30321906082",
@@ -5849,7 +8745,18 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Sony ILCE-7RM2",
+   "Make": "SONY",
+   "Model": "ILCE-7RM2",
+   "ExposureTime": "0.01 sec (1/100)",
+   "FNumber": "f/2.8",
+   "ISO": "400",
+   "FocalLength": "24 mm",
+   "LensModel": "FE 24-70mm F2.8 GM",
+   "Lens": "FE 24-70mm F2.8 GM"
+  }
  },
  {
   "id": "30286082051",
@@ -5871,7 +8778,18 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Canon EOS 80D",
+   "Make": "Canon",
+   "Model": "Canon EOS 80D",
+   "ExposureTime": "0.001 sec (1/1000)",
+   "FNumber": "f/4.0",
+   "ISO": "640",
+   "FocalLength": "45 mm",
+   "LensModel": "EF24-105mm f/4L IS USM",
+   "Lens": "EF24-105mm f/4L IS USM"
+  }
  },
  {
   "id": "29741742214",
@@ -5893,7 +8811,18 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Canon EOS 80D",
+   "Make": "Canon",
+   "Model": "Canon EOS 80D",
+   "ExposureTime": "0.001 sec (1/1000)",
+   "FNumber": "f/4.0",
+   "ISO": "100",
+   "FocalLength": "35 mm",
+   "LensModel": "EF24-105mm f/4L IS USM",
+   "Lens": "EF24-105mm f/4L IS USM"
+  }
  },
  {
   "id": "30255639292",
@@ -5915,7 +8844,18 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Canon EOS 80D",
+   "Make": "Canon",
+   "Model": "Canon EOS 80D",
+   "ExposureTime": "0.001 sec (1/1000)",
+   "FNumber": "f/4.0",
+   "ISO": "640",
+   "FocalLength": "82 mm",
+   "LensModel": "EF24-105mm f/4L IS USM",
+   "Lens": "EF24-105mm f/4L IS USM"
+  }
  },
  {
   "id": "30336994526",
@@ -5937,7 +8877,18 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Canon EOS 80D",
+   "Make": "Canon",
+   "Model": "Canon EOS 80D",
+   "ExposureTime": "0.001 sec (1/800)",
+   "FNumber": "f/4.0",
+   "ISO": "100",
+   "FocalLength": "105 mm",
+   "LensModel": "EF24-105mm f/4L IS USM",
+   "Lens": "EF24-105mm f/4L IS USM"
+  }
  },
  {
   "id": "30336990716",
@@ -5959,7 +8910,18 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Canon EOS 80D",
+   "Make": "Canon",
+   "Model": "Canon EOS 80D",
+   "ExposureTime": "0.001 sec (1/2000)",
+   "FNumber": "f/4.0",
+   "ISO": "125",
+   "FocalLength": "105 mm",
+   "LensModel": "EF24-105mm f/4L IS USM",
+   "Lens": "EF24-105mm f/4L IS USM"
+  }
  },
  {
   "id": "30293575106",
@@ -5981,7 +8943,18 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Canon EOS 80D",
+   "Make": "Canon",
+   "Model": "Canon EOS 80D",
+   "ExposureTime": "0.025 sec (1/40)",
+   "FNumber": "f/4.0",
+   "ISO": "1000",
+   "FocalLength": "24 mm",
+   "LensModel": "EF24-105mm f/4L IS USM",
+   "Lens": "EF24-105mm f/4L IS USM"
+  }
  },
  {
   "id": "30293554626",
@@ -6003,7 +8976,18 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Canon EOS 80D",
+   "Make": "Canon",
+   "Model": "Canon EOS 80D",
+   "ExposureTime": "0.013 sec (1/80)",
+   "FNumber": "f/5.6",
+   "ISO": "500",
+   "FocalLength": "99 mm",
+   "LensModel": "EF24-105mm f/4L IS USM",
+   "Lens": "EF24-105mm f/4L IS USM"
+  }
  },
  {
   "id": "30173501142",
@@ -6025,7 +9009,18 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Canon EOS 80D",
+   "Make": "Canon",
+   "Model": "Canon EOS 80D",
+   "ExposureTime": "0.005 sec (1/200)",
+   "FNumber": "f/4.0",
+   "ISO": "100",
+   "FocalLength": "55 mm",
+   "LensModel": "EF24-105mm f/4L IS USM",
+   "Lens": "EF24-105mm f/4L IS USM"
+  }
  },
  {
   "id": "30085401542",
@@ -6047,7 +9042,18 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Canon EOS 80D",
+   "Make": "Canon",
+   "Model": "Canon EOS 80D",
+   "ExposureTime": "0.001 sec (1/1250)",
+   "FNumber": "f/4.0",
+   "ISO": "2500",
+   "FocalLength": "105 mm",
+   "LensModel": "EF24-105mm f/4L IS USM",
+   "Lens": "EF24-105mm f/4L IS USM"
+  }
  },
  {
   "id": "30199915235",
@@ -6069,7 +9075,18 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Canon EOS 80D",
+   "Make": "Canon",
+   "Model": "Canon EOS 80D",
+   "ExposureTime": "0.001 sec (1/1250)",
+   "FNumber": "f/4.0",
+   "ISO": "800",
+   "FocalLength": "45 mm",
+   "LensModel": "EF24-105mm f/4L IS USM",
+   "Lens": "EF24-105mm f/4L IS USM"
+  }
  },
  {
   "id": "30085394762",
@@ -6091,7 +9108,18 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Canon EOS 80D",
+   "Make": "Canon",
+   "Model": "Canon EOS 80D",
+   "ExposureTime": "0.001 sec (1/1250)",
+   "FNumber": "f/4.0",
+   "ISO": "2000",
+   "FocalLength": "50 mm",
+   "LensModel": "EF24-105mm f/4L IS USM",
+   "Lens": "EF24-105mm f/4L IS USM"
+  }
  },
  {
   "id": "30085379782",
@@ -6113,7 +9141,10 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Canon EOS 80D"
+  }
  },
  {
   "id": "29570691693",
@@ -6135,7 +9166,10 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Canon EOS 80D"
+  }
  },
  {
   "id": "29570689443",
@@ -6157,7 +9191,10 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Canon EOS 80D"
+  }
  },
  {
   "id": "29570668543",
@@ -6179,7 +9216,18 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Canon EOS 80D",
+   "Make": "Canon",
+   "Model": "Canon EOS 80D",
+   "ExposureTime": "0.001 sec (1/800)",
+   "FNumber": "f/4.0",
+   "ISO": "2000",
+   "FocalLength": "70 mm",
+   "LensModel": "EF24-105mm f/4L IS USM",
+   "Lens": "EF24-105mm f/4L IS USM"
+  }
  },
  {
   "id": "30199849885",
@@ -6201,7 +9249,18 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Canon EOS 80D",
+   "Make": "Canon",
+   "Model": "Canon EOS 80D",
+   "ExposureTime": "0.001 sec (1/1250)",
+   "FNumber": "f/4.0",
+   "ISO": "100",
+   "FocalLength": "40 mm",
+   "LensModel": "EF24-105mm f/4L IS USM",
+   "Lens": "EF24-105mm f/4L IS USM"
+  }
  },
  {
   "id": "30046916942",
@@ -6223,7 +9282,18 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Canon EOS 80D",
+   "Make": "Canon",
+   "Model": "Canon EOS 80D",
+   "ExposureTime": "0.01 sec (1/100)",
+   "FNumber": "f/8.0",
+   "ISO": "125",
+   "FocalLength": "105 mm",
+   "LensModel": "EF24-105mm f/4L IS USM",
+   "Lens": "EF24-105mm f/4L IS USM"
+  }
  },
  {
   "id": "30014832516",
@@ -6245,7 +9315,18 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Canon EOS 80D",
+   "Make": "Canon",
+   "Model": "Canon EOS 80D",
+   "ExposureTime": "0.003 sec (1/400)",
+   "FNumber": "f/5.6",
+   "ISO": "3200",
+   "FocalLength": "210 mm",
+   "LensModel": "EF100-400mm f/4.5-5.6L IS USM",
+   "Lens": "EF100-400mm f/4.5-5.6L IS USM"
+  }
  },
  {
   "id": "29936570732",
@@ -6267,7 +9348,18 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Canon EOS 80D",
+   "Make": "Canon",
+   "Model": "Canon EOS 80D",
+   "ExposureTime": "0.02 sec (1/50)",
+   "FNumber": "f/4.0",
+   "ISO": "3200",
+   "FocalLength": "98 mm",
+   "LensModel": "EF24-105mm f/4L IS USM",
+   "Lens": "EF24-105mm f/4L IS USM"
+  }
  },
  {
   "id": "30016184746",
@@ -6289,7 +9381,18 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Canon EOS 80D",
+   "Make": "Canon",
+   "Model": "Canon EOS 80D",
+   "ExposureTime": "0.01 sec (1/100)",
+   "FNumber": "f/8.0",
+   "ISO": "400",
+   "FocalLength": "58 mm",
+   "LensModel": "EF24-105mm f/4L IS USM",
+   "Lens": "EF24-105mm f/4L IS USM"
+  }
  },
  {
   "id": "29941933046",
@@ -6311,7 +9414,18 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Canon EOS 80D",
+   "Make": "Canon",
+   "Model": "Canon EOS 80D",
+   "ExposureTime": "0.013 sec (1/80)",
+   "FNumber": "f/11.0",
+   "ISO": "2000",
+   "FocalLength": "24 mm",
+   "LensModel": "EF24-105mm f/4L IS USM",
+   "Lens": "EF24-105mm f/4L IS USM"
+  }
  },
  {
   "id": "29886675645",
@@ -6333,7 +9447,18 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Canon EOS 80D",
+   "Make": "Canon",
+   "Model": "Canon EOS 80D",
+   "ExposureTime": "0.017 sec (1/60)",
+   "FNumber": "f/11.0",
+   "ISO": "100",
+   "FocalLength": "32 mm",
+   "LensModel": "EF24-105mm f/4L IS USM",
+   "Lens": "EF24-105mm f/4L IS USM"
+  }
  },
  {
   "id": "29572061310",
@@ -6355,7 +9480,18 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Canon EOS 80D",
+   "Make": "Canon",
+   "Model": "Canon EOS 80D",
+   "ExposureTime": "0.008 sec (1/125)",
+   "FNumber": "f/8.0",
+   "ISO": "100",
+   "FocalLength": "105 mm",
+   "LensModel": "EF24-105mm f/4L IS USM",
+   "Lens": "EF24-105mm f/4L IS USM"
+  }
  },
  {
   "id": "29751837282",
@@ -6377,7 +9513,18 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Canon EOS 80D",
+   "Make": "Canon",
+   "Model": "Canon EOS 80D",
+   "ExposureTime": "0.006 sec (1/160)",
+   "FNumber": "f/8.0",
+   "ISO": "100",
+   "FocalLength": "105 mm",
+   "LensModel": "EF24-105mm f/4L IS USM",
+   "Lens": "EF24-105mm f/4L IS USM"
+  }
  },
  {
   "id": "29751839702",
@@ -6399,7 +9546,18 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Canon EOS 80D",
+   "Make": "Canon",
+   "Model": "Canon EOS 80D",
+   "ExposureTime": "0.008 sec (1/125)",
+   "FNumber": "f/8.0",
+   "ISO": "100",
+   "FocalLength": "55 mm",
+   "LensModel": "EF24-105mm f/4L IS USM",
+   "Lens": "EF24-105mm f/4L IS USM"
+  }
  },
  {
   "id": "29751832692",
@@ -6421,7 +9579,18 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Canon EOS 80D",
+   "Make": "Canon",
+   "Model": "Canon EOS 80D",
+   "ExposureTime": "0.02 sec (1/50)",
+   "FNumber": "f/8.0",
+   "ISO": "100",
+   "FocalLength": "50 mm",
+   "LensModel": "EF24-105mm f/4L IS USM",
+   "Lens": "EF24-105mm f/4L IS USM"
+  }
  },
  {
   "id": "29731990162",
@@ -6443,7 +9612,18 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Canon EOS 80D",
+   "Make": "Canon",
+   "Model": "Canon EOS 80D",
+   "ExposureTime": "0.017 sec (1/60)",
+   "FNumber": "f/4.0",
+   "ISO": "100",
+   "FocalLength": "24 mm",
+   "LensModel": "EF24-105mm f/4L IS USM",
+   "Lens": "EF24-105mm f/4L IS USM"
+  }
  },
  {
   "id": "29800551006",
@@ -6465,7 +9645,18 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Canon EOS 80D",
+   "Make": "Canon",
+   "Model": "Canon EOS 80D",
+   "ExposureTime": "0.017 sec (1/60)",
+   "FNumber": "f/8.0",
+   "ISO": "1600",
+   "FocalLength": "82 mm",
+   "LensModel": "EF24-105mm f/4L IS USM",
+   "Lens": "EF24-105mm f/4L IS USM"
+  }
  },
  {
   "id": "29800548036",
@@ -6487,7 +9678,18 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Canon EOS 80D",
+   "Make": "Canon",
+   "Model": "Canon EOS 80D",
+   "ExposureTime": "0.017 sec (1/60)",
+   "FNumber": "f/8.0",
+   "ISO": "1600",
+   "FocalLength": "45 mm",
+   "LensModel": "EF24-105mm f/4L IS USM",
+   "Lens": "EF24-105mm f/4L IS USM"
+  }
  },
  {
   "id": "29120500133",
@@ -6509,7 +9711,18 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Canon EOS REBEL T3i",
+   "Make": "Canon",
+   "Model": "Canon EOS REBEL T3i",
+   "ExposureTime": "0.001 sec (1/1600)",
+   "FNumber": "f/4.0",
+   "ISO": "100",
+   "FocalLength": "28 mm",
+   "LensModel": "EF24-105mm f/4L IS USM",
+   "Lens": "EF24-105mm f/4L IS USM"
+  }
  },
  {
   "id": "29633625712",
@@ -6531,7 +9744,18 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Canon EOS REBEL T3i",
+   "Make": "Canon",
+   "Model": "Canon EOS REBEL T3i",
+   "ExposureTime": "0.001 sec (1/1250)",
+   "FNumber": "f/4.0",
+   "ISO": "100",
+   "FocalLength": "65 mm",
+   "LensModel": "EF24-105mm f/4L IS USM",
+   "Lens": "EF24-105mm f/4L IS USM"
+  }
  },
  {
   "id": "54887054026",
@@ -6553,7 +9777,17 @@
   "locality": "Seattle",
   "county": "King",
   "region": "Washington",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-1M2",
+   "Make": "SONY",
+   "Model": "ILCE-1M2",
+   "ExposureTime": "0.005 sec (1/200)",
+   "FNumber": "f/6.3",
+   "ISO": "100",
+   "FocalLength": "36 mm",
+   "LensModel": "FE 24-70mm F2.8 GM"
+  }
  },
  {
   "id": "54887290549",
@@ -6575,7 +9809,17 @@
   "locality": "Seattle",
   "county": "King",
   "region": "Washington",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-1M2",
+   "Make": "SONY",
+   "Model": "ILCE-1M2",
+   "ExposureTime": "0.017 sec (1/60)",
+   "FNumber": "f/6.3",
+   "ISO": "100",
+   "FocalLength": "70 mm",
+   "LensModel": "FE 24-70mm F2.8 GM"
+  }
  },
  {
   "id": "54887289804",
@@ -6597,7 +9841,17 @@
   "locality": "Seattle",
   "county": "King",
   "region": "Washington",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-1M2",
+   "Make": "SONY",
+   "Model": "ILCE-1M2",
+   "ExposureTime": "0.017 sec (1/60)",
+   "FNumber": "f/6.3",
+   "ISO": "100",
+   "FocalLength": "70 mm",
+   "LensModel": "FE 24-70mm F2.8 GM"
+  }
  },
  {
   "id": "54887269553",
@@ -6619,7 +9873,17 @@
   "locality": "Seattle",
   "county": "King",
   "region": "Washington",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-1M2",
+   "Make": "SONY",
+   "Model": "ILCE-1M2",
+   "ExposureTime": "0.017 sec (1/60)",
+   "FNumber": "f/6.3",
+   "ISO": "100",
+   "FocalLength": "70 mm",
+   "LensModel": "FE 24-70mm F2.8 GM"
+  }
  },
  {
   "id": "54886170142",
@@ -6641,7 +9905,17 @@
   "locality": "Seattle",
   "county": "King",
   "region": "Washington",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-1M2",
+   "Make": "SONY",
+   "Model": "ILCE-1M2",
+   "ExposureTime": "0.006 sec (1/160)",
+   "FNumber": "f/8.0",
+   "ISO": "8000",
+   "FocalLength": "53 mm",
+   "LensModel": "FE 24-70mm F2.8 GM"
+  }
  },
  {
   "id": "54886169082",
@@ -6663,7 +9937,17 @@
   "locality": "Seattle",
   "county": "King",
   "region": "Washington",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-1M2",
+   "Make": "SONY",
+   "Model": "ILCE-1M2",
+   "ExposureTime": "0.006 sec (1/160)",
+   "FNumber": "f/8.0",
+   "ISO": "6400",
+   "FocalLength": "43 mm",
+   "LensModel": "FE 24-70mm F2.8 GM"
+  }
  },
  {
   "id": "54886165932",
@@ -6685,7 +9969,17 @@
   "locality": "Green Pastures",
   "county": "Davis",
   "region": "Utah",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-1M2",
+   "Make": "SONY",
+   "Model": "ILCE-1M2",
+   "ExposureTime": "0.001 sec (1/1600)",
+   "FNumber": "f/8.0",
+   "ISO": "500",
+   "FocalLength": "280 mm",
+   "LensModel": "FE 200-600mm F5.6-6.3 G OSS + 1.4X Teleconverter"
+  }
  },
  {
   "id": "54887258353",
@@ -6707,7 +10001,17 @@
   "locality": "West Layton",
   "county": "Davis",
   "region": "Utah",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-1M2",
+   "Make": "SONY",
+   "Model": "ILCE-1M2",
+   "ExposureTime": "0.001 sec (1/1600)",
+   "FNumber": "f/8.0",
+   "ISO": "250",
+   "FocalLength": "280 mm",
+   "LensModel": "FE 200-600mm F5.6-6.3 G OSS + 1.4X Teleconverter"
+  }
  },
  {
   "id": "54887324185",
@@ -6729,7 +10033,17 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Sony ILCE-1M2",
+   "Make": "SONY",
+   "Model": "ILCE-1M2",
+   "ExposureTime": "0.001 sec (1/1600)",
+   "FNumber": "f/8.0",
+   "ISO": "320",
+   "FocalLength": "283 mm",
+   "LensModel": "FE 200-600mm F5.6-6.3 G OSS + 1.4X Teleconverter"
+  }
  },
  {
   "id": "54758721917",
@@ -6751,7 +10065,18 @@
   "locality": "Edgemere Houses",
   "county": "Queens",
   "region": "New York",
-  "country": "United States"
+  "country": "United States",
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.001 sec (1/2000)",
+   "FNumber": "f/7.1",
+   "ISO": "500",
+   "FocalLength": "200 mm",
+   "LensModel": "FE 200-600mm F5.6-6.3 G OSS",
+   "Lens": "FE 200-600mm F5.6-6.3 G OSS"
+  }
  },
  {
   "id": "54758721237",
@@ -6773,6 +10098,17 @@
   "locality": null,
   "county": null,
   "region": null,
-  "country": null
+  "country": null,
+  "exif": {
+   "camera": "Sony ILCE-7CR",
+   "Make": "SONY",
+   "Model": "ILCE-7CR",
+   "ExposureTime": "0.001 sec (1/2000)",
+   "FNumber": "f/7.1",
+   "ISO": "125",
+   "FocalLength": "600 mm",
+   "LensModel": "FE 200-600mm F5.6-6.3 G OSS",
+   "Lens": "FE 200-600mm F5.6-6.3 G OSS"
+  }
  }
 ]
