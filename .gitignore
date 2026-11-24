@@ -13,3 +13,6 @@ seen.db
 
 # Config with credentials (copy config.yaml.example -> config.yaml and fill in)
 config.yaml
+
+# Single-file local preview of the bird gallery (generated)
+bird-gallery-preview.html
