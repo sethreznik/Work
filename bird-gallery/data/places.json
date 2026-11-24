@@ -1,8 +1,17 @@
 {
-  "_comment": "Named birding spots. A photo whose GPS falls within radius_km of a place gets that name. First match wins, so list small places before big ones. Photos that match nothing fall back to Flickr's borough / county (US) or neighbourhood (elsewhere). region_names renames Flickr's region labels for display.",
+  "_comment": "Named birding spots. A photo whose GPS falls within radius_km of a place gets that name. First match wins, so list small places before big ones. Photos that match nothing fall back to Flickr's borough / county (US) or neighbourhood (elsewhere). region_names renames Flickr's region labels for display. county_names ('County|Region') and locality_names rename awkward fallback names, e.g. a county to its city.",
   "region_names": {
     "Federal District": "Buenos Aires City",
     "Buenos Aires": "Buenos Aires Province"
+  },
+  "county_names": {
+    "Cook|Illinois": "Chicago",
+    "King|Washington": "Seattle",
+    "Washington|Washington, D.C.": "Washington, D.C."
+  },
+  "locality_names": {
+    "Congressional District 12": "Manhattan",
+    "Meat Packing District": "Meatpacking District"
   },
   "places": [
     { "name": "Prospect Park",                "area": "Brooklyn",     "region": "New York", "country": "United States", "lat": 40.6602, "lon": -73.9690, "radius_km": 1.3 },
