@@ -275,8 +275,8 @@
   // ------------------------------------------------------------ lightbox
   // Photo view: 1024px plus Flickr's 1600/2048px versions; the browser picks
   // what the screen needs. sizes mirrors the layout (image area = viewport
-  // minus the details panel, which is clamp(300px, 24vw, 360px) wide).
-  const LB_SIZES = "(max-width: 900px) 100vw, (max-width: 1500px) calc(100vw - 324px), calc(100vw - 384px)";
+  // minus the 32px spine tab and the clamp(300px, 22vw, 360px) page).
+  const LB_SIZES = "(max-width: 900px) 100vw, (max-width: 1360px) calc(100vw - 340px), (max-width: 1640px) calc(78vw - 40px), calc(100vw - 400px)";
   function setLbSources(im, p) {
     const big = p.big || {};
     im.sizes = LB_SIZES;
