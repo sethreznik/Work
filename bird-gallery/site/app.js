@@ -17,7 +17,6 @@
   // "Not Birds": a second, plain photo set (notbirds.json) shown via the header switch.
   let NB = null, nbReady = null;
   const isNB = () => state.set === "notbirds";
-  const BIRDS_TITLE = document.title;
   let filtered = [];
   let lbIndex = -1;
 
@@ -206,7 +205,6 @@
     document.body.classList.toggle("is-notbirds", isNB());
     document.querySelectorAll(".sets button").forEach((b) =>
       b.setAttribute("aria-pressed", String(b.dataset.set === state.set)));
-    document.title = isNB() ? "Not Birds · Seth Reznik" : BIRDS_TITLE;
   }
 
   // Not Birds: just the photos, newest first; no filters, tabs or details.
@@ -546,7 +544,7 @@
   async function sharePhoto(btn) {
     const p = DATA.photos.find((q) => q.id === btn.dataset.share);
     const url = new URL(photoPath(p.id), location.origin).href;
-    const title = `${p.species} · Seth Reznik Birds`;
+    const title = `${p.species || p.title || "Photo"} · Seth Reznik Photos`;
     if (navigator.share && matchMedia("(pointer: coarse)").matches) {
       try { await navigator.share({ title, url }); } catch (_) { /* user cancelled */ }
       return;

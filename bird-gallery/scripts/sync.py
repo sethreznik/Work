@@ -459,7 +459,7 @@ PHOTO_PAGE = """<!doctype html>
 <title>{title}</title>
 <meta name="description" content="{desc}">
 <meta property="og:type" content="article">
-<meta property="og:site_name" content="Seth Reznik · Birds">
+<meta property="og:site_name" content="Seth Reznik Photos">
 <meta property="og:title" content="{title}">
 <meta property="og:description" content="{desc}">
 <meta property="og:url" content="__SITE_URL__/p/{id}/">
@@ -502,7 +502,7 @@ def write_photo_pages(out, notbirds=None):
         label = p["title"] or "Not Birds"
         page = PHOTO_PAGE.format(
             id=e(p["id"]), hashpre="set=notbirds&", linktext="view in Not Birds",
-            title=e(f"{label} · Seth Reznik"),
+            title=e(f"{label} · Seth Reznik Photos"),
             desc=e(f"Photograph by Seth Reznik{', ' + day if day else ''}."),
             species=e(label), alt=e(p["title"] or "Photograph by Seth Reznik"),
             image=e(p["src"] + "_b.jpg"), w=round(p["w"] * scale), h=round(p["h"] * scale),
@@ -521,7 +521,7 @@ def write_photo_pages(out, notbirds=None):
         scale = 1024 / max(p["w"], p["h"])
         tw, th = round(p["w"] * scale * 640 / 1024), round(p["h"] * scale * 640 / 1024)
         page = PHOTO_PAGE.format(
-            id=e(p["id"]), hashpre="", linktext="view in the gallery", title=e(f"{species} · Seth Reznik Birds"), desc=e(desc),
+            id=e(p["id"]), hashpre="", linktext="view in the gallery", title=e(f"{species} · Seth Reznik Photos"), desc=e(desc),
             species=e(species), alt=e(f"{species}{', ' + where if where else ''}"),
             image=e(p["src"] + "_b.jpg"), w=round(p["w"] * scale), h=round(p["h"] * scale),
             thumb=e(p["src"] + "_z.jpg"), tw=tw, th=th)
