@@ -199,6 +199,14 @@ dialog#lightbox::backdrop { background: rgba(0,0,0,.6); }
 .lb-info .fact em { font: italic 15px var(--entry-serif); letter-spacing: .06em; }
 .lb-info .aside { color: var(--faint); }
 .lb-info .desc { white-space: pre-line; }
+.lb-map {
+  height: 200px; margin: 14px 0 0; border-radius: 6px; border: 1px solid var(--line);
+  background: #ebe7dd; isolation: isolate; /* keep Leaflet's z-indexes inside the map */
+}
+.lb-map .leaflet-control-attribution { font-size: 10px; }
+/* soften OSM's bright default colors to suit the page */
+.lb-map .leaflet-tile-pane { filter: saturate(.7) sepia(.12) brightness(1.02); }
+.lb-info .map-cap { margin: 6px 0 0; font-size: 13px; }
 .lb-info .links { display: flex; flex-wrap: wrap; gap: 6px 16px; margin: 14px 0 0; font-size: 14px; }
 .lb-actions { display: flex; flex-direction: column; gap: 8px; margin-top: 22px; padding-top: 18px; border-top: 1px solid var(--line); }
 .btn {

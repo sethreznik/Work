@@ -331,7 +331,8 @@
       ${p.note ? fact("Note", esc(p.note)) : ""}
       ${fact("Taken", p.taken ? esc(fmtDate(p.taken)) : `<span class="aside">unknown</span>`)}
       ${fact("Location", where)}
-      ${p.lat != null ? fact("Map", `<a href="https://www.openstreetmap.org/?mlat=${p.lat}&mlon=${p.lon}#map=15/${p.lat}/${p.lon}" target="_blank" rel="noopener">${p.lat.toFixed(4)}, ${p.lon.toFixed(4)} ↗</a>`) : ""}
+      ${p.lat != null ? `<div class="map-slot"></div>
+        <p class="map-cap"><a href="https://www.openstreetmap.org/?mlat=${p.lat}&mlon=${p.lon}#map=15/${p.lat}/${p.lon}" target="_blank" rel="noopener">${p.lat.toFixed(4)}, ${p.lon.toFixed(4)} · Open larger map ↗</a></p>` : ""}
       ${p.description ? fact("Notes", `<span class="desc">${esc(p.description)}</span>`) : ""}
       ${links.length ? `<p class="links">${links.join("")}</p>` : ""}
       <div class="lb-actions">
@@ -347,6 +348,53 @@
     if (!el.lb.open) el.lb.showModal();
     $(".lb").scrollTop = 0;
     el.lbInfo.scrollTop = 0;
+    showMap(p, el.lbInfo.querySelector(".map-slot"));
+  }
+
+  // ------------------------------------------------------------ inline map
+  // Leaflet (vendored in vendor/leaflet) loads the first time a photo with GPS
+  // is opened. One map is reused: its element moves into each new entry.
+  // Paths use BASE because the address bar shows p/<id>/ while a photo is open.
+  let leafletReady = null, lbMap = null, lbMarker = null;
+  const mapEl = document.createElement("div");
+  mapEl.className = "lb-map";
+
+  function loadLeaflet() {
+    leafletReady ??= new Promise((resolve, reject) => {
+      const css = Object.assign(document.createElement("link"), { rel: "stylesheet", href: `${BASE}vendor/leaflet/leaflet.css` });
+      const js = Object.assign(document.createElement("script"), { src: `${BASE}vendor/leaflet/leaflet.js` });
+      js.onload = () => resolve(window.L);
+      js.onerror = () => { leafletReady = null; reject(new Error("Leaflet failed to load")); };
+      document.head.append(css, js);
+    });
+    return leafletReady;
+  }
+
+  async function showMap(p, slot) {
+    if (!slot || p.lat == null) return;
+    slot.replaceWith(mapEl);
+    mapEl.setAttribute("aria-label", `Map showing where this photo was taken${p.place ? ": " + p.place : ""}`);
+    let L;
+    try { L = await loadLeaflet(); } catch (_) { mapEl.remove(); return; }
+    if (filtered[lbIndex] !== p) return; // user already moved on
+    const ll = [p.lat, p.lon];
+    if (!lbMap) {
+      lbMap = L.map(mapEl, {
+        scrollWheelZoom: false,          // scrolling the page shouldn't zoom the map
+        dragging: !L.Browser.mobile,     // ...or trap a finger on phones
+        tap: false,
+      });
+      // OpenStreetMap's standard tiles: free with attribution for light use
+      // (https://operations.osmfoundation.org/policies/tiles/).
+      L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        maxZoom: 19,
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors',
+      }).addTo(lbMap);
+      lbMarker = L.circleMarker(ll, { radius: 8, color: "#ffffff", weight: 3, fillColor: "#c9472a", fillOpacity: 1 }).addTo(lbMap);
+    }
+    lbMap.invalidateSize();
+    lbMap.setView(ll, 14, { animate: false });
+    lbMarker.setLatLng(ll);
   }
 
   function closeLightbox() {
