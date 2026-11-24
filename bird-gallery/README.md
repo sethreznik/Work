@@ -78,6 +78,12 @@ Preview locally:
 python -m http.server -d bird-gallery/site 8000
 ```
 
+## Link previews
+
+Shared links show `site/share.jpg` (1200×630): the kestrel, the title and four
+photos. To feature different photos, edit the ids in
+`scripts/share-card.js` and run `node bird-gallery/scripts/share-card.js`.
+
 ## Publishing on GitHub Pages (one-time setup)
 
 1. Repo **Settings → Secrets and variables → Actions → New repository secret**:
