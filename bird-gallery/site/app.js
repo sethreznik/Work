@@ -314,6 +314,7 @@
       <div class="lb-actions">
         ${nSame > 1 && state.species !== p.species ? `<button class="btn primary" data-go-species="${esc(p.species)}">All ${nSame} photos of ${esc(p.species)}</button>` : ""}
         ${nHere > 1 && state.place !== "p:" + p.place ? `<button class="btn" data-go-place="p:${esc(p.place)}">All ${nHere} photos at ${esc(p.place)}</button>` : ""}
+        <button class="btn" data-share="${esc(p.id)}">Share this photo</button>
         <a class="btn" href="https://www.flickr.com/photos/sethreznik/${esc(p.id)}/" target="_blank" rel="noopener">View on Flickr ↗</a>
       </div>
       <p class="counter">${i + 1} of ${filtered.length}</p>`;
@@ -367,7 +368,30 @@
     if (c) set({ place: c.dataset.place, view: "photos" });
   });
 
+  // Each photo has a static page at p/<id>/ (built by sync.py) carrying its own
+  // link-preview tags; it redirects to the photo here. That's the link we share.
+  async function sharePhoto(btn) {
+    const p = DATA.photos.find((q) => q.id === btn.dataset.share);
+    const url = new URL(`p/${p.id}/`, location.origin + location.pathname).href;
+    const title = `${p.species} · Seth Reznik Birds`;
+    if (navigator.share && matchMedia("(pointer: coarse)").matches) {
+      try { await navigator.share({ title, url }); } catch (_) { /* user cancelled */ }
+      return;
+    }
+    const label = btn.textContent;
+    try {
+      await navigator.clipboard.writeText(url);
+      btn.textContent = "Link copied ✓";
+    } catch (_) {
+      window.prompt("Copy this link:", url);
+      return;
+    }
+    setTimeout(() => { if (btn.isConnected) btn.textContent = label; }, 2000);
+  }
+
   el.lbInfo.addEventListener("click", (e) => {
+    const sh = e.target.closest("[data-share]");
+    if (sh) { sharePhoto(sh); return; }
     const s = e.target.closest("[data-go-species]");
     const pl = e.target.closest("[data-go-place]");
     if (!s && !pl) return;

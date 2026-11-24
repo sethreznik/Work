@@ -17,6 +17,7 @@ Output: bird-gallery/site/photos.json
 Standard library only.
 """
 import argparse
+import html
 import json
 import math
 import os
@@ -27,6 +28,7 @@ import urllib.parse
 import urllib.request
 from datetime import datetime, timezone
 from pathlib import Path
+import shutil
 
 ROOT = Path(__file__).resolve().parent.parent
 DATA = ROOT / "data"
@@ -364,6 +366,74 @@ def build(raw, species_index, places_cfg, wiki):
     }
 
 
+# ---------------------------------------------------------------- share pages
+
+PHOTO_PAGE = """<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{title}</title>
+<meta name="description" content="{desc}">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Seth Reznik · Birds">
+<meta property="og:title" content="{title}">
+<meta property="og:description" content="{desc}">
+<meta property="og:url" content="__SITE_URL__/p/{id}/">
+<meta property="og:image" content="{image}">
+<meta property="og:image:width" content="{w}">
+<meta property="og:image:height" content="{h}">
+<meta property="og:image:alt" content="{alt}">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="__SITE_URL__/p/{id}/">
+<link rel="icon" href="../../kestrel.svg" type="image/svg+xml">
+<meta http-equiv="refresh" content="0; url=../../#photo={id}">
+<script>location.replace("../../#photo={id}");</script>
+<style>body{{margin:0;font:16px/1.5 system-ui,sans-serif;background:#f3eee2;color:#24261f;display:grid;place-items:center;min-height:100vh;text-align:center}}img{{max-width:min(90vw,640px);height:auto;border-radius:6px}}a{{color:#3d6b47}}</style>
+</head>
+<body>
+<p><img src="{thumb}" alt="{alt}" width="{tw}" height="{th}"><br>
+<a href="../../#photo={id}">{species}: view in the gallery</a></p>
+</body>
+</html>
+"""
+
+
+def fmt_day(taken):
+    if not taken:
+        return None
+    d = datetime.strptime(taken[:10], "%Y-%m-%d")
+    return f"{d.strftime('%B')} {d.day}, {d.year}"
+
+
+def write_photo_pages(out):
+    """site/p/<id>/index.html for each photo: per-photo link-preview tags,
+    then an instant redirect to the photo in the gallery. Regenerated from
+    scratch on every build, so removed photos lose their page."""
+    root = SITE / "p"
+    shutil.rmtree(root, ignore_errors=True)
+    for p in out["photos"]:
+        where = ", ".join(x for x in (p["place"], p["area"] or p["region"]) if x)
+        day = fmt_day(p["taken"])
+        desc = "Photographed " + " ".join(x for x in (
+            f"at {where}" if where else None, f"on {day}" if day else None) if x) + "."
+        if desc == "Photographed .":
+            desc = "Bird photography by Seth Reznik."
+        species = p["species"] if p["species"] != "Unidentified" else "Unidentified bird"
+        scale = 1024 / max(p["w"], p["h"])
+        tw, th = round(p["w"] * scale * 640 / 1024), round(p["h"] * scale * 640 / 1024)
+        e = lambda v: html.escape(str(v), quote=True)
+        page = PHOTO_PAGE.format(
+            id=e(p["id"]), title=e(f"{species} · Seth Reznik Birds"), desc=e(desc),
+            species=e(species), alt=e(f"{species}{', ' + where if where else ''}"),
+            image=e(p["src"] + "_b.jpg"), w=round(p["w"] * scale), h=round(p["h"] * scale),
+            thumb=e(p["src"] + "_z.jpg"), tw=tw, th=th)
+        d = root / p["id"]
+        d.mkdir(parents=True, exist_ok=True)
+        (d / "index.html").write_text(page)
+    return len(out["photos"])
+
+
 # ---------------------------------------------------------------- main
 
 def main():
@@ -408,9 +478,10 @@ def main():
 
     out = build(raw, species_index, places, wiki)
     write_json(SITE / "photos.json", out, indent=None)
+    n_pages = write_photo_pages(out)
     n_sp = len(out["species"])
     n_pl = len({p["place"] for p in out["photos"] if p["place"]})
-    print(f"Wrote site/photos.json: {len(out['photos'])} photos, {n_sp} species, {n_pl} places", file=sys.stderr)
+    print(f"Wrote site/photos.json: {len(out['photos'])} photos, {n_sp} species, {n_pl} places; {n_pages} share pages in site/p/", file=sys.stderr)
     missing = sorted(s for s in out["species"] if not out["species"][s].get("about"))
     if missing:
         print("Species without details (add them to data/species.json): " + ", ".join(missing), file=sys.stderr)

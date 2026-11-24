@@ -71,7 +71,7 @@ jobs:
       - id: pages
         uses: actions/configure-pages@v5
       - name: Fill in site URL for link previews
-        run: sed -i "s#__SITE_URL__#${{ steps.pages.outputs.base_url }}#g" bird-gallery/site/index.html
+        run: find bird-gallery/site -name '*.html' -exec sed -i "s#__SITE_URL__#${{ steps.pages.outputs.base_url }}#g" {} +
 
       - uses: actions/upload-pages-artifact@v3
         with:
