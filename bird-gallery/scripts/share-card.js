@@ -6,13 +6,13 @@ const svg = fs.readFileSync(require('path').join(__dirname, '../site/kestrel.svg
 const base = 'https://live.staticflickr.com/65535/';
 const ph = ['55639360732_e4aac5a987', '55162238651_7cf06842b4', '54997682690_164390231f', '55256273008_b0fe155e70'];
 const html = `<!doctype html><html><head>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;1,9..144,400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,400;0,500;1,500&display=swap" rel="stylesheet">
 <style>
  *{box-sizing:border-box;margin:0}
- body{width:1200px;height:630px;background:#f3eee2;display:grid;grid-template-columns:560px 1fr;font-family:Inter;color:#24261f}
+ body{width:1200px;height:630px;background:#f3eee2;display:grid;grid-template-columns:560px 1fr;font-family:Jost;color:#24261f}
  .l{padding:64px 56px;display:flex;flex-direction:column;justify-content:center}
  .mark{width:132px;height:132px;margin-bottom:34px}
- h1{font:400 68px/1.02 Fraunces;letter-spacing:-.01em}
+ h1{font:500 72px/1.0 Jost;letter-spacing:-.02em}
  h1 em{color:#3d6b47}
  h1 .dot{color:#a39d89}
  p{margin-top:22px;font-size:24px;line-height:1.4;color:#5f5c4f}
