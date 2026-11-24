@@ -58,7 +58,7 @@ jobs:
       - name: Commit synced data
         if: github.event_name != 'pull_request'
         run: |
-          git add bird-gallery/data bird-gallery/site/photos.json
+          git add bird-gallery/data bird-gallery/site/photos.json bird-gallery/site/notbirds.json
           if git diff --cached --quiet; then
             echo "No data changes to commit."
           else

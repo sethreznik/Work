@@ -40,6 +40,7 @@ SITE = ROOT / "site"
 
 DEFAULT_USER_ID = "65463556@N00"          # flickr.com/photos/sethreznik
 DEFAULT_ALBUM_ID = "72177720327508687"    # "Birds!" album
+DEFAULT_NOTBIRDS_ALBUM_ID = "72177720337069318"  # "Not Birds" album (shown under the header switch)
 API = "https://api.flickr.com/services/rest/"
 UA = "bird-gallery-sync/1.0"
 
@@ -99,11 +100,12 @@ def haversine_km(lat1, lon1, lat2, lon2):
 
 # ---------------------------------------------------------------- fetch
 
-def fetch(key, user_id, album_id, cache):
+def fetch(key, user_id, album_id, cache, with_places=True):
     """Return raw photo records for every photo in the album.
 
     Geo place names need one extra call per photo, so they are reused from
-    the cache whenever the photo's coordinates haven't changed.
+    the cache whenever the photo's coordinates haven't changed. with_places=False
+    skips them entirely (the Not Birds set doesn't show locations).
     """
     cached = {p["id"]: p for p in cache}
     out, page, pages = [], 1, 1
@@ -134,7 +136,9 @@ def fetch(key, user_id, album_id, cache):
             }
             old = cached.get(p["id"])
             # Reuse cached place names unless the photo moved or an earlier lookup failed.
-            if old and old.get("latitude") == lat and old.get("longitude") == lon \
+            if not with_places:
+                pass
+            elif old and old.get("latitude") == lat and old.get("longitude") == lon \
                     and (lat is None or old.get("country")):
                 for k in ("neighbourhood", "locality", "county", "region", "country"):
                     rec[k] = old.get(k)
@@ -425,6 +429,26 @@ def build(raw, species_index, places_cfg):
     }
 
 
+# ---------------------------------------------------------------- not birds
+
+FILENAME_TITLE = re.compile(r"(\.(jpe?g|png|tiff?|heic|dng|arw|nef|cr\d)$)|^(DSC|IMG|_?MG|P\d{6}|PXL)[_\-]?\d", re.I)
+
+
+def build_notbirds(raw):
+    """Plain photo list for the Not Birds set: no species, places or filters.
+    Filename-style titles ("DSC04765-DxO...jpg") are dropped."""
+    photos = [{
+        "id": r["id"],
+        "title": r["title"] if r.get("title") and not FILENAME_TITLE.search(r["title"]) else None,
+        "taken": r.get("date_taken"),
+        "src": f"https://live.staticflickr.com/{r['server']}/{r['id']}_{r['secret']}",
+        "w": r["width"], "h": r["height"],
+        "big": {k: r[f"url_{k}"] for k in ("h", "k") if r.get(f"url_{k}")} or None,
+    } for r in raw]
+    photos.sort(key=lambda p: p["taken"] or "", reverse=True)
+    return {"generated": last_change(raw), "photos": photos}
+
+
 # ---------------------------------------------------------------- share pages
 
 PHOTO_PAGE = """<!doctype html>
@@ -446,13 +470,13 @@ PHOTO_PAGE = """<!doctype html>
 <meta name="twitter:card" content="summary_large_image">
 <link rel="canonical" href="__SITE_URL__/p/{id}/">
 <link rel="icon" href="../../kestrel.svg" type="image/svg+xml">
-<meta http-equiv="refresh" content="0; url=../../#photo={id}">
-<script>var h=location.hash.slice(1);location.replace("../../#photo={id}"+(h?"&"+h:""));</script>
+<meta http-equiv="refresh" content="0; url=../../#{hashpre}photo={id}">
+<script>var h=location.hash.slice(1);location.replace("../../#{hashpre}photo={id}"+(h?"&"+h:""));</script>
 <style>body{{margin:0;font:16px/1.5 system-ui,sans-serif;background:#f3eee2;color:#24261f;display:grid;place-items:center;min-height:100vh;text-align:center}}img{{max-width:min(90vw,640px);height:auto;border-radius:6px}}a{{color:#3d6b47}}</style>
 </head>
 <body>
 <p><img src="{thumb}" alt="{alt}" width="{tw}" height="{th}"><br>
-<a href="../../#photo={id}">{species}: view in the gallery</a></p>
+<a href="../../#{hashpre}photo={id}">{species}: {linktext}</a></p>
 </body>
 </html>
 """
@@ -465,12 +489,27 @@ def fmt_day(taken):
     return f"{d.strftime('%B')} {d.day}, {d.year}"
 
 
-def write_photo_pages(out):
+def write_photo_pages(out, notbirds=None):
     """site/p/<id>/index.html for each photo: per-photo link-preview tags,
     then an instant redirect to the photo in the gallery. Regenerated from
     scratch on every build, so removed photos lose their page."""
     root = SITE / "p"
     shutil.rmtree(root, ignore_errors=True)
+    e = lambda v: html.escape(str(v), quote=True)
+    for p in (notbirds or {}).get("photos", []):
+        day = fmt_day(p["taken"])
+        scale = 1024 / max(p["w"], p["h"])
+        label = p["title"] or "Not Birds"
+        page = PHOTO_PAGE.format(
+            id=e(p["id"]), hashpre="set=notbirds&", linktext="view in Not Birds",
+            title=e(f"{label} · Seth Reznik"),
+            desc=e(f"Photograph by Seth Reznik{', ' + day if day else ''}."),
+            species=e(label), alt=e(p["title"] or "Photograph by Seth Reznik"),
+            image=e(p["src"] + "_b.jpg"), w=round(p["w"] * scale), h=round(p["h"] * scale),
+            thumb=e(p["src"] + "_z.jpg"), tw=round(p["w"] * scale * .625), th=round(p["h"] * scale * .625))
+        d = root / p["id"]
+        d.mkdir(parents=True, exist_ok=True)
+        (d / "index.html").write_text(page)
     for p in out["photos"]:
         where = ", ".join(x for x in (p["place"], p["area"] or p["region"]) if x)
         day = fmt_day(p["taken"])
@@ -481,16 +520,15 @@ def write_photo_pages(out):
         species = p["species"] if p["species"] != "Unidentified" else "Unidentified bird"
         scale = 1024 / max(p["w"], p["h"])
         tw, th = round(p["w"] * scale * 640 / 1024), round(p["h"] * scale * 640 / 1024)
-        e = lambda v: html.escape(str(v), quote=True)
         page = PHOTO_PAGE.format(
-            id=e(p["id"]), title=e(f"{species} · Seth Reznik Birds"), desc=e(desc),
+            id=e(p["id"]), hashpre="", linktext="view in the gallery", title=e(f"{species} · Seth Reznik Birds"), desc=e(desc),
             species=e(species), alt=e(f"{species}{', ' + where if where else ''}"),
             image=e(p["src"] + "_b.jpg"), w=round(p["w"] * scale), h=round(p["h"] * scale),
             thumb=e(p["src"] + "_z.jpg"), tw=tw, th=th)
         d = root / p["id"]
         d.mkdir(parents=True, exist_ok=True)
         (d / "index.html").write_text(page)
-    return len(out["photos"])
+    return len(out["photos"]) + len((notbirds or {}).get("photos", []))
 
 
 # ---------------------------------------------------------------- main
@@ -501,9 +539,11 @@ def main():
     ap.add_argument("--no-write", action="store_true", help="don't ask Claude to write entries for new species")
     ap.add_argument("--user-id", default=os.environ.get("FLICKR_USER_ID", DEFAULT_USER_ID))
     ap.add_argument("--album-id", default=os.environ.get("FLICKR_ALBUM_ID", DEFAULT_ALBUM_ID))
+    ap.add_argument("--notbirds-album-id", default=os.environ.get("FLICKR_NOTBIRDS_ALBUM_ID", DEFAULT_NOTBIRDS_ALBUM_ID))
     args = ap.parse_args()
 
     raw = load_json(DATA / "raw_photos.json", [])
+    raw_nb = load_json(DATA / "raw_notbirds.json", [])
     species_doc = load_json(DATA / "species.json", {"species": []})
     species_index = SpeciesIndex(species_doc["species"])
     places = load_json(DATA / "places.json", {"places": []})
@@ -521,13 +561,22 @@ def main():
         print(f"Flickr changes: {summary}", file=sys.stderr)
         for line in lines:
             print("  " + line.replace("**", ""), file=sys.stderr)
+
+        print(f"Fetching Not Birds album {args.notbirds_album_id} ...", file=sys.stderr)
+        old_nb = raw_nb
+        raw_nb = fetch(key, args.user_id, args.notbirds_album_id, raw_nb, with_places=False)
+        write_json(DATA / "raw_notbirds.json", raw_nb)
+        nb_summary, nb_lines = report(diff(old_nb, raw_nb))
+        print(f"Not Birds changes: {nb_summary}", file=sys.stderr)
+
         # Surface the report in GitHub Actions (run summary + commit message).
         if os.environ.get("GITHUB_STEP_SUMMARY"):
             with open(os.environ["GITHUB_STEP_SUMMARY"], "a") as f:
                 f.write(f"### Flickr sync: {summary}\n\n" + "\n".join(lines) + "\n")
+                f.write(f"\n### Not Birds: {nb_summary}\n\n" + "\n".join(nb_lines) + "\n")
         if os.environ.get("GITHUB_OUTPUT"):
             with open(os.environ["GITHUB_OUTPUT"], "a") as f:
-                f.write(f"summary={summary}\n")
+                f.write(f"summary={summary}; not birds: {nb_summary}\n")
 
 
     if not args.no_write:
@@ -540,10 +589,13 @@ def main():
 
     out = build(raw, species_index, places)
     write_json(SITE / "photos.json", out, indent=None)
-    n_pages = write_photo_pages(out)
+    nb = build_notbirds(raw_nb)
+    write_json(SITE / "notbirds.json", nb, indent=None)
+    n_pages = write_photo_pages(out, nb)
     n_sp = len(out["species"])
     n_pl = len({p["place"] for p in out["photos"] if p["place"]})
-    print(f"Wrote site/photos.json: {len(out['photos'])} photos, {n_sp} species, {n_pl} places; {n_pages} share pages in site/p/", file=sys.stderr)
+    print(f"Wrote site/photos.json: {len(out['photos'])} photos, {n_sp} species, {n_pl} places; "
+          f"site/notbirds.json: {len(nb['photos'])} photos; {n_pages} share pages in site/p/", file=sys.stderr)
     missing = sorted(s for s in out["species"] if not out["species"][s].get("about"))
     if missing:
         print("Species without details (add them to data/species.json, or set ANTHROPIC_API_KEY): " + ", ".join(missing), file=sys.stderr)

@@ -48,6 +48,18 @@ h1 {
   letter-spacing: -.02em;
 }
 h1 em { font-style: italic; color: var(--accent); }
+h1 a.home { display: inline; }
+/* Birds / Not Birds switch in the title */
+.sets { white-space: nowrap; }
+.sets button {
+  font: inherit; letter-spacing: inherit; font-style: italic;
+  background: none; border: 0; padding: 0; margin: 0; cursor: pointer; color: var(--faint);
+}
+.sets button[aria-pressed="true"] { color: var(--accent); cursor: default; }
+.sets button[aria-pressed="false"]:hover { color: var(--muted); }
+.sets .slash { color: var(--line); margin: 0 .14em; font-weight: 300; }
+/* Not Birds has no filters, tabs or species */
+body.is-notbirds .toolbar { display: none; }
 h1 .amp { color: var(--faint); }
 
 /* ---------- toolbar ---------- */
@@ -155,6 +167,9 @@ dialog#lightbox {
   border: 0; background: var(--stage); color: #ece8dc;
 }
 dialog#lightbox::backdrop { background: rgba(0,0,0,.6); }
+/* Not Birds: the photo full width, no details */
+dialog#lightbox.bare .lb { grid-template-columns: minmax(0, 1fr); }
+dialog#lightbox.bare .lb-tab, dialog#lightbox.bare .lb-info { display: none; }
 .lb { display: grid; grid-template-columns: minmax(0, 1fr) 32px clamp(300px, 22vw, 360px); height: 100%; }
 .lb-media { position: relative; margin: 0; display: flex; align-items: center; justify-content: center; padding: 12px; min-height: 0; }
 .lb-media img { max-width: 100%; max-height: 100%; object-fit: contain; box-shadow: 0 20px 60px rgba(0,0,0,.5); }
@@ -226,6 +241,8 @@ dialog#lightbox::backdrop { background: rgba(0,0,0,.6); }
   .lb { display: block; overflow-y: auto; height: 100%; background: var(--stage); }
   .lb-media { padding: 64px 0 12px; }
   .lb-media img { max-height: 58vh; box-shadow: none; }
+  dialog#lightbox.bare .lb-media { height: 100%; padding: 64px 0; }
+  dialog#lightbox.bare .lb-media img { max-height: 100%; }
   .lb-nav, .lb-close { width: 42px; height: 42px; }
   .lb-nav { font-size: 28px; } .lb-close { font-size: 26px; top: 12px; right: 12px; }
   .lb-nav.prev { left: 8px; } .lb-nav.next { right: 8px; }

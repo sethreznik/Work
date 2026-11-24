@@ -9,11 +9,15 @@
     ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
   const UNIDENTIFIED = "Unidentified";
 
-  const state = { view: "photos", q: "", group: "", species: "", place: "", sort: "new", photo: null };
+  const state = { set: "birds", view: "photos", q: "", group: "", species: "", place: "", sort: "new", photo: null };
   // The gallery's own folder (e.g. "/Work/"), captured before we ever change the path.
   const BASE = location.pathname.replace(/[^/]*$/, "");
   const photoPath = (id) => `${BASE}p/${encodeURIComponent(id)}/`;
   let DATA = { photos: [], species: {} };
+  // "Not Birds": a second, plain photo set (notbirds.json) shown via the header switch.
+  let NB = null, nbReady = null;
+  const isNB = () => state.set === "notbirds";
+  const BIRDS_TITLE = document.title;
   let filtered = [];
   let lbIndex = -1;
 
@@ -70,6 +74,7 @@
   // ------------------------------------------------------------ state <-> URL
   function readHash() {
     const h = new URLSearchParams(location.hash.slice(1));
+    state.set = h.get("set") === "notbirds" ? "notbirds" : "birds";
     state.view = ["photos", "species", "places"].includes(h.get("view")) ? h.get("view") : "photos";
     state.q = h.get("q") || "";
     state.group = h.get("group") || "";
@@ -81,6 +86,7 @@
 
   function writeHash() {
     const h = new URLSearchParams();
+    if (isNB()) h.set("set", "notbirds");
     if (state.view !== "photos") h.set("view", state.view);
     if (state.q) h.set("q", state.q);
     if (state.group) h.set("group", state.group);
@@ -187,7 +193,42 @@
     filtered.sort(by);
   }
 
+  function loadNB() {
+    nbReady ??= fetch(`${BASE}notbirds.json`)
+      .then((r) => { if (!r.ok) throw new Error(r.status); return r.json(); })
+      .then((d) => { NB = d; })
+      .catch((err) => { nbReady = null; throw err; });
+    return nbReady;
+  }
+  const ready = () => (isNB() ? loadNB() : Promise.resolve());
+
+  function syncSetSwitch() {
+    document.body.classList.toggle("is-notbirds", isNB());
+    document.querySelectorAll(".sets button").forEach((b) =>
+      b.setAttribute("aria-pressed", String(b.dataset.set === state.set)));
+    document.title = isNB() ? "Not Birds · Seth Reznik" : BIRDS_TITLE;
+  }
+
+  // Not Birds: just the photos, newest first; no filters, tabs or details.
+  function renderNotBirds() {
+    if (!NB) {
+      el.summary.textContent = "Loading…";
+      loadNB().then(render, () => { el.summary.textContent = "Couldn't load photos."; });
+      return;
+    }
+    filtered = NB.photos;
+    writeHash();
+    el.summary.innerHTML = `<b>${plural(filtered.length, "photograph")}</b>`;
+    el.clear.hidden = true;
+    el.photos.hidden = false;
+    el.speciesView.hidden = el.placesView.hidden = true;
+    el.empty.hidden = filtered.length > 0;
+    renderGrid();
+  }
+
   function render() {
+    syncSetSwitch();
+    if (isNB()) return renderNotBirds();
     syncControls();
     applyFilters();
     writeHash();
@@ -217,12 +258,13 @@
     el.photos.innerHTML = filtered.map((p, i) => {
       const r = Math.min(Math.max(p.w / p.h, 0.5), 2.4);
       const loc = p.place ? esc(p.place) : "";
+      const label = p.species || p.title || "Photograph";
       return `<button class="tile" data-i="${i}" style="width:calc(var(--row) * ${r.toFixed(3)});flex-grow:${r.toFixed(3)}"
-        aria-label="${esc(p.species)}${loc ? ", " + loc : ""}">
+        aria-label="${esc(label)}${loc ? ", " + loc : ""}">
         <i style="padding-bottom:${(100 / r).toFixed(3)}%"></i>
         <img loading="lazy" decoding="async" src="${img(p, "z")}" srcset="${srcset(p)}"
-          sizes="(max-width: 640px) 50vw, 33vw" alt="${esc(p.species)}">
-        <span class="cap"><strong>${esc(p.species)}</strong><span>${loc}${loc && p.taken ? " · " : ""}${p.taken ? fmtDate(p.taken, false) : ""}</span></span>
+          sizes="(max-width: 640px) 50vw, 33vw" alt="${esc(label)}">
+        ${p.species ? `<span class="cap"><strong>${esc(p.species)}</strong><span>${loc}${loc && p.taken ? " · " : ""}${p.taken ? fmtDate(p.taken, false) : ""}</span></span>` : ""}
       </button>`;
     }).join("");
     el.photos.querySelectorAll("img").forEach((im) => {
@@ -318,7 +360,7 @@
   const LB_SIZES = "(max-width: 900px) 100vw, (max-width: 1360px) calc(100vw - 340px), (max-width: 1640px) calc(78vw - 40px), calc(100vw - 400px)";
   function setLbSources(im, p) {
     const big = p.big || {};
-    im.sizes = LB_SIZES;
+    im.sizes = isNB() ? "100vw" : LB_SIZES;  // Not Birds photos use the full width
     im.srcset = [`${img(p, "b")} 1024w`, big.h && `${big.h} 1600w`, big.k && `${big.k} 2048w`].filter(Boolean).join(", ");
     im.src = img(p, "b");
   }
@@ -326,9 +368,23 @@
     if (i < 0 || i >= filtered.length) return;
     lbIndex = i;
     const p = filtered[i];
-    const info = DATA.species[p.species] || {};
     state.photo = p.id;
     writeHash();
+
+    // Not Birds: the photo full width, no details panel.
+    el.lb.classList.toggle("bare", isNB());
+    if (isNB()) {
+      setLbSources(el.lbImg, p);
+      el.lbImg.alt = p.title || "Photograph";
+      [i - 1, i + 1].forEach((j) => { if (filtered[j]) setLbSources(new Image(), filtered[j]); });
+      el.lbInfo.innerHTML = "";
+      $("#lb-tab").textContent = "";
+      $("#lb-prev").hidden = i === 0;
+      $("#lb-next").hidden = i === filtered.length - 1;
+      if (!el.lb.open) el.lb.showModal();
+      return;
+    }
+    const info = DATA.species[p.species] || {};
 
     setLbSources(el.lbImg, p);
     el.lbImg.alt = `${p.species}${p.place ? ", " + p.place : ""}`;
@@ -539,14 +595,22 @@
     if (Math.abs(dx) > 60) openLightbox(lbIndex + (dx < 0 ? 1 : -1));
   });
 
+  // Header switch: Birds / Not Birds (filters belong to Birds, so they reset).
+  document.querySelectorAll(".sets button").forEach((b) => b.addEventListener("click", () => {
+    if (b.dataset.set === state.set) return;
+    set({ set: b.dataset.set, view: "photos", q: "", group: "", species: "", place: "", photo: null });
+  }));
+
   window.addEventListener("hashchange", () => {
     const before = state.photo;
     readHash();
-    render();
-    if (state.photo && state.photo !== before) {
-      const i = filtered.findIndex((p) => p.id === state.photo);
-      if (i >= 0) openLightbox(i);
-    } else if (!state.photo) closeLightbox();
+    ready().then(() => {
+      render();
+      if (state.photo && state.photo !== before) {
+        const i = filtered.findIndex((p) => p.id === state.photo);
+        if (i >= 0) openLightbox(i);
+      } else if (!state.photo) closeLightbox();
+    });
   });
 
   // ------------------------------------------------------------ boot
@@ -560,11 +624,13 @@
       });
       buildControls();
       readHash();
-      render();
-      if (state.photo) {
-        const i = filtered.findIndex((p) => p.id === state.photo);
-        if (i >= 0) openLightbox(i);
-      }
+      return ready().then(() => {
+        render();
+        if (state.photo) {
+          const i = filtered.findIndex((p) => p.id === state.photo);
+          if (i >= 0) openLightbox(i);
+        }
+      });
     })
     .catch((err) => {
       el.summary.textContent = "Couldn't load photos.";

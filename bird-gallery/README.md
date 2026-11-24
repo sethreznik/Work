@@ -42,6 +42,16 @@ bird-gallery/
   place of a geotagged photo taken within 4 hours on the same day, and are
   marked “approximate”.
 
+## Not Birds
+
+The header's **Birds / Not Birds** switch shows a second set from the
+[“Not Birds” album](https://www.flickr.com/photos/sethreznik/albums/72177720337069318):
+just the photos, newest first, with no filters, species or locations, and the
+photo view full width with no details panel. The sync pulls it into
+`data/raw_notbirds.json` and `site/notbirds.json` (location lookups are skipped,
+and filename titles like `DSC04765…jpg` are dropped). Each photo still gets a
+share link under `p/<id>/`.
+
 ## Updating
 
 The sync re-reads the whole album every time, so it picks up:
