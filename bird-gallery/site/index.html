@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Birds · Seth Reznik</title>
+  <meta name="description" content="Bird photography by Seth Reznik: species, places and field notes.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="masthead">
+    <div class="wrap">
+      <p class="eyebrow">Bird photography</p>
+      <h1>Seth Reznik <span class="amp">·</span> <em>Birds</em></h1>
+      <p class="stats" id="stats">Loading…</p>
+    </div>
+  </header>
+
+  <nav class="toolbar" aria-label="Filters">
+    <div class="wrap toolbar-inner">
+      <div class="tabs" role="tablist">
+        <button role="tab" data-view="photos" aria-selected="true">Photos</button>
+        <button role="tab" data-view="species" aria-selected="false">Species</button>
+        <button role="tab" data-view="places" aria-selected="false">Places</button>
+      </div>
+      <div class="filters">
+        <label class="field search">
+          <span class="sr">Search</span>
+          <input id="q" type="search" placeholder="Search birds, places…" autocomplete="off">
+        </label>
+        <label class="field">
+          <span class="sr">Species</span>
+          <select id="species"><option value="">All species</option></select>
+        </label>
+        <label class="field">
+          <span class="sr">Location</span>
+          <select id="place"><option value="">All locations</option></select>
+        </label>
+        <label class="field">
+          <span class="sr">Sort</span>
+          <select id="sort">
+            <option value="new">Newest first</option>
+            <option value="old">Oldest first</option>
+            <option value="az">Species A–Z</option>
+          </select>
+        </label>
+      </div>
+    </div>
+  </nav>
+
+  <main class="wrap">
+    <div class="resultbar">
+      <p id="summary" aria-live="polite"></p>
+      <button id="clear" class="link" hidden>Clear filters</button>
+    </div>
+    <section id="view-photos" class="grid" aria-label="Photos"></section>
+    <section id="view-species" class="cards" aria-label="Species" hidden></section>
+    <section id="view-places" class="cards" aria-label="Places" hidden></section>
+    <p id="empty" class="empty" hidden>No photos match these filters.</p>
+  </main>
+
+  <footer class="wrap foot">
+    <p>All photographs © Seth Reznik. Also on <a href="https://www.flickr.com/photos/sethreznik/" rel="noopener">Flickr</a>.</p>
+    <p id="updated"></p>
+  </footer>
+
+  <dialog id="lightbox" aria-label="Photo details">
+    <div class="lb">
+      <figure class="lb-media">
+        <img id="lb-img" alt="">
+        <button class="lb-nav prev" id="lb-prev" aria-label="Previous photo">‹</button>
+        <button class="lb-nav next" id="lb-next" aria-label="Next photo">›</button>
+      </figure>
+      <aside class="lb-info" id="lb-info"></aside>
+      <button class="lb-close" id="lb-close" aria-label="Close" autofocus>×</button>
+    </div>
+  </dialog>
+
+  <script src="app.js"></script>
+</body>
+</html>

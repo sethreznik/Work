@@ -1,0 +1,61 @@
+# Syncs the "Birds!" Flickr album and publishes bird-gallery/site to GitHub Pages.
+# Setup (once):
+#   1. Settings → Secrets and variables → Actions → New repository secret:
+#        FLICKR_API_KEY = <your Flickr API key>
+#   2. Settings → Pages → Build and deployment → Source: "GitHub Actions"
+name: Bird gallery
+
+on:
+  push:
+    paths:
+      - "bird-gallery/**"
+      - ".github/workflows/bird-gallery.yml"
+  schedule:
+    - cron: "17 9 * * *"   # daily, picks up new Flickr uploads
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: bird-gallery-pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Sync from Flickr and build photos.json
+        env:
+          FLICKR_API_KEY: ${{ secrets.FLICKR_API_KEY }}
+        run: |
+          if [ -n "$FLICKR_API_KEY" ]; then
+            python bird-gallery/scripts/sync.py --fetch
+          else
+            echo "::warning::FLICKR_API_KEY secret not set; building from committed data only"
+            python bird-gallery/scripts/sync.py
+          fi
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: bird-gallery/site
+
+  deploy:
+    # Pages only deploys from the default branch; other branches just build.
+    if: github.ref_name == github.event.repository.default_branch
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
