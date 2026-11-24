@@ -479,8 +479,7 @@
     x && !out.some((y) => x.startsWith(y) || y.startsWith(x)) ? [...out, x] : out, []);
   function whereHtml(p) {
     return p.place
-      ? esc(placeParts(p).join(", ")) +
-        (p.place_inferred ? ` <span class="aside">(approximate, from photos taken the same day)</span>` : "")
+      ? esc(placeParts(p).join(", "))
       : `<span class="aside">not recorded</span>`;
   }
   function mapHtml(p) {
@@ -509,7 +508,6 @@
       $("#lb-tab").textContent = "";
       const heading = p.landmark || p.title || p.place || (p.taken ? fmtDate(p.taken, false) : "Not Birds");
       const status = p.place ? (heading === p.place ? placeParts(p).slice(1) : placeParts(p)).join(" · ") : "";
-      const SOURCE = { album: "from the photo's Flickr album", visual: "recognized from the photo", date: "from photos taken the same day" };
       const camFacts = [["camera", "Camera"], ["lens", "Lens"], ["focal", "Focal length"],
                         ["shutter", "Shutter speed"], ["aperture", "Aperture"], ["iso", "ISO"]]
         .filter(([k]) => p[k]).map(([k, label]) => fact(label, esc(String(p[k]).replace(/^ISO /, "")))).join("");
@@ -525,7 +523,7 @@
         ${status ? `<p class="status">${esc(status)}</p>` : ""}
       </header>
       ${fact("Taken", p.taken ? esc(fmtDate(p.taken)) : `<span class="aside">unknown</span>`)}
-      ${p.place ? fact("Location", whereHtml(p) + (p.place_source ? ` <span class="aside">(approximate, ${SOURCE[p.place_source]})</span>` : "")) + mapHtml(p) : ""}
+      ${p.place ? fact("Location", whereHtml(p)) + mapHtml(p) : ""}
       ${camFacts}
       ${pills ? `<div class="more"><h3>More like this</h3><div class="pills">${pills}</div></div>` : ""}
       <div class="lb-actions">${shareFlickrHtml(p)}</div>
