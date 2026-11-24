@@ -106,7 +106,7 @@ def fetch(key, user_id, album_id, cache):
     while page <= pages:
         res = flickr("flickr.photosets.getPhotos", key, photoset_id=album_id,
                      user_id=user_id, per_page=500, page=page,
-                     extras="date_taken,date_upload,last_update,geo,description,tags,url_l,url_c,url_z")
+                     extras="date_taken,date_upload,last_update,geo,description,tags,url_l,url_c,url_z,url_h,url_k")
         ps = res["photoset"]
         pages = int(ps.get("pages", 1))
         for p in ps["photo"]:
@@ -125,6 +125,8 @@ def fetch(key, user_id, album_id, cache):
                 "width": w, "height": h,
                 "date_upload": int(p.get("dateupload") or 0) or None,
                 "last_update": int(p.get("lastupdate") or 0) or None,
+                # Larger renditions have their own secrets, so keep the URLs.
+                "url_h": p.get("url_h"), "url_k": p.get("url_k"),
             }
             old = cached.get(p["id"])
             # Reuse cached place names unless the photo moved or an earlier lookup failed.
@@ -339,6 +341,8 @@ def build(raw, species_index, places_cfg, wiki):
             "lon": r.get("longitude"),
             "src": f"https://live.staticflickr.com/{r['server']}/{r['id']}_{r['secret']}",
             "w": r["width"], "h": r["height"],
+            # 1600px / 2048px versions for the photo view, when Flickr has them
+            "big": {k: r[f"url_{k}"] for k in ("h", "k") if r.get(f"url_{k}")} or None,
         })
         used[species] = True
     infer_missing_places(photos)
