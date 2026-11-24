@@ -1,0 +1,24 @@
+{
+  "_comment": "Named birding spots. A photo whose GPS falls within radius_km of a place gets that name. First match wins, so list small places before big ones. Photos that match nothing fall back to Flickr's borough / county (US) or neighbourhood (elsewhere). region_names renames Flickr's region labels for display.",
+  "region_names": {
+    "Federal District": "Buenos Aires City",
+    "Buenos Aires": "Buenos Aires Province"
+  },
+  "places": [
+    { "name": "Prospect Park",                "area": "Brooklyn",     "region": "New York", "country": "United States", "lat": 40.6602, "lon": -73.9690, "radius_km": 1.3 },
+    { "name": "Green-Wood Cemetery",          "area": "Brooklyn",     "region": "New York", "country": "United States", "lat": 40.6524, "lon": -73.9905, "radius_km": 0.9 },
+    { "name": "Marine Park",                  "area": "Brooklyn",     "region": "New York", "country": "United States", "lat": 40.5990, "lon": -73.9260, "radius_km": 1.6 },
+    { "name": "Coney Island",                 "area": "Brooklyn",     "region": "New York", "country": "United States", "lat": 40.5745, "lon": -73.9800, "radius_km": 1.5 },
+    { "name": "Central Park",                 "area": "Manhattan",    "region": "New York", "country": "United States", "lat": 40.7812, "lon": -73.9665, "radius_km": 2.2 },
+    { "name": "Baisley Pond Park",            "area": "Queens",       "region": "New York", "country": "United States", "lat": 40.6765, "lon": -73.7865, "radius_km": 1.0 },
+    { "name": "Jamaica Bay Wildlife Refuge",  "area": "Queens",       "region": "New York", "country": "United States", "lat": 40.6170, "lon": -73.8250, "radius_km": 2.0 },
+    { "name": "Rockaway & Jamaica Bay",       "area": "Queens",       "region": "New York", "country": "United States", "lat": 40.6070, "lon": -73.7870, "radius_km": 3.0 },
+    { "name": "Sapsucker Woods",              "area": "Ithaca",       "region": "New York", "country": "United States", "lat": 42.4799, "lon": -76.4519, "radius_km": 1.0 },
+    { "name": "Cornell University",           "area": "Ithaca",       "region": "New York", "country": "United States", "lat": 42.4490, "lon": -76.4780, "radius_km": 1.5 },
+    { "name": "Montezuma Wildlife Refuge",    "area": "Seneca Falls", "region": "New York", "country": "United States", "lat": 42.9677, "lon": -76.7406, "radius_km": 8.0 },
+    { "name": "Farmington Bay",               "area": "Davis County", "region": "Utah",     "country": "United States", "lat": 40.9550, "lon": -111.9250, "radius_km": 3.0 },
+    { "name": "Costanera Sur Ecological Reserve", "area": "Buenos Aires", "region": "Buenos Aires City", "country": "Argentina", "lat": -34.6083, "lon": -58.3570, "radius_km": 1.6 },
+    { "name": "Bosques de Palermo",           "area": "Buenos Aires", "region": "Buenos Aires City", "country": "Argentina", "lat": -34.5740, "lon": -58.4170, "radius_km": 1.6 },
+    { "name": "Tigre Delta",                  "area": "Tigre",        "region": "Buenos Aires Province", "country": "Argentina", "lat": -34.3400, "lon": -58.6100, "radius_km": 8.0 }
+  ]
+}

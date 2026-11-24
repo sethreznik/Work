@@ -1,0 +1,79 @@
+# Syncs the "Birds!" Flickr album and publishes bird-gallery/site to GitHub Pages.
+# Every run re-reads the whole album, so new photos, edited titles/captions/
+# locations/dates, replaced images and removed photos are all picked up. The
+# refreshed data is committed back to the repo, and the run summary lists
+# exactly what changed. Run it on demand from Actions → Bird gallery → Run workflow.
+# Setup (once):
+#   1. Settings → Secrets and variables → Actions → New repository secret:
+#        FLICKR_API_KEY = <your Flickr API key>
+#   2. Settings → Pages → Build and deployment → Source: "GitHub Actions"
+name: Bird gallery
+
+on:
+  push:
+    paths:
+      - "bird-gallery/**"
+      - ".github/workflows/bird-gallery.yml"
+  schedule:
+    - cron: "23 */6 * * *"   # every 6 hours
+  workflow_dispatch:
+
+permissions:
+  contents: write   # commit synced data back
+  pages: write
+  id-token: write
+
+concurrency:
+  group: bird-gallery-pages
+  cancel-in-progress: false   # never cut off a sync mid-commit
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Sync from Flickr and build photos.json
+        id: sync
+        env:
+          FLICKR_API_KEY: ${{ secrets.FLICKR_API_KEY }}
+        run: |
+          if [ -n "$FLICKR_API_KEY" ]; then
+            python bird-gallery/scripts/sync.py --fetch
+          else
+            echo "::warning::FLICKR_API_KEY secret not set; building from committed data only"
+            python bird-gallery/scripts/sync.py
+          fi
+
+      - name: Commit synced data
+        if: github.event_name != 'pull_request'
+        run: |
+          git add bird-gallery/data bird-gallery/site/photos.json
+          if git diff --cached --quiet; then
+            echo "No data changes to commit."
+          else
+            git config user.name "github-actions[bot]"
+            git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
+            git commit -m "Sync bird photos from Flickr: ${{ steps.sync.outputs.summary || 'rebuild' }}"
+            git push
+          fi
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: bird-gallery/site
+
+  deploy:
+    # Pages only deploys from the default branch; other branches just build.
+    if: github.ref_name == github.event.repository.default_branch
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
