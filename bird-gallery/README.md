@@ -78,6 +78,18 @@ Preview locally:
 python -m http.server -d bird-gallery/site 8000
 ```
 
+## Link previews
+
+Shared links show `site/share.jpg` (1200×630): the kestrel, the title and four
+photos. To feature different photos, edit the ids in
+`scripts/share-card.js` and run `node bird-gallery/scripts/share-card.js`.
+
+Each photo also has its own link, `…/p/<photo id>/`, which the **Share this
+photo** button copies (or opens the phone's share sheet). That page carries the
+photo's own preview (image, species, place and date) and jumps straight to the
+photo in the gallery. `sync.py` regenerates these pages in `site/p/` on every
+build; they are not committed.
+
 ## Publishing on GitHub Pages (one-time setup)
 
 1. Repo **Settings → Secrets and variables → Actions → New repository secret**:
