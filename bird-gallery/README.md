@@ -38,13 +38,33 @@ bird-gallery/
 
 ## Updating
 
-New uploads to the album appear automatically: the GitHub Action
-(`.github/workflows/bird-gallery.yml`) re-syncs from Flickr every day and
-redeploys. To refresh by hand:
+The sync re-reads the whole album every time, so it picks up:
+
+* **new photos** added to the album
+* **edits** to existing photos on Flickr: retitled (re-identified) birds, captions,
+  tags, dates, moved or added geotags, and replaced image files
+* **removals**: photos deleted or taken out of the album disappear from the site
+
+The GitHub Action (`.github/workflows/bird-gallery.yml`) runs this every 6 hours,
+commits the refreshed data back to the repo, and redeploys. Each run's summary
+lists exactly what was added, edited and removed. To sync right away after
+editing on Flickr, open **Actions → Bird gallery → Run workflow**.
+
+To sync by hand:
 
 ```bash
 FLICKR_API_KEY=your_key python bird-gallery/scripts/sync.py --fetch
 ```
+
+```
+Flickr changes: 1 added, 2 changed, 1 removed
+  - added Black and White Warbler (55640551719)
+  - edited American Kestrel (55639360732) [title]: “Sparrow” → “American Kestrel”
+  - edited Magnolia Warbler (55640757630) [location]
+  - removed Deleted bird (999)
+```
+
+A run with no Flickr changes rewrites nothing, so it creates no commit.
 
 After editing `species.json` or `places.json`, rebuild without hitting Flickr:
 

@@ -1,4 +1,8 @@
 # Syncs the "Birds!" Flickr album and publishes bird-gallery/site to GitHub Pages.
+# Every run re-reads the whole album, so new photos, edited titles/captions/
+# locations/dates, replaced images and removed photos are all picked up. The
+# refreshed data is committed back to the repo, and the run summary lists
+# exactly what changed. Run it on demand from Actions → Bird gallery → Run workflow.
 # Setup (once):
 #   1. Settings → Secrets and variables → Actions → New repository secret:
 #        FLICKR_API_KEY = <your Flickr API key>
@@ -11,17 +15,17 @@ on:
       - "bird-gallery/**"
       - ".github/workflows/bird-gallery.yml"
   schedule:
-    - cron: "17 9 * * *"   # daily, picks up new Flickr uploads
+    - cron: "23 */6 * * *"   # every 6 hours
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write   # commit synced data back
   pages: write
   id-token: write
 
 concurrency:
   group: bird-gallery-pages
-  cancel-in-progress: true
+  cancel-in-progress: false   # never cut off a sync mid-commit
 
 jobs:
   build:
@@ -34,6 +38,7 @@ jobs:
           python-version: "3.12"
 
       - name: Sync from Flickr and build photos.json
+        id: sync
         env:
           FLICKR_API_KEY: ${{ secrets.FLICKR_API_KEY }}
         run: |
@@ -42,6 +47,19 @@ jobs:
           else
             echo "::warning::FLICKR_API_KEY secret not set; building from committed data only"
             python bird-gallery/scripts/sync.py
+          fi
+
+      - name: Commit synced data
+        if: github.event_name != 'pull_request'
+        run: |
+          git add bird-gallery/data bird-gallery/site/photos.json
+          if git diff --cached --quiet; then
+            echo "No data changes to commit."
+          else
+            git config user.name "github-actions[bot]"
+            git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
+            git commit -m "Sync bird photos from Flickr: ${{ steps.sync.outputs.summary || 'rebuild' }}"
+            git push
           fi
 
       - uses: actions/upload-pages-artifact@v3

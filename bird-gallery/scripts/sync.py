@@ -104,7 +104,7 @@ def fetch(key, user_id, album_id, cache):
     while page <= pages:
         res = flickr("flickr.photosets.getPhotos", key, photoset_id=album_id,
                      user_id=user_id, per_page=500, page=page,
-                     extras="date_taken,geo,description,tags,url_l,url_c,url_z")
+                     extras="date_taken,date_upload,last_update,geo,description,tags,url_l,url_c,url_z")
         ps = res["photoset"]
         pages = int(ps.get("pages", 1))
         for p in ps["photo"]:
@@ -121,9 +121,13 @@ def fetch(key, user_id, album_id, cache):
                 "latitude": lat, "longitude": lon,
                 "server": p["server"], "secret": p["secret"],
                 "width": w, "height": h,
+                "date_upload": int(p.get("dateupload") or 0) or None,
+                "last_update": int(p.get("lastupdate") or 0) or None,
             }
             old = cached.get(p["id"])
-            if old and old.get("latitude") == lat and old.get("longitude") == lon:
+            # Reuse cached place names unless the photo moved or an earlier lookup failed.
+            if old and old.get("latitude") == lat and old.get("longitude") == lon \
+                    and (lat is None or old.get("country")):
                 for k in ("neighbourhood", "locality", "county", "region", "country"):
                     rec[k] = old.get(k)
             elif lat is not None:
@@ -132,6 +136,46 @@ def fetch(key, user_id, album_id, cache):
         print(f"  album page {page}/{pages}: {len(out)} photos", file=sys.stderr)
         page += 1
     return out
+
+
+TRACKED = {
+    "title": "title", "description": "caption", "tags": "tags", "date_taken": "date taken",
+    "latitude": "location", "longitude": "location", "secret": "image",
+}
+
+
+def diff(old, new):
+    """Compare two raw snapshots -> {"added": [...], "removed": [...], "changed": [(rec, fields)]}."""
+    before = {r["id"]: r for r in old}
+    after = {r["id"]: r for r in new}
+    changed = []
+    for pid, r in after.items():
+        o = before.get(pid)
+        if o:
+            fields = sorted({label for k, label in TRACKED.items() if o.get(k) != r.get(k)})
+            if fields:
+                changed.append((o, r, fields))
+    return {
+        "added": [r for pid, r in after.items() if pid not in before],
+        "removed": [r for pid, r in before.items() if pid not in after],
+        "changed": changed,
+    }
+
+
+def report(d):
+    """Human-readable change report; returns (one_line_summary, markdown_lines)."""
+    parts = [f"{len(d[k])} {k}" for k in ("added", "changed", "removed") if d[k]]
+    summary = ", ".join(parts) if parts else "no changes"
+    lines = []
+    label = lambda r: f"{r.get('title') or '(untitled)'} ({r['id']})"
+    for r in d["added"]:
+        lines.append(f"- **added** {label(r)}")
+    for o, r, fields in d["changed"]:
+        extra = f": “{o.get('title')}” → “{r.get('title')}”" if "title" in fields else ""
+        lines.append(f"- **edited** {label(r)} [{', '.join(fields)}]{extra}")
+    for r in d["removed"]:
+        lines.append(f"- **removed** {label(r)}")
+    return summary, lines
 
 
 def fetch_place_names(key, photo_id):
@@ -265,6 +309,13 @@ def infer_missing_places(photos, max_hours=4):
             p["place_inferred"] = True
 
 
+def last_change(raw):
+    """Time of the newest Flickr upload/edit, so unchanged data rebuilds byte-for-byte."""
+    ts = max((r.get("last_update") or r.get("date_upload") or 0 for r in raw), default=0)
+    when = datetime.fromtimestamp(ts, timezone.utc) if ts else datetime.now(timezone.utc)
+    return when.strftime("%Y-%m-%dT%H:%M:%SZ")
+
+
 def build(raw, species_index, places_cfg, wiki):
     places = places_cfg.get("places", [])
     region_names = places_cfg.get("region_names", {})
@@ -306,7 +357,7 @@ def build(raw, species_index, places_cfg, wiki):
 
     photos.sort(key=lambda p: p["taken"] or "", reverse=True)
     return {
-        "generated": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+        "generated": last_change(raw),
         "flickr_user": os.environ.get("FLICKR_USER_ID", DEFAULT_USER_ID),
         "photos": photos,
         "species": species_out,
@@ -333,8 +384,21 @@ def main():
         if not key:
             sys.exit("FLICKR_API_KEY is not set")
         print(f"Fetching album {args.album_id} ...", file=sys.stderr)
+        old_raw = raw
         raw = fetch(key, args.user_id, args.album_id, raw)
         write_json(DATA / "raw_photos.json", raw)
+
+        summary, lines = report(diff(old_raw, raw))
+        print(f"Flickr changes: {summary}", file=sys.stderr)
+        for line in lines:
+            print("  " + line.replace("**", ""), file=sys.stderr)
+        # Surface the report in GitHub Actions (run summary + commit message).
+        if os.environ.get("GITHUB_STEP_SUMMARY"):
+            with open(os.environ["GITHUB_STEP_SUMMARY"], "a") as f:
+                f.write(f"### Flickr sync: {summary}\n\n" + "\n".join(lines) + "\n")
+        if os.environ.get("GITHUB_OUTPUT"):
+            with open(os.environ["GITHUB_OUTPUT"], "a") as f:
+                f.write(f"summary={summary}\n")
 
         if not args.no_wiki:
             unknown = {species_index.resolve(r["title"])[0] for r in raw}
