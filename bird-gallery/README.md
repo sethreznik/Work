@@ -54,11 +54,13 @@ that filter by any of them. The sync pulls the album into
 (fetched once and cached). `data/cameras.json` maps camera and lens codes to
 readable names (`ILCE-7CR` → Sony α7CR); add a line when new gear shows up.
 
-Captions and locations for Not Birds photos live in `data/notbirds_notes.json`
-(written by looking at each photo). For photos without GPS, the location there
-comes from the photo's other Flickr album, from recognizing the place in the
-photo, or from same-day photos, and the site marks it "approximate". New
-uploads show no caption until a line is added.
+Each Not Birds photo is titled by its landmark when it shows a specific
+building or structure (Empire State Building, United Nations Secretariat),
+otherwise by its place (Chicago, Antelope Island), otherwise by its date.
+Landmarks and locations for photos without GPS live in
+`data/notbirds_notes.json`. Those locations come from the photo's other Flickr
+album, from recognizing the place in the photo, or from same-day photos, and
+the site marks them "approximate".
 
 ## Updating
 

@@ -314,14 +314,14 @@
     el.photos.innerHTML = filtered.map((p, i) => {
       const r = Math.min(Math.max(p.w / p.h, 0.5), 2.4);
       const loc = p.place ? esc(p.place) : "";
-      const label = p.species || p.caption || p.title || "Photograph";
+      const label = p.species || p.landmark || p.place || p.title || "Photograph";
       return `<button class="tile" data-i="${i}" style="width:calc(var(--row) * ${r.toFixed(3)});flex-grow:${r.toFixed(3)}"
         aria-label="${esc(label)}${loc ? ", " + loc : ""}">
         <i style="padding-bottom:${(100 / r).toFixed(3)}%"></i>
         <img loading="lazy" decoding="async" src="${img(p, "z")}" srcset="${srcset(p)}"
           sizes="(max-width: 640px) 50vw, (max-width: 900px) 300px, 400px" alt="${esc(label)}">
         ${p.species ? `<span class="cap"><strong>${esc(p.species)}</strong><span>${loc}${loc && p.taken ? " · " : ""}${p.taken ? fmtDate(p.taken, false) : ""}</span></span>`
-          : isNB() ? `<span class="cap"><strong>${esc(p.caption || p.place || (p.taken ? fmtDate(p.taken, false) : ""))}</strong><span>${[p.caption ? loc : "", p.taken ? fmtDate(p.taken, false) : ""].filter(Boolean).join(" · ")}</span></span>` : ""}
+          : isNB() ? `<span class="cap"><strong>${esc(p.landmark || p.place || (p.taken ? fmtDate(p.taken, false) : ""))}</strong><span>${[p.landmark ? loc : "", p.taken && (p.landmark || p.place) ? fmtDate(p.taken, false) : ""].filter(Boolean).join(" · ")}</span></span>` : ""}
       </button>`;
     }).join("");
     el.photos.querySelectorAll("img").forEach((im) => {
@@ -504,10 +504,10 @@
     el.lb.classList.toggle("nb-entry", isNB());
     if (isNB()) {
       setLbSources(el.lbImg, p);
-      el.lbImg.alt = p.caption || p.title || (p.place ? `Photograph, ${p.place}` : "Photograph");
+      el.lbImg.alt = p.landmark ? `${p.landmark}${p.place ? ", " + p.place : ""}` : p.title || (p.place ? `Photograph, ${p.place}` : "Photograph");
       prefetchNext(i);
       $("#lb-tab").textContent = "";
-      const heading = p.caption || p.title || p.place || (p.taken ? fmtDate(p.taken, false) : "Not Birds");
+      const heading = p.landmark || p.title || p.place || (p.taken ? fmtDate(p.taken, false) : "Not Birds");
       const status = p.place ? (heading === p.place ? placeParts(p).slice(1) : placeParts(p)).join(" · ") : "";
       const SOURCE = { album: "from the photo's Flickr album", visual: "recognized from the photo", date: "from photos taken the same day" };
       const camFacts = [["camera", "Camera"], ["lens", "Lens"], ["focal", "Focal length"],

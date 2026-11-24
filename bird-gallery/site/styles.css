@@ -225,8 +225,6 @@ dialog#lightbox.nb-entry .lb-tab { display: none; }
 }
 .lb-info .sci { margin: 6px 0 0; font: italic 16px/1.3 var(--entry-serif); letter-spacing: .07em; color: #3d3a33; }
 .lb-info .status { margin: 4px 0 0; font: 15px var(--sans); letter-spacing: .03em; color: var(--muted); }
-/* Not Birds captions are sentences, so the heading isn't set in caps */
-dialog#lightbox.nb-entry .lb-info h2 { text-transform: none; letter-spacing: .01em; font-size: 22px; line-height: 1.25; }
 .lb-info .about { margin: 16px 0 0; font: 16px/1.7 var(--sans); letter-spacing: .02em; }
 .lb-info .fact { margin: 8px 0 0; font: 16px/1.6 var(--sans); letter-spacing: .02em; }
 .lb-info .fact em { font: italic 15px var(--entry-serif); letter-spacing: .06em; }
