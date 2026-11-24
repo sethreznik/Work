@@ -270,7 +270,8 @@
         <i style="padding-bottom:${(100 / r).toFixed(3)}%"></i>
         <img loading="lazy" decoding="async" src="${img(p, "z")}" srcset="${srcset(p)}"
           sizes="(max-width: 640px) 50vw, 33vw" alt="${esc(label)}">
-        ${p.species ? `<span class="cap"><strong>${esc(p.species)}</strong><span>${loc}${loc && p.taken ? " · " : ""}${p.taken ? fmtDate(p.taken, false) : ""}</span></span>` : ""}
+        ${p.species ? `<span class="cap"><strong>${esc(p.species)}</strong><span>${loc}${loc && p.taken ? " · " : ""}${p.taken ? fmtDate(p.taken, false) : ""}</span></span>`
+          : p.place ? `<span class="cap"><strong>${loc}</strong><span>${p.taken ? fmtDate(p.taken, false) : ""}</span></span>` : ""}
       </button>`;
     }).join("");
     el.photos.querySelectorAll("img").forEach((im) => {
@@ -366,10 +367,31 @@
   const LB_SIZES = "(max-width: 900px) 100vw, (max-width: 1360px) calc(100vw - 340px), (max-width: 1640px) calc(78vw - 40px), calc(100vw - 400px)";
   function setLbSources(im, p) {
     const big = p.big || {};
-    im.sizes = isNB() ? "100vw" : LB_SIZES;  // Not Birds photos use the full width
+    im.sizes = isNB() && p.lat == null ? "100vw" : LB_SIZES;  // bare Not Birds photos use the full width
     im.srcset = [`${img(p, "b")} 1024w`, big.h && `${big.h} 1600w`, big.k && `${big.k} 2048w`].filter(Boolean).join(", ");
     im.src = img(p, "b");
   }
+  // Shared pieces of the photo-view page.
+  const fact = (label, html) => `<p class="fact"><em>${label}:</em> ${html}</p>`;
+  const NB_COLOR = "#4f6d8f";  // Not Birds slate blue (kestrel wing)
+  // place, area, region, country, skipping empty parts and ones that repeat
+  // another ("Buenos Aires, Buenos Aires City", "Washington, D.C., Washington, D.C.")
+  const placeParts = (p) => [p.place, p.area, p.region, p.country].reduce((out, x) =>
+    x && !out.some((y) => x.startsWith(y) || y.startsWith(x)) ? [...out, x] : out, []);
+  function whereHtml(p) {
+    return p.place
+      ? esc(placeParts(p).join(", ")) +
+        (p.place_inferred ? ` <span class="aside">(approximate, from photos taken the same day)</span>` : "")
+      : `<span class="aside">not recorded</span>`;
+  }
+  function mapHtml(p) {
+    return p.lat != null ? `<div class="map-slot"></div>
+        <p class="map-cap"><a href="https://www.openstreetmap.org/?mlat=${p.lat}&mlon=${p.lon}#map=15/${p.lat}/${p.lon}" target="_blank" rel="noopener">${p.lat.toFixed(4)}, ${p.lon.toFixed(4)} · Open larger map ↗</a></p>` : "";
+  }
+  const shareFlickrHtml = (p) => `
+        <button class="btn" data-share="${esc(p.id)}">Share this photo</button>
+        <a class="btn" href="https://www.flickr.com/photos/sethreznik/${esc(p.id)}/" target="_blank" rel="noopener">View on Flickr ↗</a>`;
+
   function openLightbox(i) {
     if (i < 0 || i >= filtered.length) return;
     lbIndex = i;
@@ -377,17 +399,32 @@
     state.photo = p.id;
     writeHash();
 
-    // Not Birds: the photo full width, no details panel.
-    el.lb.classList.toggle("bare", isNB());
+    // Not Birds: full width with no details, or, when the photo is geotagged,
+    // a slim page with the place, date and map (no species, no spine tab).
+    el.lb.classList.toggle("bare", isNB() && p.lat == null);
+    el.lb.classList.toggle("nb-entry", isNB() && p.lat != null);
     if (isNB()) {
       setLbSources(el.lbImg, p);
-      el.lbImg.alt = p.title || "Photograph";
+      el.lbImg.alt = p.title || (p.place ? `Photograph, ${p.place}` : "Photograph");
       [i - 1, i + 1].forEach((j) => { if (filtered[j]) setLbSources(new Image(), filtered[j]); });
-      el.lbInfo.innerHTML = "";
       $("#lb-tab").textContent = "";
+      el.lbInfo.innerHTML = p.lat == null ? "" : `
+      <header class="entry-h">
+        <h2>${esc(p.title || p.place)}</h2>
+        <p class="status">${esc((p.title ? placeParts(p) : placeParts(p).slice(1)).join(" · "))}</p>
+      </header>
+      ${fact("Taken", p.taken ? esc(fmtDate(p.taken)) : `<span class="aside">unknown</span>`)}
+      ${fact("Location", whereHtml(p))}
+      ${mapHtml(p)}
+      <div class="lb-actions">${shareFlickrHtml(p)}</div>
+      <p class="counter">${i + 1} of ${filtered.length}</p>`;
+      el.lb.style.setProperty("--rule", NB_COLOR);
       $("#lb-prev").hidden = i === 0;
       $("#lb-next").hidden = i === filtered.length - 1;
       if (!el.lb.open) el.lb.showModal();
+      $(".lb").scrollTop = 0;
+      el.lbInfo.scrollTop = 0;
+      showMap(p, el.lbInfo.querySelector(".map-slot"), NB_COLOR);
       return;
     }
     const info = DATA.species[p.species] || {};
@@ -418,13 +455,6 @@
     $("#lb-tab").title = group.name;
     const nPlaces = new Set(DATA.photos.filter((q) => q.species === p.species).map((q) => q.place).filter(Boolean)).size;
     const status = [famLatin, plural(nSame, "photo"), nPlaces ? plural(nPlaces, "location") : ""].filter(Boolean).join(" · ");
-    const where = p.place
-      ? esc([p.place, p.area, p.region, p.country].reduce((out, x) =>
-          // skip empty parts and ones that repeat the previous ("Buenos Aires, Buenos Aires City")
-          x && !out.some((y) => x.startsWith(y) || y.startsWith(x)) ? [...out, x] : out, []).join(", ")) +
-        (p.place_inferred ? ` <span class="aside">(approximate, from photos taken the same day)</span>` : "")
-      : `<span class="aside">not recorded</span>`;
-    const fact = (label, html) => `<p class="fact"><em>${label}:</em> ${html}</p>`;
 
     el.lbInfo.innerHTML = `
       <header class="entry-h">
@@ -435,17 +465,15 @@
       ${info.about ? `<p class="about">${esc(info.about)}</p>` : p.species === UNIDENTIFIED ? `<p class="about">This bird hasn't been identified yet.</p>` : ""}
       ${p.note ? fact("Note", esc(p.note)) : ""}
       ${fact("Taken", p.taken ? esc(fmtDate(p.taken)) : `<span class="aside">unknown</span>`)}
-      ${fact("Location", where)}
-      ${p.lat != null ? `<div class="map-slot"></div>
-        <p class="map-cap"><a href="https://www.openstreetmap.org/?mlat=${p.lat}&mlon=${p.lon}#map=15/${p.lat}/${p.lon}" target="_blank" rel="noopener">${p.lat.toFixed(4)}, ${p.lon.toFixed(4)} · Open larger map ↗</a></p>` : ""}
+      ${fact("Location", whereHtml(p))}
+      ${mapHtml(p)}
       ${p.description ? fact("Notes", `<span class="desc">${esc(p.description)}</span>`) : ""}
       ${links.length ? `<p class="links">${links.join("")}</p>` : ""}
       <div class="lb-actions">
         ${nSame > 1 && state.species !== p.species ? `<button class="btn primary" data-go-species="${esc(p.species)}">All ${nSame} photos of ${esc(p.species)}</button>` : ""}
         ${nGroup > nSame && state.group !== group.name ? `<button class="btn" data-go-group="${esc(group.name)}">All ${nGroup} photos in ${esc(group.name)}</button>` : ""}
         ${nHere > 1 && state.place !== "p:" + p.place ? `<button class="btn" data-go-place="p:${esc(p.place)}">All ${nHere} photos at ${esc(p.place)}</button>` : ""}
-        <button class="btn" data-share="${esc(p.id)}">Share this photo</button>
-        <a class="btn" href="https://www.flickr.com/photos/sethreznik/${esc(p.id)}/" target="_blank" rel="noopener">View on Flickr ↗</a>
+        ${shareFlickrHtml(p)}
       </div>
       <p class="counter">${i + 1} of ${filtered.length}</p>`;
 
@@ -550,7 +578,7 @@
   // Each photo has a static page at p/<id>/ (built by sync.py) carrying its own
   // link-preview tags; it redirects to the photo here. That's the link we share.
   async function sharePhoto(btn) {
-    const p = DATA.photos.find((q) => q.id === btn.dataset.share);
+    const p = filtered.find((q) => q.id === btn.dataset.share) || DATA.photos.find((q) => q.id === btn.dataset.share);
     const url = new URL(photoPath(p.id), location.origin).href;
     const title = `${p.species} · Seth Reznik Birds`;
     if (navigator.share && matchMedia("(pointer: coarse)").matches) {

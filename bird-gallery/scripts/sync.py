@@ -336,8 +336,13 @@ def match_place(lat, lon, places):
     return None
 
 
-def place_for(rec, places, region_names):
-    """(place, area, region, country) for a photo, or Nones if it has no location."""
+def place_for(rec, places, region_names, county_names=None, locality_names=None):
+    """(place, area, region, country) for a photo, or Nones if it has no location.
+
+    county_names ("County|Region" -> name) and locality_names (Flickr locality ->
+    name) come from places.json and fix fallback names, e.g. Cook County ->
+    Chicago, "Congressional District 12" -> Manhattan."""
+    county_names, locality_names = county_names or {}, locality_names or {}
     pl = match_place(rec.get("latitude"), rec.get("longitude"), places)
     if pl:
         return pl["name"], pl.get("area"), pl.get("region"), pl.get("country")
@@ -347,10 +352,13 @@ def place_for(rec, places, region_names):
         # Flickr localities in the US are often subdivision names; counties read better.
         if region == "New York" and county in NYC_BOROUGHS:
             return NYC_BOROUGHS[county], None, shown_region, country
+        if county and f"{county}|{region}" in county_names:
+            return county_names[f"{county}|{region}"], None, shown_region, country
         if county:
             name = county if county.endswith(("County", "Parish")) else f"{county} County"
             return name, None, shown_region, country
-    name = rec.get("locality") or county
+    loc = rec.get("locality")
+    name = locality_names.get(loc, loc) or county
     if not name:
         return None, None, None, None
     return name, None, shown_region, country
@@ -389,7 +397,8 @@ def build(raw, species_index, places_cfg):
     photos, used = [], {}
     for r in raw:
         species, note = species_index.resolve(r["title"])
-        place, area, region, country = place_for(r, places, region_names)
+        place, area, region, country = place_for(r, places, region_names,
+                                                 places_cfg.get("county_names"), places_cfg.get("locality_names"))
         photos.append({
             "id": r["id"],
             "species": species,
@@ -434,17 +443,26 @@ def build(raw, species_index, places_cfg):
 FILENAME_TITLE = re.compile(r"(\.(jpe?g|png|tiff?|heic|dng|arw|nef|cr\d)$)|^(DSC|IMG|_?MG|P\d{6}|PXL)[_\-]?\d", re.I)
 
 
-def build_notbirds(raw):
-    """Plain photo list for the Not Birds set: no species, places or filters.
+def build_notbirds(raw, places_cfg):
+    """Photo list for the Not Birds set: no species or filters, but place names
+    and coordinates for geotagged photos (named the same way as the birds).
     Filename-style titles ("DSC04765-DxO...jpg") are dropped."""
-    photos = [{
-        "id": r["id"],
-        "title": r["title"] if r.get("title") and not FILENAME_TITLE.search(r["title"]) else None,
-        "taken": r.get("date_taken"),
-        "src": f"https://live.staticflickr.com/{r['server']}/{r['id']}_{r['secret']}",
-        "w": r["width"], "h": r["height"],
-        "big": {k: r[f"url_{k}"] for k in ("h", "k") if r.get(f"url_{k}")} or None,
-    } for r in raw]
+    places = places_cfg.get("places", [])
+    region_names = places_cfg.get("region_names", {})
+    photos = []
+    for r in raw:
+        place, area, region, country = place_for(r, places, region_names,
+                                                 places_cfg.get("county_names"), places_cfg.get("locality_names"))
+        photos.append({
+            "id": r["id"],
+            "title": r["title"] if r.get("title") and not FILENAME_TITLE.search(r["title"]) else None,
+            "taken": r.get("date_taken"),
+            "src": f"https://live.staticflickr.com/{r['server']}/{r['id']}_{r['secret']}",
+            "w": r["width"], "h": r["height"],
+            "big": {k: r[f"url_{k}"] for k in ("h", "k") if r.get(f"url_{k}")} or None,
+            "place": place, "area": area, "region": region, "country": country,
+            "lat": r.get("latitude"), "lon": r.get("longitude"),
+        })
     photos.sort(key=lambda p: p["taken"] or "", reverse=True)
     return {"generated": last_change(raw), "photos": photos}
 
@@ -500,10 +518,12 @@ def write_photo_pages(out, notbirds=None):
         day = fmt_day(p["taken"])
         scale = 1024 / max(p["w"], p["h"])
         label = p["title"] or "Not Birds"
+        where = ", ".join(x for x in (p.get("place"), p.get("area") or p.get("region")) if x)
+        bits = " ".join(x for x in (f"at {where}" if where else None, f"on {day}" if day else None) if x)
         page = PHOTO_PAGE.format(
             id=e(p["id"]), hashpre="set=notbirds&", linktext="view in Not Birds", icon="notbirds.svg",
             title=e(f"{label} · Seth Reznik"),
-            desc=e(f"Photograph by Seth Reznik{', ' + day if day else ''}."),
+            desc=e(f"Photographed {bits}." if bits else "Photograph by Seth Reznik."),
             species=e(label), alt=e(p["title"] or "Photograph by Seth Reznik"),
             image=e(p["src"] + "_b.jpg"), w=round(p["w"] * scale), h=round(p["h"] * scale),
             thumb=e(p["src"] + "_z.jpg"), tw=round(p["w"] * scale * .625), th=round(p["h"] * scale * .625))
@@ -564,7 +584,7 @@ def main():
 
         print(f"Fetching Not Birds album {args.notbirds_album_id} ...", file=sys.stderr)
         old_nb = raw_nb
-        raw_nb = fetch(key, args.user_id, args.notbirds_album_id, raw_nb, with_places=False)
+        raw_nb = fetch(key, args.user_id, args.notbirds_album_id, raw_nb)
         write_json(DATA / "raw_notbirds.json", raw_nb)
         nb_summary, nb_lines = report(diff(old_nb, raw_nb))
         print(f"Not Birds changes: {nb_summary}", file=sys.stderr)
@@ -589,7 +609,7 @@ def main():
 
     out = build(raw, species_index, places)
     write_json(SITE / "photos.json", out, indent=None)
-    nb = build_notbirds(raw_nb)
+    nb = build_notbirds(raw_nb, places)
     write_json(SITE / "notbirds.json", nb, indent=None)
     n_pages = write_photo_pages(out, nb)
     n_sp = len(out["species"])

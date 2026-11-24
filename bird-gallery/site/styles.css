@@ -171,6 +171,9 @@ dialog#lightbox::backdrop { background: rgba(0,0,0,.6); }
 /* Not Birds: the photo full width, no details */
 dialog#lightbox.bare .lb { grid-template-columns: minmax(0, 1fr); }
 dialog#lightbox.bare .lb-tab, dialog#lightbox.bare .lb-info { display: none; }
+/* Not Birds with GPS: the page without the spine tab */
+dialog#lightbox.nb-entry .lb { grid-template-columns: minmax(0, 1fr) clamp(300px, 22vw, 360px); }
+dialog#lightbox.nb-entry .lb-tab { display: none; }
 .lb { display: grid; grid-template-columns: minmax(0, 1fr) 32px clamp(300px, 22vw, 360px); height: 100%; }
 .lb-media { position: relative; margin: 0; display: flex; align-items: center; justify-content: center; padding: 12px; min-height: 0; }
 .lb-media img { max-width: 100%; max-height: 100%; object-fit: contain; box-shadow: 0 20px 60px rgba(0,0,0,.5); }
