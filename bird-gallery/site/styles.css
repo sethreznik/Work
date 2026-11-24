@@ -172,10 +172,13 @@ dialog#lightbox::backdrop { background: rgba(0,0,0,.6); }
 
 /* the "spine" tab with the family name, like the guide's section tabs */
 .lb-tab {
-  background: #e7e3d9; border-left: 1px solid #cfc9ba; border-right: 1px solid #d9d3c5;
+  /* tinted with the bird group's color (set per photo as --rule) */
+  background: color-mix(in srgb, var(--rule) 16%, #ece8df);
+  border-left: 1px solid color-mix(in srgb, var(--rule) 35%, #cfc9ba);
+  border-right: 1px solid color-mix(in srgb, var(--rule) 25%, #d9d3c5);
   writing-mode: vertical-rl; transform: rotate(180deg);
   padding: 28px 0; text-align: left;
-  font: 500 17px/32px var(--sans); letter-spacing: .02em; color: #8a8576;
+  font: 500 17px/32px var(--sans); letter-spacing: .02em; color: var(--rule);
   overflow: hidden; white-space: nowrap;
 }
 

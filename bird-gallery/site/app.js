@@ -272,6 +272,28 @@
     ).join("") || "";
   }
 
+  // ------------------------------------------------------------ bird groups
+  // Field-guide-style color coding: each Latin family belongs to a broad group,
+  // and the group's color drives the photo view's rule, buttons, links, spine
+  // tab and map pin. All colors pass WCAG AA with white text and on the page.
+  const GROUPS = [
+    ["Waterfowl", "#2c6a86", "Anatidae"],
+    ["Grebes, loons & cormorants", "#45618f", "Podicipedidae Gaviidae Phalacrocoracidae"],
+    ["Herons, cranes & rails", "#2f7369", "Ardeidae Threskiornithidae Gruidae Rallidae Aramidae"],
+    ["Shorebirds & gulls", "#7d6338", "Charadriidae Scolopacidae Recurvirostridae Haematopodidae Jacanidae Laridae Rynchopidae"],
+    ["Hawks, eagles & falcons", "#b03d22", "Accipitridae Pandionidae Falconidae Cathartidae"],
+    ["Owls", "#6e4c39", "Strigidae Tytonidae"],
+    ["Gamebirds", "#94622a", "Phasianidae Odontophoridae"],
+    ["Pigeons & doves", "#80577a", "Columbidae"],
+    ["Hummingbirds, kingfishers, woodpeckers & parrots", "#3f7330", "Trochilidae Alcedinidae Picidae Psittacidae"],
+    ["Flycatchers, swallows, thrushes & kin", "#64508c", "Tyrannidae Furnariidae Corvidae Hirundinidae Paridae Sittidae Troglodytidae Regulidae Turdidae Mimidae Bombycillidae Sturnidae Vireonidae Polioptilidae"],
+    ["Warblers", "#836a0d", "Parulidae"],
+    ["Sparrows, finches, tanagers & blackbirds", "#a64f1f", "Passerellidae Fringillidae Passeridae Cardinalidae Thraupidae Icteridae Emberizidae Calcariidae"],
+  ];
+  const GROUP_OF = new Map(GROUPS.flatMap(([name, color, fams]) => fams.split(" ").map((f) => [f, { name, color }])));
+  const DEFAULT_GROUP = { name: "", color: "#8a6f4e" };  // unidentified / unknown family
+  const groupOf = (family = "") => GROUP_OF.get((family.match(/\(([^)]+)\)/) || [])[1]) || DEFAULT_GROUP;
+
   // ------------------------------------------------------------ lightbox
   // Photo view: 1024px plus Flickr's 1600/2048px versions; the browser picks
   // what the screen needs. sizes mirrors the layout (image area = viewport
@@ -311,6 +333,9 @@
     const fam = info.family || "";
     const [, famCommon = fam, famLatin = ""] = fam.match(/^(.*?)\s*\(([^)]+)\)\s*$/) || [];
     $("#lb-tab").textContent = famCommon.replace(/ & /g, " and ");
+    const group = groupOf(fam);
+    el.lb.style.setProperty("--rule", group.color);
+    $("#lb-tab").title = group.name;
     const nPlaces = new Set(DATA.photos.filter((q) => q.species === p.species).map((q) => q.place).filter(Boolean)).size;
     const status = [famLatin, plural(nSame, "photo"), nPlaces ? plural(nPlaces, "location") : ""].filter(Boolean).join(" · ");
     const where = p.place
@@ -348,7 +373,7 @@
     if (!el.lb.open) el.lb.showModal();
     $(".lb").scrollTop = 0;
     el.lbInfo.scrollTop = 0;
-    showMap(p, el.lbInfo.querySelector(".map-slot"));
+    showMap(p, el.lbInfo.querySelector(".map-slot"), group.color);
   }
 
   // ------------------------------------------------------------ inline map
@@ -370,7 +395,7 @@
     return leafletReady;
   }
 
-  async function showMap(p, slot) {
+  async function showMap(p, slot, color) {
     if (!slot || p.lat == null) return;
     slot.replaceWith(mapEl);
     mapEl.setAttribute("aria-label", `Map showing where this photo was taken${p.place ? ": " + p.place : ""}`);
@@ -394,7 +419,7 @@
     }
     lbMap.invalidateSize();
     lbMap.setView(ll, 14, { animate: false });
-    lbMarker.setLatLng(ll);
+    lbMarker.setLatLng(ll).setStyle({ fillColor: color });
   }
 
   function closeLightbox() {
