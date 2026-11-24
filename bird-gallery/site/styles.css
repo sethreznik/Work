@@ -89,7 +89,10 @@ h1 .amp { color: var(--faint); }
   background-position: calc(100% - 16px) 16px, calc(100% - 11px) 16px;
   background-size: 5px 5px; background-repeat: no-repeat; }
 .field select.active { border-color: var(--accent); }
-.field.search input { width: 220px; }
+.field.search input { width: 180px; }
+/* fixed widths keep the toolbar on one line; long choices end in "…" */
+#group { width: 165px; } #species { width: 185px; } #place { width: 190px; }
+.field select { text-overflow: ellipsis; white-space: nowrap; overflow: hidden; }
 .field input:focus, .field select:focus, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
 
 .resultbar { display: flex; align-items: baseline; gap: 14px; padding: 18px 0 12px; min-height: 56px; }
@@ -243,7 +246,7 @@ dialog#lightbox::backdrop { background: rgba(0,0,0,.6); }
   .filters { justify-content: stretch; }
   .filters .field { flex: 1 1 45%; }
   .field.search { flex-basis: 100%; }
-  .field.search input, .field select { width: 100%; }
+  .field.search input, .field select, #group, #species, #place { width: 100%; }
   .tabs { width: 100%; } .tabs button, .tabs .tab-link { flex: 1; }
   .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px 10px; }
   .card h3 { font-size: 15px; }
