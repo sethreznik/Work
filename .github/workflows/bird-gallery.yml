@@ -77,7 +77,12 @@ jobs:
       - id: pages
         uses: actions/configure-pages@v5
       - name: Fill in site URL for link previews
-        run: find bird-gallery/site -name '*.html' -exec sed -i "s#__SITE_URL__#${{ steps.pages.outputs.base_url }}#g" {} +
+        # Always https: Pages may report http:// for a custom domain until HTTPS is enforced.
+        run: |
+          URL="${{ steps.pages.outputs.base_url }}"
+          URL="https://${URL#*://}"
+          echo "Site URL: $URL"
+          find bird-gallery/site -name '*.html' -exec sed -i "s#__SITE_URL__#${URL}#g" {} +
 
       - uses: actions/upload-pages-artifact@v3
         with:
