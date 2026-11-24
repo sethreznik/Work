@@ -393,7 +393,7 @@ PHOTO_PAGE = """<!doctype html>
 <link rel="icon" href="../../kestrel.svg" type="image/svg+xml">
 <meta http-equiv="refresh" content="0; url=../../#photo={id}">
 <script>var h=location.hash.slice(1);location.replace("../../#photo={id}"+(h?"&"+h:""));</script>
-<style>body{{margin:0;font:16px/1.5 system-ui,sans-serif;background:#f3eee2;color:#24261f;display:grid;place-items:center;min-height:100vh;text-align:center}}img{{max-width:min(90vw,640px);height:auto;border-radius:6px}}a{{color:#3d6b47}}</style>
+<style>body{{margin:0;font:16px/1.5 system-ui,sans-serif;background:#fdfbf6;color:#2e2d29;display:grid;place-items:center;min-height:100vh;text-align:center}}img{{max-width:min(90vw,640px);height:auto;border-radius:6px}}a{{color:#a3262a}}</style>
 </head>
 <body>
 <p><img src="{thumb}" alt="{alt}" width="{tw}" height="{th}"><br>

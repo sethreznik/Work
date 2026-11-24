@@ -1,19 +1,23 @@
 :root {
-  /* "Field guide" palette: warm paper, ink, forest green */
-  --bg: #f3eee2;
-  --bg-raised: #fbf8f1;
-  --bg-sunken: #e6dfcf;
-  --line: #d9cfba;
-  --text: #24261f;
-  --muted: #5f5c4f;
-  --faint: #7d7866;
-  --accent: #3d6b47;      /* forest green */
+  /* Field-guide cover palette: clean warm white, a pale ochre sweep,
+     title red, olive italics, gold seal. */
+  --bg: #fdfbf6;
+  --bg-raised: #ffffff;
+  --bg-sunken: #f1ebdc;
+  --line: #e5dcc7;
+  --text: #2e2d29;
+  --muted: #67624f;
+  --faint: #8a836d;
+  --accent: #a3262a;      /* title red */
   --accent-ink: #ffffff;
-  --lb-accent: #9cc29b;   /* accent used inside the dark photo view */
-  --lb-accent-ink: #12210f;
-  /* Jost: geometric, Futura-style, mid-century like the kestrel illustration */
-  --display: "Jost", "Futura", "Century Gothic", system-ui, sans-serif;
-  --sans: "Jost", "Futura", "Century Gothic", system-ui, sans-serif;
+  --olive: #7a6a2c;       /* italic subtitles */
+  --gold: #b8953a;        /* seal */
+  --sweep: #f4e7bf;       /* pale ochre curve behind the title */
+  --lb-accent: #d9b45c;   /* accent used inside the dark photo view */
+  --lb-accent-ink: #231a05;
+  /* Old-style serif for titles and names; condensed grotesque for labels and UI */
+  --display: "Sorts Mill Goudy", "Goudy Old Style", Garamond, Georgia, serif;
+  --sans: "Archivo Narrow", "Arial Narrow", system-ui, sans-serif;
   --row: 260px;
   --gap: 6px;
   --radius: 6px;
@@ -28,31 +32,50 @@ body {
   margin: 0;
   background: var(--bg);
   color: var(--text);
-  font: 15px/1.55 var(--sans);
+  font: 16px/1.5 var(--sans);
 }
 a { color: var(--accent); }
 button { font: inherit; color: inherit; }
 .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
 .wrap { max-width: 1600px; margin: 0 auto; padding: 0 24px; }
 
-/* ---------- masthead ---------- */
-.masthead { padding: 56px 0 28px; }
-.brand { display: flex; align-items: center; gap: 22px; }
-.mark { width: 88px; height: 88px; flex: none; }
-/* Title + mark link home: plain page, no filters */
-a.home { color: inherit; text-decoration: none; display: block; flex: none; }
-a.home .mark { display: block; transition: transform .25s ease; }
-a.home:hover .mark { transform: rotate(-6deg) scale(1.04); }
-h1 a.home:hover { opacity: .85; }
+/* ---------- masthead (cover-style title block) ---------- */
+.masthead {
+  padding: 44px 0 30px;
+  /* the soft ochre curve that sweeps across the top of the covers */
+  background: radial-gradient(ellipse 92% 150% at 100% -38%,
+    var(--sweep) 0%, #f6ebcb 34%, #faf3e0 53%, transparent 53.3%);
+}
+.brand { display: flex; align-items: flex-start; justify-content: space-between; gap: 24px; }
+.titles { min-width: 0; }
+a.home { color: inherit; text-decoration: none; display: block; }
 h1 {
   margin: 0;
-  font: 500 clamp(34px, 6vw, 64px)/1.05 var(--display);
-  letter-spacing: -.02em;
+  font: 400 clamp(56px, 10vw, 112px)/.92 var(--display);
+  letter-spacing: -.015em;
+  color: var(--accent);
 }
-h1 em { font-style: italic; color: var(--accent); }
-h1 .amp { color: var(--faint); }
-.stats { margin: 14px 0 0; color: var(--muted); font-size: 14px; }
-.stats b { color: var(--text); font-weight: 600; }
+h1 a.home:hover { opacity: .85; }
+.subtitle {
+  margin: 10px 0 0;
+  font: italic 400 clamp(26px, 3.6vw, 42px)/1.1 var(--display);
+  color: var(--olive);
+}
+.subsub {
+  margin: 4px 0 0;
+  font: italic 400 clamp(17px, 1.7vw, 21px)/1.3 var(--display);
+  color: var(--olive);
+}
+.stats {
+  margin: 16px 0 0;
+  font: 600 12px/1.4 var(--sans); letter-spacing: .16em; text-transform: uppercase;
+  color: var(--faint);
+}
+.stats b { color: var(--muted); font-weight: 700; }
+/* kestrel as the cover's round seal */
+.seal { flex: none; padding: 5px; border-radius: 50%; border: 2px solid var(--gold); margin-top: 6px; }
+.mark { display: block; width: 120px; height: 120px; transition: transform .25s ease; }
+.seal:hover .mark { transform: rotate(-6deg); }
 
 /* ---------- toolbar ---------- */
 .toolbar {
@@ -69,7 +92,7 @@ h1 .amp { color: var(--faint); }
 .tabs { display: flex; gap: 2px; background: var(--bg-sunken); padding: 3px; border-radius: 999px; }
 .tabs button {
   border: 0; background: none; cursor: pointer;
-  padding: 6px 14px; border-radius: 999px; font-size: 14px; color: var(--muted);
+  padding: 6px 16px; border-radius: 999px; font-size: 15px; color: var(--muted);
 }
 .tabs button[aria-selected="true"] { background: var(--bg-raised); color: var(--text); box-shadow: 0 0 0 1px var(--line); }
 .filters { display: flex; flex-wrap: wrap; gap: 8px; flex: 1; justify-content: flex-end; }
@@ -77,7 +100,7 @@ h1 .amp { color: var(--faint); }
   height: 36px; padding: 0 12px;
   background: var(--bg-raised); color: var(--text);
   border: 1px solid var(--line); border-radius: 8px;
-  font: 14px var(--sans);
+  font: 15px var(--sans);
   max-width: 100%;
 }
 .field select { padding-right: 30px; appearance: none; cursor: pointer;
@@ -114,16 +137,17 @@ h1 .amp { color: var(--faint); }
   text-align: left; opacity: 0; transition: opacity .25s ease;
 }
 .tile:hover .cap, .tile:focus-visible .cap { opacity: 1; }
-.cap strong { display: block; font: 500 15px/1.25 var(--display); color: #f4f1e8; }
+.cap strong { display: block; font: 400 18px/1.2 var(--display); color: #f4f1e8; }
 .cap span { font-size: 12px; color: #d8d4c6; }
 
 /* ---------- species / places cards ---------- */
 .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 18px 14px; }
 .group-h {
-  grid-column: 1 / -1; margin: 18px 0 -4px; padding-bottom: 6px;
-  font: 400 22px var(--display); border-bottom: 1px solid var(--line);
+  grid-column: 1 / -1; margin: 22px 0 -4px; padding-bottom: 6px;
+  font: 400 28px/1.15 var(--display); color: var(--text); border-bottom: 1px solid var(--line);
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px;
 }
-.group-h small { font: 13px var(--sans); color: var(--faint); margin-left: 8px; }
+.group-h small { font: 600 11px var(--sans); letter-spacing: .16em; text-transform: uppercase; color: var(--faint); }
 .group-h:first-child { margin-top: 0; }
 .card {
   display: block; text-align: left; border: 0; padding: 0; background: none; cursor: pointer;
@@ -131,9 +155,9 @@ h1 .amp { color: var(--faint); }
 .card .thumb { aspect-ratio: 4 / 3; border-radius: var(--radius); overflow: hidden; background: var(--bg-raised); }
 .card .thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s ease; }
 .card:hover .thumb img { transform: scale(1.04); }
-.card h3 { margin: 8px 0 0; font: 500 17px/1.25 var(--display); }
+.card h3 { margin: 8px 0 0; font: 400 21px/1.15 var(--display); }
 .card p { margin: 2px 0 0; font-size: 13px; color: var(--muted); }
-.card .sci { font-style: italic; }
+.card .sci { font: italic 15px var(--display); color: var(--olive); }
 
 .empty { text-align: center; color: var(--muted); padding: 80px 0; }
 .foot { padding: 48px 24px 40px; color: var(--faint); font-size: 13px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
@@ -165,11 +189,11 @@ dialog#lightbox::backdrop { background: rgba(0,0,0,.6); }
   border: 0; border-radius: 50%; background: rgba(255,255,255,.08); cursor: pointer; font-size: 24px; line-height: 1;
 }
 .lb-info { background: var(--bg); border-left: 1px solid var(--line); padding: 56px 24px 24px; overflow-y: auto; }
-.lb-info h2 { margin: 0; font: 500 30px/1.1 var(--display); letter-spacing: -.01em; }
-.lb-info .sci { margin: 4px 0 0; font: italic 16px var(--display); color: var(--muted); }
-.lb-info .fam { margin: 2px 0 0; font-size: 13px; color: var(--faint); }
+.lb-info h2 { margin: 0; font: 400 36px/1.05 var(--display); }
+.lb-info .sci { margin: 4px 0 0; font: italic 19px var(--display); color: #cdbf86; }
+.lb-info .fam { margin: 6px 0 0; font: 600 11px var(--sans); letter-spacing: .14em; text-transform: uppercase; color: var(--faint); }
 .badge { display: inline-block; margin-top: 10px; padding: 2px 10px; border-radius: 999px; font-size: 12px; background: var(--accent); color: var(--accent-ink); font-weight: 600; }
-.lb-info .about { margin: 18px 0 0; color: var(--text-soft); }
+.lb-info .about { margin: 18px 0 0; font: 18px/1.45 var(--display); color: var(--text-soft); }
 .lb-info .desc { margin: 14px 0 0; padding-left: 12px; border-left: 2px solid var(--accent); color: var(--muted); white-space: pre-line; }
 .lb-info .links { display: flex; flex-wrap: wrap; gap: 6px 14px; margin: 12px 0 0; font-size: 13px; }
 .meta { margin: 24px 0 0; padding: 0; border-top: 1px solid var(--line); }
@@ -198,9 +222,11 @@ dialog#lightbox::backdrop { background: rgba(0,0,0,.6); }
 @media (max-width: 640px) {
   :root { --row: 108px; --gap: 4px; }
   .wrap { padding: 0 16px; }
-  .masthead { padding: 32px 0 18px; }
-  .brand { gap: 14px; }
-  .mark { width: 60px; height: 60px; }
+  .masthead { padding: 26px 0 18px; }
+  .brand { gap: 12px; }
+  .mark { width: 64px; height: 64px; }
+  .seal { padding: 3px; margin-top: 2px; }
+  .stats { letter-spacing: .1em; }
   .filters { justify-content: stretch; }
   .filters .field { flex: 1 1 45%; }
   .field.search { flex-basis: 100%; }
