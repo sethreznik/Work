@@ -141,6 +141,7 @@
     {"name": "Eastern Phoebe", "scientific": "Sayornis phoebe", "family": "Tyrant Flycatchers (Tyrannidae)", "about": "A tail-wagging flycatcher that calls its own name and often nests under bridges and eaves."},
     {"name": "Great Crested Flycatcher", "scientific": "Myiarchus crinitus", "family": "Tyrant Flycatchers (Tyrannidae)", "about": "A cavity-nesting flycatcher with a lemon belly that often weaves shed snakeskin into its nest."},
     {"name": "Great Kiskadee", "scientific": "Pitangus sulphuratus", "family": "Tyrant Flycatchers (Tyrannidae)", "about": "A loud, bold flycatcher with a black-and-white masked head, named for its 'kis-ka-dee' call."},
+    {"name": "Say's Phoebe", "scientific": "Sayornis saya", "family": "Tyrant Flycatchers (Tyrannidae)", "about": "A soft gray-brown flycatcher with a cinnamon belly, typical of dry open country in the West; like other phoebes, it constantly dips its tail while perched.", "auto": "2026-11-24"},
     {"name": "Cedar Waxwing", "scientific": "Bombycilla cedrorum", "family": "Waxwings (Bombycillidae)", "about": "A sleek, crested fruit-eater named for the waxy red tips on its wing feathers."},
     {"name": "Checkered Woodpecker", "scientific": "Veniliornis mixtus", "family": "Woodpeckers (Picidae)", "about": "A small, finely barred woodpecker of South American open woodland."},
     {"name": "Downy Woodpecker", "scientific": "Dryobates pubescens", "family": "Woodpeckers (Picidae)", "about": "The smallest North American woodpecker and a common feeder visitor."},
