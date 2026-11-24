@@ -273,6 +273,16 @@
   }
 
   // ------------------------------------------------------------ lightbox
+  // Photo view: 1024px plus Flickr's 1600/2048px versions; the browser picks
+  // what the screen needs. sizes mirrors the layout (image area = viewport
+  // minus the details panel, which is clamp(300px, 24vw, 360px) wide).
+  const LB_SIZES = "(max-width: 900px) 100vw, (max-width: 1500px) calc(100vw - 324px), calc(100vw - 384px)";
+  function setLbSources(im, p) {
+    const big = p.big || {};
+    im.sizes = LB_SIZES;
+    im.srcset = [`${img(p, "b")} 1024w`, big.h && `${big.h} 1600w`, big.k && `${big.k} 2048w`].filter(Boolean).join(", ");
+    im.src = img(p, "b");
+  }
   function openLightbox(i) {
     if (i < 0 || i >= filtered.length) return;
     lbIndex = i;
@@ -281,11 +291,10 @@
     state.photo = p.id;
     writeHash();
 
-    el.lbImg.src = img(p, "b");
-    el.lbImg.srcset = "";
+    setLbSources(el.lbImg, p);
     el.lbImg.alt = `${p.species}${p.place ? ", " + p.place : ""}`;
     // warm the neighbours
-    [i - 1, i + 1].forEach((j) => { if (filtered[j]) new Image().src = img(filtered[j], "b"); });
+    [i - 1, i + 1].forEach((j) => { if (filtered[j]) setLbSources(new Image(), filtered[j]); });
 
     const seenInUS = DATA.photos.some((q) => q.species === p.species && q.country === "United States");
     const slug = p.species.replace(/['’]/g, "").replace(/\s+/g, "_");
