@@ -17,6 +17,8 @@
 }
 
 * { box-sizing: border-box; }
+/* Components below set display:flex/grid, which would override the hidden attribute. */
+[hidden] { display: none !important; }
 html { -webkit-text-size-adjust: 100%; }
 body {
   margin: 0;

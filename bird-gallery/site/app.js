@@ -339,7 +339,7 @@
   function set(patch) {
     Object.assign(state, patch);
     render();
-    window.scrollTo({ top: Math.min(window.scrollY, $(".toolbar").offsetTop), behavior: "instant" });
+    window.scrollTo({ top: Math.min(window.scrollY, $(".masthead").offsetHeight), behavior: "instant" });
   }
 
   let qTimer;
