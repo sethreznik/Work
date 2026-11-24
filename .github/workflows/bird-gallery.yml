@@ -62,6 +62,11 @@ jobs:
             git push
           fi
 
+      # Stamp asset URLs (styles.css?v=dev -> ?v=<commit>) so browsers fetch
+      # fresh CSS/JS after each deploy instead of a cached copy. Not committed.
+      - name: Cache-bust CSS and JS
+        run: sed -i "s/?v=dev/?v=${GITHUB_SHA::8}/g" bird-gallery/site/index.html
+
       - uses: actions/upload-pages-artifact@v3
         with:
           path: bird-gallery/site
