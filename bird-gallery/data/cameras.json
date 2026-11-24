@@ -1,0 +1,27 @@
+{
+  "_comment": "Readable names for camera and lens codes in the photos' EXIF data (used by the Not Birds set). Add a line when a new camera or lens shows up; unknown ones are shown as Flickr reports them.",
+  "cameras": {
+    "ILCE-7CR": "Sony α7CR",
+    "ILCE-7RM2": "Sony α7R II",
+    "ILCE-1M2": "Sony α1 II",
+    "DMC-LX100": "Panasonic Lumix LX100",
+    "Canon EOS 80D": "Canon EOS 80D",
+    "Canon EOS REBEL T3i": "Canon EOS Rebel T3i"
+  },
+  "lenses": {
+    "FE 24-70mm F2.8 GM": "Sony FE 24-70mm F2.8 GM",
+    "FE 24mm F2.8 G": "Sony FE 24mm F2.8 G",
+    "FE 14mm F1.8 GM": "Sony FE 14mm F1.8 GM",
+    "FE 50mm F2.5 G": "Sony FE 50mm F2.5 G",
+    "FE 200-600mm F5.6-6.3 G OSS": "Sony FE 200-600mm F5.6-6.3 G OSS",
+    "FE 200-600mm F5.6-6.3 G OSS + 1.4X Teleconverter": "Sony FE 200-600mm F5.6-6.3 G OSS + 1.4x teleconverter",
+    "E 150-500mm F5-6.7 A057": "Tamron 150-500mm F5-6.7",
+    "EF24-105mm f/4L IS USM": "Canon EF 24-105mm f/4L IS USM",
+    "EF50/1.8 II": "Canon EF 50mm f/1.8 II",
+    "EF100-400/4.5-5.6L IS USM": "Canon EF 100-400mm f/4.5-5.6L IS USM",
+    "EF100-400mm f/4.5-5.6L IS USM": "Canon EF 100-400mm f/4.5-5.6L IS USM"
+  },
+  "fixed_lens": {
+    "DMC-LX100": "Leica DC Vario-Summilux 10.9-34mm (built in)"
+  }
+}

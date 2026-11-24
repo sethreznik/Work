@@ -45,12 +45,14 @@ bird-gallery/
 ## Not Birds
 
 The header's **Birds / Not Birds** switch shows a second set from the
-[“Not Birds” album](https://www.flickr.com/photos/sethreznik/albums/72177720337069318):
-just the photos, newest first, with no filters, species or locations, and the
-photo view full width with no details panel. The sync pulls it into
-`data/raw_notbirds.json` and `site/notbirds.json` (location lookups are skipped,
-and filename titles like `DSC04765…jpg` are dropped). Each photo still gets a
-share link under `p/<id>/`.
+[“Not Birds” album](https://www.flickr.com/photos/sethreznik/albums/72177720337069318),
+newest first, filterable by camera settings (camera, lens, shutter speed,
+aperture, ISO). Each photo's side page shows where and when it was taken (with
+a map when geotagged) and its camera settings, plus "More like this" buttons
+that filter by any of them. The sync pulls the album into
+`data/raw_notbirds.json` and `site/notbirds.json`, including each photo's EXIF
+(fetched once and cached). `data/cameras.json` maps camera and lens codes to
+readable names (`ILCE-7CR` → Sony α7CR); add a line when new gear shows up.
 
 ## Updating
 

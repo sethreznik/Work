@@ -36,13 +36,13 @@
 
   <nav class="toolbar" aria-label="Filters">
     <div class="wrap toolbar-inner">
-      <div class="tabs" role="tablist">
+      <div class="tabs birds-only" role="tablist">
         <button role="tab" data-view="photos" aria-selected="true">Photos</button>
         <button role="tab" data-view="species" aria-selected="false">Species</button>
         <button role="tab" data-view="places" aria-selected="false">Places</button>
         <a class="tab-link" href="https://ebird.org/profile/ODExMDIzNA" target="_blank" rel="noopener">eBird <span aria-hidden="true">↗</span><span class="sr"> (opens in a new tab)</span></a>
       </div>
-      <div class="filters">
+      <div class="filters birds-only">
         <label class="field search">
           <span class="sr">Search</span>
           <input id="q" type="search" placeholder="Search birds, places…" autocomplete="off">
@@ -68,6 +68,8 @@
           </select>
         </label>
       </div>
+      <!-- Not Birds: camera-setting filters, built from notbirds.json -->
+      <div class="filters nb-only" id="nb-filters"></div>
     </div>
   </nav>
 

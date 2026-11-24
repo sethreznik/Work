@@ -100,7 +100,7 @@ def haversine_km(lat1, lon1, lat2, lon2):
 
 # ---------------------------------------------------------------- fetch
 
-def fetch(key, user_id, album_id, cache, with_places=True):
+def fetch(key, user_id, album_id, cache, with_places=True, with_exif=False):
     """Return raw photo records for every photo in the album.
 
     Geo place names need one extra call per photo, so they are reused from
@@ -144,6 +144,12 @@ def fetch(key, user_id, album_id, cache, with_places=True):
                     rec[k] = old.get(k)
             elif lat is not None:
                 rec.update(fetch_place_names(key, p["id"]))
+            # Camera data (one call per photo), reused unless the image was replaced.
+            if with_exif:
+                if old and old.get("secret") == rec["secret"] and "exif" in old:
+                    rec["exif"] = old["exif"]
+                else:
+                    rec["exif"] = fetch_exif(key, p["id"])
             out.append(rec)
         print(f"  album page {page}/{pages}: {len(out)} photos", file=sys.stderr)
         page += 1
@@ -188,6 +194,23 @@ def report(d):
     for r in d["removed"]:
         lines.append(f"- **removed** {label(r)}")
     return summary, lines
+
+
+EXIF_TAGS = ("Make", "Model", "LensModel", "Lens", "FocalLength", "ExposureTime", "FNumber", "ISO")
+
+
+def fetch_exif(key, photo_id):
+    """Selected EXIF fields (Flickr's 'clean' form where available), or {}."""
+    try:
+        ph = flickr("flickr.photos.getExif", key, photo_id=photo_id)["photo"]
+    except Exception as e:
+        print(f"  exif lookup failed for {photo_id}: {e}", file=sys.stderr)
+        return None  # retried next sync
+    out = {"camera": ph.get("camera") or None}
+    for e in ph.get("exif", []):
+        if e.get("tag") in EXIF_TAGS and e["tag"] not in out:
+            out[e["tag"]] = ((e.get("clean") or {}).get("_content") or (e.get("raw") or {}).get("_content") or "").strip() or None
+    return out
 
 
 def fetch_place_names(key, photo_id):
@@ -443,7 +466,36 @@ def build(raw, species_index, places_cfg):
 FILENAME_TITLE = re.compile(r"(\.(jpe?g|png|tiff?|heic|dng|arw|nef|cr\d)$)|^(DSC|IMG|_?MG|P\d{6}|PXL)[_\-]?\d", re.I)
 
 
-def build_notbirds(raw, places_cfg):
+def camera_info(exif, names):
+    """Readable camera settings from raw EXIF: camera, lens, focal length,
+    shutter speed (+ seconds, for sorting), aperture and ISO."""
+    if not exif:
+        return {}
+    model = exif.get("Model")
+    camera = names.get("cameras", {}).get(model) or exif.get("camera") or model
+    lens_raw = exif.get("LensModel") or exif.get("Lens")
+    lens = names.get("lenses", {}).get(lens_raw) or lens_raw or names.get("fixed_lens", {}).get(model)
+    shutter = secs = None
+    t = exif.get("ExposureTime") or ""
+    m = re.search(r"\((\d+/\d+)\)", t) or re.match(r"^\s*(\d+/\d+)", t) or re.match(r"^\s*([\d.]+)", t)
+    if m:
+        v = m.group(1)
+        secs = (lambda a, b: a / b)(*map(float, v.split("/"))) if "/" in v else float(v)
+        shutter = f"{v} s" if "/" in v else f"{float(v):g} s"
+    ap = None
+    m = re.search(r"([\d.]+)", exif.get("FNumber") or "")
+    if m:
+        ap = f"f/{float(m.group(1)):g}"
+    iso = f"ISO {exif['ISO']}" if exif.get("ISO") else None
+    fl = None
+    m = re.search(r"([\d.]+)", exif.get("FocalLength") or "")
+    if m:
+        fl = f"{float(m.group(1)):g} mm"
+    return {k: v for k, v in {"camera": camera, "lens": lens, "focal": fl, "shutter": shutter,
+                              "shutter_s": secs, "aperture": ap, "iso": iso}.items() if v is not None}
+
+
+def build_notbirds(raw, places_cfg, camera_names=None):
     """Photo list for the Not Birds set: no species or filters, but place names
     and coordinates for geotagged photos (named the same way as the birds).
     Filename-style titles ("DSC04765-DxO...jpg") are dropped."""
@@ -462,6 +514,7 @@ def build_notbirds(raw, places_cfg):
             "big": {k: r[f"url_{k}"] for k in ("h", "k") if r.get(f"url_{k}")} or None,
             "place": place, "area": area, "region": region, "country": country,
             "lat": r.get("latitude"), "lon": r.get("longitude"),
+            **camera_info(r.get("exif"), camera_names or {}),
         })
     photos.sort(key=lambda p: p["taken"] or "", reverse=True)
     return {"generated": last_change(raw), "photos": photos}
@@ -584,7 +637,7 @@ def main():
 
         print(f"Fetching Not Birds album {args.notbirds_album_id} ...", file=sys.stderr)
         old_nb = raw_nb
-        raw_nb = fetch(key, args.user_id, args.notbirds_album_id, raw_nb)
+        raw_nb = fetch(key, args.user_id, args.notbirds_album_id, raw_nb, with_exif=True)
         write_json(DATA / "raw_notbirds.json", raw_nb)
         nb_summary, nb_lines = report(diff(old_nb, raw_nb))
         print(f"Not Birds changes: {nb_summary}", file=sys.stderr)
@@ -609,7 +662,7 @@ def main():
 
     out = build(raw, species_index, places)
     write_json(SITE / "photos.json", out, indent=None)
-    nb = build_notbirds(raw_nb, places)
+    nb = build_notbirds(raw_nb, places, load_json(DATA / "cameras.json", {}))
     write_json(SITE / "notbirds.json", nb, indent=None)
     n_pages = write_photo_pages(out, nb)
     n_sp = len(out["species"])

@@ -59,8 +59,10 @@ h1 a.home { display: inline; }
 .sets button[data-set="notbirds"][aria-pressed="true"] { color: #4f6d8f; } /* kestrel wing blue */
 .sets button[aria-pressed="false"]:hover { color: var(--muted); }
 .sets .slash { color: var(--line); margin: 0 .14em; font-weight: 300; }
-/* Not Birds has no filters, tabs or species */
-body.is-notbirds .toolbar { display: none; }
+/* Birds-only and Not-Birds-only parts of the toolbar */
+body.is-notbirds .birds-only, body:not(.is-notbirds) .nb-only { display: none !important; }
+.w-camera { width: 170px; } .w-lens { width: 210px; } .w-shutter { width: 165px; }
+.w-aperture { width: 140px; } .w-iso { width: 120px; }
 h1 .amp { color: var(--faint); }
 
 /* ---------- toolbar ---------- */
@@ -231,6 +233,16 @@ dialog#lightbox.nb-entry .lb-tab { display: none; }
 .lb-map .leaflet-tile-pane { filter: saturate(.7) sepia(.12) brightness(1.02); }
 .lb-info .map-cap { margin: 6px 0 0; font-size: 13px; }
 .lb-info .links { display: flex; flex-wrap: wrap; gap: 6px 16px; margin: 14px 0 0; font-size: 14px; }
+/* Not Birds "More like this" filter buttons */
+.lb-info .more { margin-top: 18px; }
+.lb-info .more h3 { margin: 0 0 8px; font: 600 11px var(--sans); letter-spacing: .14em; text-transform: uppercase; color: var(--faint); }
+.pills { display: flex; flex-wrap: wrap; gap: 6px; }
+.pill {
+  display: inline-flex; align-items: baseline; gap: 6px; padding: 5px 11px; border-radius: 999px; cursor: pointer;
+  border: 1px solid var(--line); background: var(--bg-raised); color: var(--text); font: 14px var(--sans);
+}
+.pill span { font-size: 12px; color: var(--faint); }
+.pill:hover { border-color: var(--accent); color: var(--accent); }
 .lb-actions { display: flex; flex-direction: column; gap: 8px; margin-top: 22px; padding-top: 18px; border-top: 1px solid var(--line); }
 .btn {
   display: block; text-align: center; padding: 10px 14px; border-radius: 8px; cursor: pointer;
