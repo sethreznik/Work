@@ -272,6 +272,28 @@
     ).join("") || "";
   }
 
+  // ------------------------------------------------------------ bird groups
+  // Field-guide-style color coding: each Latin family belongs to a broad group,
+  // and the group's color drives the photo view's rule, buttons, links, spine
+  // tab and map pin. All colors pass WCAG AA with white text and on the page.
+  const GROUPS = [
+    ["Waterfowl", "#2c6a86", "Anatidae"],
+    ["Grebes, loons & cormorants", "#45618f", "Podicipedidae Gaviidae Phalacrocoracidae"],
+    ["Herons, cranes & rails", "#2f7369", "Ardeidae Threskiornithidae Gruidae Rallidae Aramidae"],
+    ["Shorebirds & gulls", "#7d6338", "Charadriidae Scolopacidae Recurvirostridae Haematopodidae Jacanidae Laridae Rynchopidae"],
+    ["Hawks, eagles & falcons", "#b03d22", "Accipitridae Pandionidae Falconidae Cathartidae"],
+    ["Owls", "#6e4c39", "Strigidae Tytonidae"],
+    ["Gamebirds", "#94622a", "Phasianidae Odontophoridae"],
+    ["Pigeons & doves", "#80577a", "Columbidae"],
+    ["Hummingbirds, kingfishers, woodpeckers & parrots", "#3f7330", "Trochilidae Alcedinidae Picidae Psittacidae"],
+    ["Flycatchers, swallows, thrushes & kin", "#64508c", "Tyrannidae Furnariidae Corvidae Hirundinidae Paridae Sittidae Troglodytidae Regulidae Turdidae Mimidae Bombycillidae Sturnidae Vireonidae Polioptilidae"],
+    ["Warblers", "#836a0d", "Parulidae"],
+    ["Sparrows, finches, tanagers & blackbirds", "#a64f1f", "Passerellidae Fringillidae Passeridae Cardinalidae Thraupidae Icteridae Emberizidae Calcariidae"],
+  ];
+  const GROUP_OF = new Map(GROUPS.flatMap(([name, color, fams]) => fams.split(" ").map((f) => [f, { name, color }])));
+  const DEFAULT_GROUP = { name: "", color: "#8a6f4e" };  // unidentified / unknown family
+  const groupOf = (family = "") => GROUP_OF.get((family.match(/\(([^)]+)\)/) || [])[1]) || DEFAULT_GROUP;
+
   // ------------------------------------------------------------ lightbox
   // Photo view: 1024px plus Flickr's 1600/2048px versions; the browser picks
   // what the screen needs. sizes mirrors the layout (image area = viewport
@@ -311,6 +333,9 @@
     const fam = info.family || "";
     const [, famCommon = fam, famLatin = ""] = fam.match(/^(.*?)\s*\(([^)]+)\)\s*$/) || [];
     $("#lb-tab").textContent = famCommon.replace(/ & /g, " and ");
+    const group = groupOf(fam);
+    el.lb.style.setProperty("--rule", group.color);
+    $("#lb-tab").title = group.name;
     const nPlaces = new Set(DATA.photos.filter((q) => q.species === p.species).map((q) => q.place).filter(Boolean)).size;
     const status = [famLatin, plural(nSame, "photo"), nPlaces ? plural(nPlaces, "location") : ""].filter(Boolean).join(" · ");
     const where = p.place
@@ -331,7 +356,8 @@
       ${p.note ? fact("Note", esc(p.note)) : ""}
       ${fact("Taken", p.taken ? esc(fmtDate(p.taken)) : `<span class="aside">unknown</span>`)}
       ${fact("Location", where)}
-      ${p.lat != null ? fact("Map", `<a href="https://www.openstreetmap.org/?mlat=${p.lat}&mlon=${p.lon}#map=15/${p.lat}/${p.lon}" target="_blank" rel="noopener">${p.lat.toFixed(4)}, ${p.lon.toFixed(4)} ↗</a>`) : ""}
+      ${p.lat != null ? `<div class="map-slot"></div>
+        <p class="map-cap"><a href="https://www.openstreetmap.org/?mlat=${p.lat}&mlon=${p.lon}#map=15/${p.lat}/${p.lon}" target="_blank" rel="noopener">${p.lat.toFixed(4)}, ${p.lon.toFixed(4)} · Open larger map ↗</a></p>` : ""}
       ${p.description ? fact("Notes", `<span class="desc">${esc(p.description)}</span>`) : ""}
       ${links.length ? `<p class="links">${links.join("")}</p>` : ""}
       <div class="lb-actions">
@@ -347,6 +373,53 @@
     if (!el.lb.open) el.lb.showModal();
     $(".lb").scrollTop = 0;
     el.lbInfo.scrollTop = 0;
+    showMap(p, el.lbInfo.querySelector(".map-slot"), group.color);
+  }
+
+  // ------------------------------------------------------------ inline map
+  // Leaflet (vendored in vendor/leaflet) loads the first time a photo with GPS
+  // is opened. One map is reused: its element moves into each new entry.
+  // Paths use BASE because the address bar shows p/<id>/ while a photo is open.
+  let leafletReady = null, lbMap = null, lbMarker = null;
+  const mapEl = document.createElement("div");
+  mapEl.className = "lb-map";
+
+  function loadLeaflet() {
+    leafletReady ??= new Promise((resolve, reject) => {
+      const css = Object.assign(document.createElement("link"), { rel: "stylesheet", href: `${BASE}vendor/leaflet/leaflet.css` });
+      const js = Object.assign(document.createElement("script"), { src: `${BASE}vendor/leaflet/leaflet.js` });
+      js.onload = () => resolve(window.L);
+      js.onerror = () => { leafletReady = null; reject(new Error("Leaflet failed to load")); };
+      document.head.append(css, js);
+    });
+    return leafletReady;
+  }
+
+  async function showMap(p, slot, color) {
+    if (!slot || p.lat == null) return;
+    slot.replaceWith(mapEl);
+    mapEl.setAttribute("aria-label", `Map showing where this photo was taken${p.place ? ": " + p.place : ""}`);
+    let L;
+    try { L = await loadLeaflet(); } catch (_) { mapEl.remove(); return; }
+    if (filtered[lbIndex] !== p) return; // user already moved on
+    const ll = [p.lat, p.lon];
+    if (!lbMap) {
+      lbMap = L.map(mapEl, {
+        scrollWheelZoom: false,          // scrolling the page shouldn't zoom the map
+        dragging: !L.Browser.mobile,     // ...or trap a finger on phones
+        tap: false,
+      });
+      // OpenStreetMap's standard tiles: free with attribution for light use
+      // (https://operations.osmfoundation.org/policies/tiles/).
+      L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        maxZoom: 19,
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors',
+      }).addTo(lbMap);
+      lbMarker = L.circleMarker(ll, { radius: 8, color: "#ffffff", weight: 3, fillColor: "#c9472a", fillOpacity: 1 }).addTo(lbMap);
+    }
+    lbMap.invalidateSize();
+    lbMap.setView(ll, 14, { animate: false });
+    lbMarker.setLatLng(ll).setStyle({ fillColor: color });
   }
 
   function closeLightbox() {

@@ -70,6 +70,12 @@ h1 .amp { color: var(--faint); }
   padding: 6px 14px; border-radius: 999px; font-size: 14px; color: var(--muted);
 }
 .tabs button[aria-selected="true"] { background: var(--bg-raised); color: var(--text); box-shadow: 0 0 0 1px var(--line); }
+/* external link styled like a tab: my eBird profile */
+.tabs .tab-link {
+  padding: 6px 14px; border-radius: 999px; font-size: 14px; color: var(--muted);
+  text-decoration: none; text-align: center; white-space: nowrap;
+}
+.tabs .tab-link:hover { color: var(--accent); }
 .filters { display: flex; flex-wrap: wrap; gap: 8px; flex: 1; justify-content: flex-end; }
 .field select, .field input {
   height: 36px; padding: 0 12px;
@@ -121,7 +127,7 @@ h1 .amp { color: var(--faint); }
   grid-column: 1 / -1; margin: 18px 0 -4px; padding-bottom: 6px;
   font: 400 22px var(--display); border-bottom: 1px solid var(--line);
 }
-.group-h small { font: 13px var(--sans); color: var(--faint); margin-left: 8px; }
+.group-h small { font: 13px var(--sans); color: var(--faint); margin-left: 8px; white-space: nowrap; }
 .group-h:first-child { margin-top: 0; }
 .card {
   display: block; text-align: left; border: 0; padding: 0; background: none; cursor: pointer;
@@ -166,10 +172,13 @@ dialog#lightbox::backdrop { background: rgba(0,0,0,.6); }
 
 /* the "spine" tab with the family name, like the guide's section tabs */
 .lb-tab {
-  background: #e7e3d9; border-left: 1px solid #cfc9ba; border-right: 1px solid #d9d3c5;
+  /* tinted with the bird group's color (set per photo as --rule) */
+  background: color-mix(in srgb, var(--rule) 16%, #ece8df);
+  border-left: 1px solid color-mix(in srgb, var(--rule) 35%, #cfc9ba);
+  border-right: 1px solid color-mix(in srgb, var(--rule) 25%, #d9d3c5);
   writing-mode: vertical-rl; transform: rotate(180deg);
   padding: 28px 0; text-align: left;
-  font: 500 17px/32px var(--sans); letter-spacing: .02em; color: #8a8576;
+  font: 500 17px/32px var(--sans); letter-spacing: .02em; color: var(--rule);
   overflow: hidden; white-space: nowrap;
 }
 
@@ -193,6 +202,14 @@ dialog#lightbox::backdrop { background: rgba(0,0,0,.6); }
 .lb-info .fact em { font: italic 15px var(--entry-serif); letter-spacing: .06em; }
 .lb-info .aside { color: var(--faint); }
 .lb-info .desc { white-space: pre-line; }
+.lb-map {
+  height: 200px; margin: 14px 0 0; border-radius: 6px; border: 1px solid var(--line);
+  background: #ebe7dd; isolation: isolate; /* keep Leaflet's z-indexes inside the map */
+}
+.lb-map .leaflet-control-attribution { font-size: 10px; }
+/* soften OSM's bright default colors to suit the page */
+.lb-map .leaflet-tile-pane { filter: saturate(.7) sepia(.12) brightness(1.02); }
+.lb-info .map-cap { margin: 6px 0 0; font-size: 13px; }
 .lb-info .links { display: flex; flex-wrap: wrap; gap: 6px 16px; margin: 14px 0 0; font-size: 14px; }
 .lb-actions { display: flex; flex-direction: column; gap: 8px; margin-top: 22px; padding-top: 18px; border-top: 1px solid var(--line); }
 .btn {
@@ -227,7 +244,7 @@ dialog#lightbox::backdrop { background: rgba(0,0,0,.6); }
   .filters .field { flex: 1 1 45%; }
   .field.search { flex-basis: 100%; }
   .field.search input, .field select { width: 100%; }
-  .tabs { width: 100%; } .tabs button { flex: 1; }
+  .tabs { width: 100%; } .tabs button, .tabs .tab-link { flex: 1; }
   .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px 10px; }
   .card h3 { font-size: 15px; }
   .tile .cap { display: none; }
