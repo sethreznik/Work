@@ -1,19 +1,22 @@
 :root {
-  --bg: #13140f;
-  --bg-raised: #1c1d17;
-  --bg-sunken: #0d0e0a;
-  --line: #2e3027;
-  --text: #ece8dc;
-  --muted: #a3a091;
-  --faint: #6f6d62;
-  --accent: #d9a441;      /* goldfinch */
-  --accent-ink: #1a1405;
+  /* "Field guide" palette: warm paper, ink, forest green */
+  --bg: #f3eee2;
+  --bg-raised: #fbf8f1;
+  --bg-sunken: #e6dfcf;
+  --line: #d9cfba;
+  --text: #24261f;
+  --muted: #5f5c4f;
+  --faint: #7d7866;
+  --accent: #3d6b47;      /* forest green */
+  --accent-ink: #ffffff;
+  --lb-accent: #9cc29b;   /* accent used inside the dark photo view */
+  --lb-accent-ink: #12210f;
   --serif: "Fraunces", Georgia, serif;
   --sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
   --row: 260px;
   --gap: 6px;
   --radius: 6px;
-  color-scheme: dark;
+  color-scheme: light;
 }
 
 * { box-sizing: border-box; }
@@ -110,7 +113,7 @@ h1 .amp { color: var(--faint); }
   text-align: left; opacity: 0; transition: opacity .25s ease;
 }
 .tile:hover .cap, .tile:focus-visible .cap { opacity: 1; }
-.cap strong { display: block; font: 600 15px/1.25 var(--serif); }
+.cap strong { display: block; font: 600 15px/1.25 var(--serif); color: #f4f1e8; }
 .cap span { font-size: 12px; color: #d8d4c6; }
 
 /* ---------- species / places cards ---------- */
@@ -136,7 +139,12 @@ h1 .amp { color: var(--faint); }
 .foot p { margin: 0; }
 
 /* ---------- lightbox ---------- */
+/* The photo view is always dark (lightbox effect), whatever the page palette. */
 dialog#lightbox {
+  --bg: #11120f; --bg-raised: #1c1d19; --line: #2f302b;
+  --text: #ece8dc; --text-soft: #d6d2c4; --muted: #a3a091; --faint: #75736a;
+  --accent: var(--lb-accent); --accent-ink: var(--lb-accent-ink);
+  color-scheme: dark;
   width: 100vw; height: 100vh; max-width: none; max-height: none; margin: 0; padding: 0;
   border: 0; background: #080906; color: var(--text);
 }
@@ -160,7 +168,7 @@ dialog#lightbox::backdrop { background: rgba(0,0,0,.6); }
 .lb-info .sci { margin: 4px 0 0; font: italic 17px var(--serif); color: var(--muted); }
 .lb-info .fam { margin: 2px 0 0; font-size: 13px; color: var(--faint); }
 .badge { display: inline-block; margin-top: 10px; padding: 2px 10px; border-radius: 999px; font-size: 12px; background: var(--accent); color: var(--accent-ink); font-weight: 600; }
-.lb-info .about { margin: 18px 0 0; color: #d6d2c4; }
+.lb-info .about { margin: 18px 0 0; color: var(--text-soft); }
 .lb-info .desc { margin: 14px 0 0; padding-left: 12px; border-left: 2px solid var(--accent); color: var(--muted); white-space: pre-line; }
 .lb-info .links { display: flex; flex-wrap: wrap; gap: 6px 14px; margin: 12px 0 0; font-size: 13px; }
 .meta { margin: 24px 0 0; padding: 0; border-top: 1px solid var(--line); }
