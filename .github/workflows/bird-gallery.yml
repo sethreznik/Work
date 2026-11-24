@@ -7,6 +7,8 @@
 #   1. Settings → Secrets and variables → Actions → New repository secret:
 #        FLICKR_API_KEY = <your Flickr API key>
 #   2. Settings → Pages → Build and deployment → Source: "GitHub Actions"
+#   3. (Optional) secret ANTHROPIC_API_KEY = <Anthropic API key>: when a new
+#      species shows up, Claude writes its entry in data/species.json.
 name: Bird gallery
 
 on:
@@ -37,10 +39,14 @@ jobs:
         with:
           python-version: "3.12"
 
+      - name: Install Anthropic SDK (writes entries for new species)
+        run: pip install "anthropic==2.13.0"
+
       - name: Sync from Flickr and build photos.json
         id: sync
         env:
           FLICKR_API_KEY: ${{ secrets.FLICKR_API_KEY }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: |
           if [ -n "$FLICKR_API_KEY" ]; then
             python bird-gallery/scripts/sync.py --fetch

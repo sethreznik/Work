@@ -26,10 +26,16 @@ bird-gallery/
   `Female Cardinal` → Northern Cardinal (*Female*), `Saffron Finch (female)`,
   `American robin(?)` → *Tentative ID*. Titles that are still filenames
   (`DSC05503-….jpg`) show up as **Unidentified**, so rename them on Flickr.
-* **Bird details** (scientific name, family, blurb) come from
-  `data/species.json`. A species that isn't listed there gets a Wikipedia
-  summary at sync time. To fix a mismatched title, add it to that species'
-  `aliases`.
+* **Bird details** (scientific name, family, short note) come from
+  `data/species.json`. When you photograph a species that isn't listed, the
+  sync asks Claude to write its entry in the same style and adds it to
+  `species.json` marked `"auto"` with the date (needs the `ANTHROPIC_API_KEY`
+  Actions secret; costs a few cents per new species). Review those entries,
+  edit them freely, and delete `"auto"` once checked: the sync never
+  overwrites existing entries. If a title is too vague to name one species
+  ("Sparrow"), the run summary says so and the title is noted in
+  `data/species_skipped.json`; retitle the photo on Flickr. To fix a
+  mismatched title, add it to that species' `aliases`.
 * **Location** comes from the photo's geotag. If it falls inside a spot in
   `data/places.json` it gets that name (e.g. *Prospect Park*). Otherwise it
   falls back to Flickr's borough or county. Photos with no geotag borrow the
@@ -95,6 +101,8 @@ build; they are not committed.
 1. Repo **Settings → Secrets and variables → Actions → New repository secret**:
    name `FLICKR_API_KEY`, value = your Flickr API key. Only the key is needed;
    the secret is not.
+   Optionally add `ANTHROPIC_API_KEY` too, so new species get entries written
+   automatically.
 2. Repo **Settings → Pages → Build and deployment → Source: GitHub Actions**.
 3. Merge this into the default branch (or run the *Bird gallery* workflow from
    the Actions tab). The site deploys to `https://<user>.github.io/<repo>/`.

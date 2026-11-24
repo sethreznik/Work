@@ -1,5 +1,5 @@
 {
-  "_comment": "Bird details shown on the site. 'name' is the canonical common name; Flickr titles are matched against name + aliases ignoring case, hyphens and extra spaces. Species not listed here get a Wikipedia summary at sync time (if online). Edit freely.",
+  "_comment": "Bird details shown on the site. 'name' is the canonical common name; Flickr titles are matched against name + aliases ignoring case, hyphens and extra spaces. When a new species is photographed, the sync asks Claude to write its entry and adds it here marked \"auto\" with the date; review those and edit freely (the sync never overwrites existing entries). Delete the \"auto\" field once you've checked one.",
   "species": [
     {"name": "Baltimore Oriole", "scientific": "Icterus galbula", "family": "Blackbirds & Orioles (Icteridae)", "about": "A flame-orange and black songbird that weaves a hanging, sock-like nest."},
     {"name": "Common Grackle", "scientific": "Quiscalus quiscula", "family": "Blackbirds & Orioles (Icteridae)", "about": "A long-tailed blackbird with an iridescent purple-bronze sheen and pale yellow eyes."},
