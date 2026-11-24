@@ -54,6 +54,12 @@ that filter by any of them. The sync pulls the album into
 (fetched once and cached). `data/cameras.json` maps camera and lens codes to
 readable names (`ILCE-7CR` → Sony α7CR); add a line when new gear shows up.
 
+Captions and locations for Not Birds photos live in `data/notbirds_notes.json`
+(written by looking at each photo). For photos without GPS, the location there
+comes from the photo's other Flickr album, from recognizing the place in the
+photo, or from same-day photos, and the site marks it "approximate". New
+uploads show no caption until a line is added.
+
 ## Updating
 
 The sync re-reads the whole album every time, so it picks up:
