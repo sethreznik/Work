@@ -371,11 +371,13 @@
     const s = e.target.closest("[data-go-species]");
     const pl = e.target.closest("[data-go-place]");
     if (!s && !pl) return;
-    const id = filtered[lbIndex]?.id;
-    if (s) set({ species: s.dataset.goSpecies, place: "", q: "", view: "photos" });
-    if (pl) set({ place: pl.dataset.goPlace, species: "", q: "", view: "photos" });
-    const i = filtered.findIndex((p) => p.id === id);
-    if (i >= 0) openLightbox(i); else closeLightbox();
+    // Close the photo and show the filtered gallery, scrolled to the results.
+    closeLightbox();
+    const patch = s
+      ? { species: s.dataset.goSpecies, place: "", q: "" }
+      : { place: pl.dataset.goPlace, species: "", q: "" };
+    set({ ...patch, view: "photos", photo: null });
+    window.scrollTo({ top: $(".masthead").offsetHeight, behavior: "instant" });
   });
   $("#lb-prev").addEventListener("click", () => openLightbox(lbIndex - 1));
   $("#lb-next").addEventListener("click", () => openLightbox(lbIndex + 1));
