@@ -7,7 +7,7 @@
     <clipPath id="k-tail"><path d="M108 150 L130 148 L146 200 L120 200 Z"/></clipPath>
   </defs>
   <g clip-path="url(#k-disc)">
-    <rect width="200" height="200" fill="#2f4a46"/>
+    <rect width="200" height="200" fill="#9fc4d2"/>
     <circle cx="150" cy="54" r="30" fill="#d9a441" opacity=".9"/>
 
     <!-- tail -->
