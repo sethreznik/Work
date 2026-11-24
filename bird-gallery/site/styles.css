@@ -70,6 +70,12 @@ h1 .amp { color: var(--faint); }
   padding: 6px 14px; border-radius: 999px; font-size: 14px; color: var(--muted);
 }
 .tabs button[aria-selected="true"] { background: var(--bg-raised); color: var(--text); box-shadow: 0 0 0 1px var(--line); }
+/* external link styled like a tab: my eBird profile */
+.tabs .tab-link {
+  padding: 6px 14px; border-radius: 999px; font-size: 14px; color: var(--muted);
+  text-decoration: none; text-align: center; white-space: nowrap;
+}
+.tabs .tab-link:hover { color: var(--accent); }
 .filters { display: flex; flex-wrap: wrap; gap: 8px; flex: 1; justify-content: flex-end; }
 .field select, .field input {
   height: 36px; padding: 0 12px;
@@ -121,7 +127,7 @@ h1 .amp { color: var(--faint); }
   grid-column: 1 / -1; margin: 18px 0 -4px; padding-bottom: 6px;
   font: 400 22px var(--display); border-bottom: 1px solid var(--line);
 }
-.group-h small { font: 13px var(--sans); color: var(--faint); margin-left: 8px; }
+.group-h small { font: 13px var(--sans); color: var(--faint); margin-left: 8px; white-space: nowrap; }
 .group-h:first-child { margin-top: 0; }
 .card {
   display: block; text-align: left; border: 0; padding: 0; background: none; cursor: pointer;
@@ -227,7 +233,7 @@ dialog#lightbox::backdrop { background: rgba(0,0,0,.6); }
   .filters .field { flex: 1 1 45%; }
   .field.search { flex-basis: 100%; }
   .field.search input, .field select { width: 100%; }
-  .tabs { width: 100%; } .tabs button { flex: 1; }
+  .tabs { width: 100%; } .tabs button, .tabs .tab-link { flex: 1; }
   .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px 10px; }
   .card h3 { font-size: 15px; }
   .tile .cap { display: none; }
