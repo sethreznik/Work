@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-label="American Kestrel">
+  <defs>
+    <clipPath id="k-disc"><circle cx="100" cy="100" r="96"/></clipPath>
+    <clipPath id="k-head"><circle cx="88" cy="62" r="27"/></clipPath>
+    <clipPath id="k-back"><path d="M96 80 C118 78 136 96 138 124 L118 128 C114 108 106 94 96 92 Z"/></clipPath>
+    <clipPath id="k-breast"><path d="M70 84 C54 108 58 146 88 164 L112 164 C104 136 100 108 96 86 Z"/></clipPath>
+    <clipPath id="k-tail"><path d="M108 150 L130 148 L146 200 L120 200 Z"/></clipPath>
+  </defs>
+  <g clip-path="url(#k-disc)">
+    <rect width="200" height="200" fill="#2f4a46"/>
+    <circle cx="150" cy="54" r="30" fill="#d9a441" opacity=".9"/>
+
+    <!-- tail -->
+    <g clip-path="url(#k-tail)">
+      <rect x="100" y="140" width="60" height="60" fill="#c9643a"/>
+      <rect x="100" y="182" width="60" height="7" fill="#1d1d1b"/>
+      <rect x="100" y="189" width="60" height="11" fill="#f3e6cf"/>
+    </g>
+
+    <!-- back (rufous, barred) -->
+    <g clip-path="url(#k-back)">
+      <rect x="90" y="70" width="60" height="70" fill="#c9643a"/>
+      <g fill="#1d1d1b">
+        <rect x="90" y="96" width="60" height="3"/>
+        <rect x="90" y="106" width="60" height="3"/>
+        <rect x="90" y="116" width="60" height="3"/>
+      </g>
+    </g>
+
+    <!-- breast (buff, spotted) -->
+    <g clip-path="url(#k-breast)">
+      <rect x="50" y="80" width="70" height="90" fill="#f0c99a"/>
+      <path d="M50 80 H120 V104 C100 110 76 106 50 98 Z" fill="#f3e6cf"/>
+      <g fill="#1d1d1b">
+        <circle cx="78" cy="118" r="2.6"/><circle cx="90" cy="124" r="2.6"/>
+        <circle cx="72" cy="132" r="2.6"/><circle cx="84" cy="138" r="2.6"/>
+        <circle cx="96" cy="140" r="2.6"/><circle cx="78" cy="150" r="2.6"/>
+        <circle cx="92" cy="154" r="2.6"/>
+      </g>
+    </g>
+
+    <!-- wing (blue-gray, rows of dark spots) -->
+    <path d="M100 96 C126 98 140 128 132 166 L112 168 C106 140 100 118 100 96 Z" fill="#7f97b2"/>
+    <g fill="#1d1d1b">
+      <circle cx="114" cy="122" r="3"/><circle cx="124" cy="128" r="3"/>
+      <circle cx="113" cy="136" r="3"/><circle cx="124" cy="142" r="3"/>
+      <circle cx="115" cy="150" r="3"/><circle cx="125" cy="156" r="3"/>
+    </g>
+    <path d="M112 168 L132 166 L128 178 Z" fill="#3c4a5c"/>
+
+    <!-- head -->
+    <g clip-path="url(#k-head)">
+      <rect x="55" y="30" width="70" height="70" fill="#f3e6cf"/>
+      <path d="M55 30 H125 V56 C110 50 90 48 60 56 Z" fill="#7f97b2"/>
+      <circle cx="94" cy="40" r="7" fill="#c9643a"/>
+      <path d="M100 52 H125 V100 H104 C104 80 106 64 100 52 Z" fill="#c9643a"/>
+      <path d="M79 68 C82 76 82 86 78 96 C74 86 74 76 79 68 Z" fill="#1d1d1b"/>
+      <path d="M102 62 C106 70 106 80 102 90 C98 80 98 70 102 62 Z" fill="#1d1d1b"/>
+    </g>
+    <!-- eye -->
+    <circle cx="78" cy="60" r="8" fill="#e8b33c"/>
+    <circle cx="78" cy="60" r="6" fill="#1d1d1b"/>
+    <circle cx="76" cy="58" r="1.8" fill="#f3e6cf"/>
+    <!-- beak: yellow cere + hooked slate bill -->
+    <path d="M66 54 C70 56 70 66 66 69 L61 68 L61 55 Z" fill="#e8b33c"/>
+    <path d="M63 55 C55 55 49 60 48 68 C48 72 50 75 53 76 C53 72 55 69 63 68 Z" fill="#3c4a5c"/>
+
+    <!-- branch + feet -->
+    <path d="M0 168 L200 158 L200 168 L0 178 Z" fill="#5a3e2b"/>
+    <path d="M150 160 L178 132 L182 135 L158 160 Z" fill="#5a3e2b"/>
+    <ellipse cx="176" cy="128" rx="10" ry="5" transform="rotate(-40 176 128)" fill="#8aa06a"/>
+    <g fill="#e8b33c">
+      <rect x="88" y="162" width="5" height="9" rx="2"/>
+      <rect x="98" y="161" width="5" height="9" rx="2"/>
+    </g>
+  </g>
+</svg>
