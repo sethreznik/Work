@@ -11,7 +11,11 @@ Inputs (all in bird-gallery/data/):
     raw_photos.json  cached Flickr metadata (written by --fetch)
     species.json     bird details + name aliases (hand-edited)
     places.json      named birding spots matched by GPS (hand-edited)
-    wiki_cache.json  Wikipedia summaries for species not in species.json
+    species_skipped.json  titles Claude couldn't map to one species (not retried)
+
+New species: when a title resolves to a species missing from species.json,
+species_writer.py asks Claude to write its entry (needs ANTHROPIC_API_KEY),
+which is added to species.json marked "auto" for review. --no-write skips it.
 
 Output: bird-gallery/site/photos.json
 Standard library only.
@@ -193,24 +197,79 @@ def fetch_place_names(key, photo_id):
     return names
 
 
-def fetch_wiki(names, cache):
-    """Fill cache with Wikipedia summaries for the given species names."""
-    for name in names:
-        if name in cache:
+# ---------------------------------------------------------------- new species
+
+def write_species_file(doc):
+    """species.json, one entry per line, grouped by family."""
+    entries = sorted(doc["species"], key=lambda e: (e.get("family", ""), e["name"]))
+    body = ",\n".join("    " + json.dumps(e, ensure_ascii=False) for e in entries)
+    (DATA / "species.json").write_text(
+        "{\n  \"_comment\": " + json.dumps(doc.get("_comment", ""), ensure_ascii=False) +
+        ",\n  \"species\": [\n" + body + "\n  ]\n}\n")
+
+
+def add_new_species(raw, species_doc, species_index):
+    """Have Claude write entries for species missing from species.json.
+
+    Returns (species_index, report_lines). Titles Claude can't pin to one
+    species are remembered in species_skipped.json so they aren't re-sent on
+    every run; API failures are retried next sync.
+    """
+    skipped = load_json(DATA / "species_skipped.json", {})
+    groups = {}
+    for r in raw:
+        name, _ = species_index.resolve(r["title"])
+        if name == UNIDENTIFIED or name in species_index.entries:
             continue
-        title = urllib.parse.quote(name.replace(" ", "_"))
-        try:
-            d = http_json(f"https://en.wikipedia.org/api/rest_v1/page/summary/{title}")
-            cache[name] = {"about": first_sentences(d.get("extract", ""), 2),
-                           "wikipedia": d.get("content_urls", {}).get("desktop", {}).get("page")}
-            print(f"  wikipedia: {name}", file=sys.stderr)
-        except Exception as e:
-            print(f"  wikipedia lookup failed for {name}: {e}", file=sys.stderr)
+        title = re.sub(r"\s*\(.*?\)\s*$", "", r["title"]).strip()
+        if norm_key(title) in skipped:
+            continue
+        g = groups.setdefault(name, {"title": title, "places": [], "caption": None})
+        where = ", ".join(dict.fromkeys(x for x in (r.get("locality"), r.get("county"), r.get("region"), r.get("country")) if x))
+        if where and where not in g["places"]:
+            g["places"].append(where)
+        g["caption"] = g["caption"] or r.get("description") or None
+    if not groups:
+        return species_index, []
 
+    from species_writer import write_entries
+    examples = [species_index.entries[n] for n in
+                ("American Kestrel", "Rufous Hornero", "Magnolia Warbler", "Black-crowned Night-Heron", "Monk Parakeet")
+                if n in species_index.entries]
+    examples = [{k: v for k, v in e.items() if k in ("name", "scientific", "family", "about")} for e in examples]
+    families = sorted({e["family"] for e in species_doc["species"] if e.get("family")})
+    print(f"New species to write: {', '.join(groups)}", file=sys.stderr)
 
-def first_sentences(text, n):
-    parts = re.split(r"(?<=[.!?])\s+", text.strip())
-    return " ".join(parts[:n])
+    today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+    lines = []
+    for req, res, err in write_entries(list(groups.values()), examples, families):
+        title = req["title"]
+        if err:
+            lines.append(f"- **not written yet** “{title}”: {err} (will retry next sync)")
+            continue
+        if not res["is_species"]:
+            skipped[norm_key(title)] = {"title": title, "reason": res["reason"], "date": today}
+            lines.append(f"- **needs a clearer title** “{title}”: {res['reason']}. Retitle it on Flickr.")
+            continue
+        existing = species_index.lookup.get(norm_key(res["name"]))
+        if existing:  # just a new spelling of a species we already have
+            entry = next(e for e in species_doc["species"] if e["name"] == existing)
+            entry.setdefault("aliases", [])
+            if title not in entry["aliases"]:
+                entry["aliases"].append(title)
+            lines.append(f"- **matched** “{title}” → {existing} (added as an alternate name)")
+        else:
+            entry = {"name": res["name"], "scientific": res["scientific"], "family": res["family"],
+                     "about": res["about"], "auto": today}
+            if norm_key(title) != norm_key(res["name"]):
+                entry["aliases"] = [title]
+            species_doc["species"].append(entry)
+            lines.append(f"- **new species** {res['name']} (*{res['scientific']}*, {res['family']}): {res['about']}")
+        species_index = SpeciesIndex(species_doc["species"])
+
+    write_species_file(species_doc)
+    write_json(DATA / "species_skipped.json", skipped)
+    return species_index, lines
 
 
 # ---------------------------------------------------------------- build
@@ -320,7 +379,7 @@ def last_change(raw):
     return when.strftime("%Y-%m-%dT%H:%M:%SZ")
 
 
-def build(raw, species_index, places_cfg, wiki):
+def build(raw, species_index, places_cfg):
     places = places_cfg.get("places", [])
     region_names = places_cfg.get("region_names", {})
     photos, used = [], {}
@@ -354,11 +413,7 @@ def build(raw, species_index, places_cfg, wiki):
         e = dict(species_index.entries.get(name) or {})
         e.pop("aliases", None)
         e.pop("name", None)
-        w = wiki.get(name) or {}
-        if not e.get("about") and w.get("about"):
-            e["about"] = w["about"]
-        if w.get("wikipedia"):
-            e["wikipedia"] = w["wikipedia"]
+        e.pop("auto", None)
         species_out[name] = e
 
     photos.sort(key=lambda p: p["taken"] or "", reverse=True)
@@ -443,15 +498,15 @@ def write_photo_pages(out):
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--fetch", action="store_true", help="pull fresh metadata from Flickr (needs FLICKR_API_KEY)")
-    ap.add_argument("--no-wiki", action="store_true", help="skip Wikipedia lookups for unknown species")
+    ap.add_argument("--no-write", action="store_true", help="don't ask Claude to write entries for new species")
     ap.add_argument("--user-id", default=os.environ.get("FLICKR_USER_ID", DEFAULT_USER_ID))
     ap.add_argument("--album-id", default=os.environ.get("FLICKR_ALBUM_ID", DEFAULT_ALBUM_ID))
     args = ap.parse_args()
 
     raw = load_json(DATA / "raw_photos.json", [])
-    species_index = SpeciesIndex(load_json(DATA / "species.json", {"species": []})["species"])
+    species_doc = load_json(DATA / "species.json", {"species": []})
+    species_index = SpeciesIndex(species_doc["species"])
     places = load_json(DATA / "places.json", {"places": []})
-    wiki = load_json(DATA / "wiki_cache.json", {})
 
     if args.fetch:
         key = os.environ.get("FLICKR_API_KEY")
@@ -474,13 +529,16 @@ def main():
             with open(os.environ["GITHUB_OUTPUT"], "a") as f:
                 f.write(f"summary={summary}\n")
 
-        if not args.no_wiki:
-            unknown = {species_index.resolve(r["title"])[0] for r in raw}
-            unknown -= set(species_index.entries) | {UNIDENTIFIED}
-            fetch_wiki(sorted(unknown), wiki)
-            write_json(DATA / "wiki_cache.json", wiki)
 
-    out = build(raw, species_index, places, wiki)
+    if not args.no_write:
+        species_index, lines = add_new_species(raw, species_doc, species_index)
+        for line in lines:
+            print("  " + line.replace("**", "").replace("*", ""), file=sys.stderr)
+        if lines and os.environ.get("GITHUB_STEP_SUMMARY"):
+            with open(os.environ["GITHUB_STEP_SUMMARY"], "a") as f:
+                f.write("\n### Species entries\n\n" + "\n".join(lines) + "\n")
+
+    out = build(raw, species_index, places)
     write_json(SITE / "photos.json", out, indent=None)
     n_pages = write_photo_pages(out)
     n_sp = len(out["species"])
@@ -488,7 +546,7 @@ def main():
     print(f"Wrote site/photos.json: {len(out['photos'])} photos, {n_sp} species, {n_pl} places; {n_pages} share pages in site/p/", file=sys.stderr)
     missing = sorted(s for s in out["species"] if not out["species"][s].get("about"))
     if missing:
-        print("Species without details (add them to data/species.json): " + ", ".join(missing), file=sys.stderr)
+        print("Species without details (add them to data/species.json, or set ANTHROPIC_API_KEY): " + ", ".join(missing), file=sys.stderr)
 
 
 if __name__ == "__main__":
