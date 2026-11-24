@@ -228,7 +228,7 @@
       (a === "Not yet identified") - (b === "Not yet identified") || a.localeCompare(b));
     el.speciesView.innerHTML = fams.map((fam) => {
       const sp = [...groups.get(fam).entries()].sort((a, b) => a[0].localeCompare(b[0]));
-      return `<h2 class="group-h">${esc(fam)}<small>${plural(sp.length, "species")}</small></h2>` +
+      return `<h2 class="group-h">${esc(fam.replace(/ & /g, " and "))}<small>${plural(sp.length, "species")}</small></h2>` +
         sp.map(([name, ps]) => {
           const info = DATA.species[name] || {};
           const places = new Set(ps.map((p) => p.place).filter(Boolean));
