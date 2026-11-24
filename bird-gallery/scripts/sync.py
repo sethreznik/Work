@@ -469,7 +469,7 @@ PHOTO_PAGE = """<!doctype html>
 <meta property="og:image:alt" content="{alt}">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="canonical" href="__SITE_URL__/p/{id}/">
-<link rel="icon" href="../../kestrel.svg" type="image/svg+xml">
+<link rel="icon" href="../../{icon}" type="image/svg+xml">
 <meta http-equiv="refresh" content="0; url=../../#{hashpre}photo={id}">
 <script>var h=location.hash.slice(1);location.replace("../../#{hashpre}photo={id}"+(h?"&"+h:""));</script>
 <style>body{{margin:0;font:16px/1.5 system-ui,sans-serif;background:#f3eee2;color:#24261f;display:grid;place-items:center;min-height:100vh;text-align:center}}img{{max-width:min(90vw,640px);height:auto;border-radius:6px}}a{{color:#3d6b47}}</style>
@@ -501,7 +501,7 @@ def write_photo_pages(out, notbirds=None):
         scale = 1024 / max(p["w"], p["h"])
         label = p["title"] or "Not Birds"
         page = PHOTO_PAGE.format(
-            id=e(p["id"]), hashpre="set=notbirds&", linktext="view in Not Birds",
+            id=e(p["id"]), hashpre="set=notbirds&", linktext="view in Not Birds", icon="notbirds.svg",
             title=e(f"{label} · Seth Reznik"),
             desc=e(f"Photograph by Seth Reznik{', ' + day if day else ''}."),
             species=e(label), alt=e(p["title"] or "Photograph by Seth Reznik"),
@@ -521,7 +521,7 @@ def write_photo_pages(out, notbirds=None):
         scale = 1024 / max(p["w"], p["h"])
         tw, th = round(p["w"] * scale * 640 / 1024), round(p["h"] * scale * 640 / 1024)
         page = PHOTO_PAGE.format(
-            id=e(p["id"]), hashpre="", linktext="view in the gallery", title=e(f"{species} · Seth Reznik Birds"), desc=e(desc),
+            id=e(p["id"]), hashpre="", linktext="view in the gallery", icon="kestrel.svg", title=e(f"{species} · Seth Reznik Birds"), desc=e(desc),
             species=e(species), alt=e(f"{species}{', ' + where if where else ''}"),
             image=e(p["src"] + "_b.jpg"), w=round(p["w"] * scale), h=round(p["h"] * scale),
             thumb=e(p["src"] + "_z.jpg"), tw=tw, th=th)

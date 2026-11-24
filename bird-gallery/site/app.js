@@ -207,6 +207,12 @@
     document.querySelectorAll(".sets button").forEach((b) =>
       b.setAttribute("aria-pressed", String(b.dataset.set === state.set)));
     document.title = isNB() ? "Not Birds · Seth Reznik" : BIRDS_TITLE;
+    // Header mark and tab icon: kestrel for Birds, city at dusk for Not Birds.
+    const icon = `${BASE}${isNB() ? "notbirds.svg" : "kestrel.svg"}`;
+    const mark = $(".mark");
+    if (mark && !mark.src.endsWith(icon)) mark.src = icon;
+    const fav = document.querySelector('link[rel="icon"]');
+    if (fav && fav.getAttribute("href") !== icon) fav.setAttribute("href", icon);
   }
 
   // Not Birds: just the photos, newest first; no filters, tabs or details.
