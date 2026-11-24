@@ -18,7 +18,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
   <link rel="icon" href="kestrel.svg" type="image/svg+xml">
   <link rel="stylesheet" href="styles.css?v=dev">
 </head>
@@ -89,9 +89,10 @@
         <img id="lb-img" alt="">
         <button class="lb-nav prev" id="lb-prev" aria-label="Previous photo">‹</button>
         <button class="lb-nav next" id="lb-next" aria-label="Next photo">›</button>
+        <button class="lb-close" id="lb-close" aria-label="Close" autofocus>×</button>
       </figure>
+      <div class="lb-tab" id="lb-tab" aria-hidden="true"></div>
       <aside class="lb-info" id="lb-info"></aside>
-      <button class="lb-close" id="lb-close" aria-label="Close" autofocus>×</button>
     </div>
   </dialog>
 
