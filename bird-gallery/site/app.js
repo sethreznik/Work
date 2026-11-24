@@ -9,7 +9,7 @@
     ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
   const UNIDENTIFIED = "Unidentified";
 
-  const state = { view: "photos", q: "", species: "", place: "", sort: "new", photo: null };
+  const state = { view: "photos", q: "", group: "", species: "", place: "", sort: "new", photo: null };
   // The gallery's own folder (e.g. "/Work/"), captured before we ever change the path.
   const BASE = location.pathname.replace(/[^/]*$/, "");
   const photoPath = (id) => `${BASE}p/${encodeURIComponent(id)}/`;
@@ -19,7 +19,7 @@
 
   const el = {
     stats: $("#stats"), summary: $("#summary"), clear: $("#clear"), empty: $("#empty"),
-    q: $("#q"), species: $("#species"), place: $("#place"), sort: $("#sort"),
+    q: $("#q"), group: $("#group"), species: $("#species"), place: $("#place"), sort: $("#sort"),
     photos: $("#view-photos"), speciesView: $("#view-species"), placesView: $("#view-places"),
     updated: $("#updated"),
     lb: $("#lightbox"), lbImg: $("#lb-img"), lbInfo: $("#lb-info"),
@@ -72,6 +72,7 @@
     const h = new URLSearchParams(location.hash.slice(1));
     state.view = ["photos", "species", "places"].includes(h.get("view")) ? h.get("view") : "photos";
     state.q = h.get("q") || "";
+    state.group = h.get("group") || "";
     state.species = h.get("species") || "";
     state.place = h.get("place") || "";
     state.sort = ["new", "old", "az"].includes(h.get("sort")) ? h.get("sort") : "new";
@@ -82,6 +83,7 @@
     const h = new URLSearchParams();
     if (state.view !== "photos") h.set("view", state.view);
     if (state.q) h.set("q", state.q);
+    if (state.group) h.set("group", state.group);
     if (state.species) h.set("species", state.species);
     if (state.place) h.set("place", state.place);
     if (state.sort !== "new") h.set("sort", state.sort);
@@ -98,13 +100,12 @@
     const photos = DATA.photos;
     const count = (f) => photos.filter(f).length;
 
-    // Species, alphabetical with counts; unidentified last.
-    const spCounts = {};
-    photos.forEach((p) => (spCounts[p.species] = (spCounts[p.species] || 0) + 1));
-    const names = Object.keys(spCounts).sort((a, b) =>
-      (a === UNIDENTIFIED) - (b === UNIDENTIFIED) || a.localeCompare(b));
-    el.species.innerHTML = `<option value="">All species (${names.filter((n) => n !== UNIDENTIFIED).length})</option>` +
-      names.map((n) => `<option value="${esc(n)}">${esc(n)} (${spCounts[n]})</option>`).join("");
+    // Bird groups, in field-guide order, with photo counts (only groups present).
+    el.group.innerHTML = `<option value="">All groups</option>` + GROUPS
+      .map(([name]) => [name, count((p) => p._group === name)])
+      .filter(([, n]) => n)
+      .map(([name, n]) => `<option value="${esc(name)}">${esc(name)} (${n})</option>`).join("");
+    const names = new Set(photos.map((p) => p.species).filter((n) => n !== UNIDENTIFIED));
 
     // Locations grouped country → region → place.
     const tree = new Map();
@@ -136,20 +137,40 @@
     el.place.innerHTML = html;
 
     // Header stats
-    const nSpecies = names.filter((n) => n !== UNIDENTIFIED).length;
+    const nSpecies = names.size;
     const nPlaces = new Set(photos.map((p) => p.place).filter(Boolean)).size;
     el.stats.innerHTML = `<b>${photos.length.toLocaleString()}</b> photographs · <b>${nSpecies}</b> species · ` +
       `<b>${nPlaces}</b> locations · <b>${countries.length}</b> ${countries.length === 1 ? "country" : "countries"}`;
     if (DATA.generated) el.updated.textContent = `Updated ${fmtDate(DATA.generated.slice(0, 10), false)}`;
   }
 
+  // Species dropdown lists only species in the chosen group (if any).
+  let speciesOptionsFor = null;
+  function buildSpeciesOptions() {
+    if (speciesOptionsFor === state.group) return;
+    speciesOptionsFor = state.group;
+    const counts = {};
+    DATA.photos.forEach((p) => {
+      if (!state.group || p._group === state.group) counts[p.species] = (counts[p.species] || 0) + 1;
+    });
+    const names = Object.keys(counts).sort((a, b) =>
+      (a === UNIDENTIFIED) - (b === UNIDENTIFIED) || a.localeCompare(b));
+    const n = names.filter((x) => x !== UNIDENTIFIED).length;
+    el.species.innerHTML = `<option value="">${state.group ? `All ${n} species` : `All species (${n})`}</option>` +
+      names.map((x) => `<option value="${esc(x)}">${esc(x)} (${counts[x]})</option>`).join("");
+  }
+
   function syncControls() {
     el.q.value = state.q;
+    el.group.value = state.group;
+    if (el.group.value !== state.group) state.group = "";
+    buildSpeciesOptions();
     el.species.value = state.species;
     if (el.species.value !== state.species) state.species = "";
     el.place.value = state.place;
     if (el.place.value !== state.place) state.place = "";
     el.sort.value = state.sort;
+    el.group.classList.toggle("active", !!state.group);
     el.species.classList.toggle("active", !!state.species);
     el.place.classList.toggle("active", !!state.place);
     document.querySelectorAll(".tabs button").forEach((b) =>
@@ -160,6 +181,7 @@
   function applyFilters() {
     const terms = state.q.toLowerCase().split(/\s+/).filter(Boolean);
     filtered = DATA.photos.filter((p) =>
+      (!state.group || p._group === state.group) &&
       (!state.species || p.species === state.species) &&
       matchesPlace(p, state.place) &&
       (!terms.length || terms.every((t) => p._hay.includes(t))));
@@ -181,10 +203,11 @@
     let what = `<b>${plural(filtered.length, "photo")}</b> · ${plural(nSp, "species")} · ${plural(nPl, "location")}`;
     const bits = [];
     if (state.species) bits.push(`of <b>${esc(state.species)}</b>`);
+    else if (state.group) bits.push(`in <b>${esc(state.group)}</b>`);
     if (state.place) bits.push(`at <b>${esc(placeLabel(state.place))}</b>`);
     if (state.q) bits.push(`matching “${esc(state.q)}”`);
     el.summary.innerHTML = bits.length ? `${what} ${bits.join(" ")}` : what;
-    el.clear.hidden = !(state.species || state.place || state.q);
+    el.clear.hidden = !(state.group || state.species || state.place || state.q);
 
     el.photos.hidden = state.view !== "photos";
     el.speciesView.hidden = state.view !== "species";
@@ -444,10 +467,12 @@
     clearTimeout(qTimer);
     qTimer = setTimeout(() => set({ q: el.q.value.trim() }), 150);
   });
+  // Changing group clears a species from another group.
+  el.group.addEventListener("change", () => set({ group: el.group.value, species: "" }));
   el.species.addEventListener("change", () => set({ species: el.species.value }));
   el.place.addEventListener("change", () => set({ place: el.place.value }));
   el.sort.addEventListener("change", () => set({ sort: el.sort.value }));
-  el.clear.addEventListener("click", () => set({ q: "", species: "", place: "" }));
+  el.clear.addEventListener("click", () => set({ q: "", group: "", species: "", place: "" }));
   document.querySelectorAll(".tabs button").forEach((b) =>
     b.addEventListener("click", () => set({ view: b.dataset.view })));
 
@@ -494,8 +519,8 @@
     // Close the photo and show the filtered gallery, scrolled to the results.
     closeLightbox();
     const patch = s
-      ? { species: s.dataset.goSpecies, place: "", q: "" }
-      : { place: pl.dataset.goPlace, species: "", q: "" };
+      ? { species: s.dataset.goSpecies, group: "", place: "", q: "" }
+      : { place: pl.dataset.goPlace, group: "", species: "", q: "" };
     set({ ...patch, view: "photos", photo: null });
     window.scrollTo({ top: $(".masthead").offsetHeight, behavior: "instant" });
   });
@@ -532,7 +557,10 @@
     .then((r) => { if (!r.ok) throw new Error(r.status); return r.json(); })
     .then((data) => {
       DATA = data;
-      DATA.photos.forEach((p) => (p._hay = haystack(p)));
+      DATA.photos.forEach((p) => {
+        p._group = groupOf((DATA.species[p.species] || {}).family).name;
+        p._hay = haystack(p) + " " + p._group.toLowerCase();  // so search finds "owls", "warblers"...
+      });
       buildControls();
       readHash();
       render();
