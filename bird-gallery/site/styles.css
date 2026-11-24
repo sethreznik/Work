@@ -49,8 +49,6 @@ h1 {
 }
 h1 em { font-style: italic; color: var(--accent); }
 h1 .amp { color: var(--faint); }
-.stats { margin: 14px 0 0; color: var(--muted); font-size: 14px; }
-.stats b { color: var(--text); font-weight: 600; }
 
 /* ---------- toolbar ---------- */
 .toolbar {

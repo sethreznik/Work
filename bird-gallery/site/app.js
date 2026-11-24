@@ -18,7 +18,7 @@
   let lbIndex = -1;
 
   const el = {
-    stats: $("#stats"), summary: $("#summary"), clear: $("#clear"), empty: $("#empty"),
+    summary: $("#summary"), clear: $("#clear"), empty: $("#empty"),
     q: $("#q"), group: $("#group"), species: $("#species"), place: $("#place"), sort: $("#sort"),
     photos: $("#view-photos"), speciesView: $("#view-species"), placesView: $("#view-places"),
     updated: $("#updated"),
@@ -105,7 +105,6 @@
       .map(([name]) => [name, count((p) => p._group === name)])
       .filter(([, n]) => n)
       .map(([name, n]) => `<option value="${esc(name)}">${esc(name)} (${n})</option>`).join("");
-    const names = new Set(photos.map((p) => p.species).filter((n) => n !== UNIDENTIFIED));
 
     // Locations grouped country → region → place.
     const tree = new Map();
@@ -136,11 +135,6 @@
     if (unknown) html += `<option value="u:">Location not recorded (${unknown})</option>`;
     el.place.innerHTML = html;
 
-    // Header stats
-    const nSpecies = names.size;
-    const nPlaces = new Set(photos.map((p) => p.place).filter(Boolean)).size;
-    el.stats.innerHTML = `<b>${photos.length.toLocaleString()}</b> photographs · <b>${nSpecies}</b> species · ` +
-      `<b>${nPlaces}</b> locations · <b>${countries.length}</b> ${countries.length === 1 ? "country" : "countries"}`;
     if (DATA.generated) el.updated.textContent = `Updated ${fmtDate(DATA.generated.slice(0, 10), false)}`;
   }
 
@@ -573,7 +567,7 @@
       }
     })
     .catch((err) => {
-      el.stats.textContent = "Couldn't load photos.";
+      el.summary.textContent = "Couldn't load photos.";
       console.error(err);
     });
 })();
