@@ -319,14 +319,15 @@
         aria-label="${esc(label)}${loc ? ", " + loc : ""}">
         <i style="padding-bottom:${(100 / r).toFixed(3)}%"></i>
         <img loading="lazy" decoding="async" src="${img(p, "z")}" srcset="${srcset(p)}"
-          sizes="(max-width: 640px) 50vw, 33vw" alt="${esc(label)}">
+          sizes="(max-width: 640px) 50vw, (max-width: 900px) 300px, 400px" alt="${esc(label)}">
         ${p.species ? `<span class="cap"><strong>${esc(p.species)}</strong><span>${loc}${loc && p.taken ? " · " : ""}${p.taken ? fmtDate(p.taken, false) : ""}</span></span>`
           : isNB() ? `<span class="cap"><strong>${loc || (p.taken ? fmtDate(p.taken, false) : "")}</strong><span>${[loc && p.taken ? fmtDate(p.taken, false) : "", esc(p.camera || "")].filter(Boolean).join(" · ")}</span></span>` : ""}
       </button>`;
     }).join("");
     el.photos.querySelectorAll("img").forEach((im) => {
-      if (im.complete) im.classList.add("loaded");
+      if (im.complete && im.naturalWidth) im.classList.add("loaded");
       else im.addEventListener("load", () => im.classList.add("loaded"), { once: true });
+      retryOnError(im);
     });
   }
 
@@ -410,6 +411,23 @@
   const DEFAULT_GROUP = { name: "", color: "#8a6f4e" };  // unidentified / unknown family
   const groupOf = (family = "") => GROUP_OF.get((family.match(/\(([^)]+)\)/) || [])[1]) || DEFAULT_GROUP;
 
+  // ------------------------------------------------------------ Flickr throttling
+  // Flickr's image servers answer "429 Too Many Requests" when a browser pulls
+  // a lot of images quickly (the 1600/2048px sizes especially). Failed images
+  // retry after a growing pause, dropping to the plain src size first.
+  const withRetryParam = (url, n) => url.replace(/[?&]retry=\d+$/, "") + (url.includes("?") ? "&" : "?") + "retry=" + n;
+  function retryOnError(im, attempt = 0) {
+    im.addEventListener("error", () => {
+      if (attempt >= 3 || !im.isConnected) return;
+      setTimeout(() => {
+        if (!im.isConnected) return;
+        im.removeAttribute("srcset");                      // fall back to the base size
+        im.src = withRetryParam(im.getAttribute("src"), attempt + 1);
+        retryOnError(im, attempt + 1);
+      }, 1500 * 2 ** attempt + Math.random() * 1000);
+    }, { once: true });
+  }
+
   // ------------------------------------------------------------ lightbox
   // Photo view: 1024px plus Flickr's 1600/2048px versions; the browser picks
   // what the screen needs. sizes mirrors the layout (image area = viewport
@@ -417,10 +435,41 @@
   const LB_SIZES = "(max-width: 900px) 100vw, (max-width: 1360px) calc(100vw - 340px), (max-width: 1640px) calc(78vw - 40px), calc(100vw - 400px)";
   function setLbSources(im, p) {
     const big = p.big || {};
+    im.dataset.tries = "0";
     im.sizes = LB_SIZES;
     im.srcset = [`${img(p, "b")} 1024w`, big.h && `${big.h} 1600w`, big.k && `${big.k} 2048w`].filter(Boolean).join(", ");
     im.src = img(p, "b");
   }
+  // Photo view: if the large version is refused, show the 1024px one; if that
+  // fails too, retry it after a pause.
+  el.lbImg.addEventListener("error", () => {
+    const p = filtered[lbIndex];
+    if (!p) return;
+    const tries = Number(el.lbImg.dataset.tries || 0);
+    if (tries >= 4) return;
+    el.lbImg.dataset.tries = String(tries + 1);
+    if (el.lbImg.getAttribute("srcset")) {
+      el.lbImg.removeAttribute("srcset");
+      el.lbImg.src = img(p, "b");
+      return;
+    }
+    setTimeout(() => {
+      if (filtered[lbIndex] === p) el.lbImg.src = withRetryParam(img(p, "b"), tries + 1);
+    }, 1500 * tries + Math.random() * 1000);
+  });
+
+  // Warm only the next photo, and only once the current one has loaded,
+  // so arrowing through doesn't fire off bursts of large downloads.
+  function prefetchNext(i) {
+    const next = filtered[i + 1];
+    if (!next) return;
+    const go = () => setTimeout(() => {
+      if (filtered[lbIndex + 1] === next) setLbSources(new Image(), next);
+    }, 400);
+    if (el.lbImg.complete && el.lbImg.naturalWidth) go();
+    else el.lbImg.addEventListener("load", go, { once: true });
+  }
+
   // Shared pieces of the photo-view page.
   const fact = (label, html) => `<p class="fact"><em>${label}:</em> ${html}</p>`;
   const NB_COLOR = "#4f6d8f";  // Not Birds slate blue (kestrel wing)
@@ -456,7 +505,7 @@
     if (isNB()) {
       setLbSources(el.lbImg, p);
       el.lbImg.alt = p.title || (p.place ? `Photograph, ${p.place}` : "Photograph");
-      [i - 1, i + 1].forEach((j) => { if (filtered[j]) setLbSources(new Image(), filtered[j]); });
+      prefetchNext(i);
       $("#lb-tab").textContent = "";
       const heading = p.title || p.place || (p.taken ? fmtDate(p.taken, false) : "Not Birds");
       const status = p.place ? (p.title ? placeParts(p) : placeParts(p).slice(1)).join(" · ") : "";
@@ -493,8 +542,7 @@
 
     setLbSources(el.lbImg, p);
     el.lbImg.alt = `${p.species}${p.place ? ", " + p.place : ""}`;
-    // warm the neighbours
-    [i - 1, i + 1].forEach((j) => { if (filtered[j]) setLbSources(new Image(), filtered[j]); });
+    prefetchNext(i);
 
     const seenInUS = DATA.photos.some((q) => q.species === p.species && q.country === "United States");
     const slug = p.species.replace(/['’]/g, "").replace(/\s+/g, "_");
