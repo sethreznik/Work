@@ -297,18 +297,29 @@
     if (hero.hidden) { stopHero(); heroFor = null; return; }
     if (heroFor === state.set && heroSlides.length === slides.length) { if (!heroTimer) startHero(); return; }
     heroFor = state.set; heroSlides = slides; heroI = 0;
+    // Each slide: the whole photo (never cropped) beside an info panel.
     $("#hero-track").innerHTML = slides.map((p, k) => {
       const title = p.species || p.landmark || p.place || (p.taken ? fmtDate(p.taken, false) : "");
-      const where = p.species || p.landmark ? p.place : (p.place ? p.region : null);
-      const sub = [where, p.taken && (p.species || p.landmark || p.place) ? fmtDate(p.taken, false) : ""].filter(Boolean).join(" · ");
+      const info = p.species ? DATA.species[p.species] || {} : {};
+      const where = p.species || p.landmark ? [p.place, p.area || p.region].filter(Boolean).join(", ")
+                                            : (p.place ? [p.area, p.region].filter(Boolean).join(", ") : "");
+      const meta = [where, p.taken && (p.species || p.landmark || p.place) ? fmtDate(p.taken, false) : ""].filter(Boolean).join(" · ");
+      const about = p.species ? info.about
+        : [p.camera, p.lens, p.shutter, p.aperture, p.iso].filter(Boolean).join(" · ");
       const big = (p.big || {}).k || (p.big || {}).h || img(p, "b");
-      return `<figure class="slide${p.h > p.w ? " portrait" : ""}${k ? "" : " on"}" data-id="${p.id}" role="group"
+      return `<figure class="slide${k ? "" : " on"}" data-id="${p.id}" role="group"
           aria-roledescription="slide" aria-label="${k + 1} of ${slides.length}">
-        <img data-src="${big}" data-fallback="${img(p, "b")}" alt="${esc(title)}">
-        <figcaption><strong>${esc(title)}</strong>${sub ? `<span>${esc(sub)}</span>` : ""}</figcaption></figure>`;
+        <div class="slide-photo"><img data-src="${big}" data-fallback="${img(p, "b")}" alt="${esc(title)}"></div>
+        <figcaption class="slide-info">
+          <p class="eyebrow">Featured</p>
+          <h2>${esc(title)}</h2>
+          ${info.scientific ? `<p class="sci">${esc(info.scientific)}</p>` : ""}
+          ${meta ? `<p class="meta">${esc(meta)}</p>` : ""}
+          ${about ? `<p class="about">${esc(about)}</p>` : ""}
+          <button class="btn primary view" type="button">View photo</button>
+        </figcaption></figure>`;
     }).join("");
-    $("#hero-dots").innerHTML = slides.length > 1 ? slides.map((_, k) =>
-      `<button data-k="${k}" aria-label="Show featured photo ${k + 1}"${k ? "" : ' class="on" aria-current="true"'}></button>`).join("") : "";
+    $("#hero-count").textContent = slides.length > 1 ? `1 / ${slides.length}` : "";
     $("#hero-prev").hidden = $("#hero-next").hidden = slides.length < 2;
     loadSlides();
     startHero();
@@ -323,11 +334,11 @@
     });
   }
   function heroGo(k) {
-    const slides = document.querySelectorAll("#hero-track .slide"), dots = document.querySelectorAll("#hero-dots button");
+    const slides = document.querySelectorAll("#hero-track .slide");
     if (!slides.length) return;
     heroI = (k + slides.length) % slides.length;
     slides.forEach((s, j) => s.classList.toggle("on", j === heroI));
-    dots.forEach((d, j) => { d.classList.toggle("on", j === heroI); d.toggleAttribute("aria-current", j === heroI); });
+    $("#hero-count").textContent = `${heroI + 1} / ${slides.length}`;
     loadSlides();
   }
   function startHero() {
@@ -338,7 +349,6 @@
   const heroManual = (k) => { heroGo(k); stopHero(); };  // picking a slide stops auto-advance
   $("#hero-prev").addEventListener("click", () => heroManual(heroI - 1));
   $("#hero-next").addEventListener("click", () => heroManual(heroI + 1));
-  $("#hero-dots").addEventListener("click", (e) => { const d = e.target.closest("[data-k]"); if (d) heroManual(+d.dataset.k); });
   $("#hero").addEventListener("mouseenter", stopHero);
   $("#hero").addEventListener("mouseleave", () => { if (!$("#hero").hidden) startHero(); });
   let heroTouchX = null;
@@ -349,6 +359,7 @@
     if (Math.abs(dx) > 50) heroManual(heroI + (dx < 0 ? 1 : -1));
   });
   $("#hero-track").addEventListener("click", (e) => {
+    if (!e.target.closest(".slide-photo, .view")) return;   // photo or "View photo" opens it
     const s = e.target.closest(".slide"); if (!s) return;
     const i = filtered.findIndex((p) => p.id === s.dataset.id);
     if (i >= 0) { stopHero(); openLightbox(i); }
