@@ -311,7 +311,6 @@
           aria-roledescription="slide" aria-label="${k + 1} of ${slides.length}">
         <div class="slide-photo"><img data-src="${big}" data-fallback="${img(p, "b")}" alt="${esc(title)}"></div>
         <figcaption class="slide-info">
-          <p class="eyebrow">Featured</p>
           <h2>${esc(title)}</h2>
           ${info.scientific ? `<p class="sci">${esc(info.scientific)}</p>` : ""}
           ${meta ? `<p class="meta">${esc(meta)}</p>` : ""}
