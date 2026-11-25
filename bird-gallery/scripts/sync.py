@@ -414,10 +414,22 @@ def last_change(raw):
     return when.strftime("%Y-%m-%dT%H:%M:%SZ")
 
 
+# Flickr tags that put a photo in the featured rotator (Flickr drops the "_"
+# from "bird_favorite" / "build_favorite"). Either one counts in either set.
+FEATURED_TAGS = {"birdfavorite", "buildfavorite"}
+
+
+def featured_order(raw):
+    """photo id -> position among the album's tagged favorites (album order)."""
+    fav = [r["id"] for r in raw if FEATURED_TAGS & set((r.get("tags") or "").split())]
+    return {pid: k for k, pid in enumerate(fav)}
+
+
 def build(raw, species_index, places_cfg, manual_places=None):
     places = places_cfg.get("places", [])
     region_names = places_cfg.get("region_names", {})
     by_name = {pl["name"]: pl for pl in places}
+    fav = featured_order(raw)
     photos, used = [], {}
     for r in raw:
         species, note = species_index.resolve(r["title"])
@@ -429,6 +441,7 @@ def build(raw, species_index, places_cfg, manual_places=None):
             place, area, region, country = manual["name"], manual.get("area"), manual.get("region"), manual.get("country")
         photos.append({
             "id": r["id"],
+            "featured": fav.get(r["id"]),
             "species": species,
             "note": note,
             "description": r.get("description") or None,
@@ -567,6 +580,7 @@ def build_notbirds(raw, places_cfg, camera_names=None, notes=None):
     Filename-style titles ("DSC04765-DxO...jpg") are dropped."""
     places = places_cfg.get("places", [])
     region_names = places_cfg.get("region_names", {})
+    fav = featured_order(raw)
     photos = []
     for r in raw:
         place, area, region, country = place_for(r, places, region_names,
@@ -584,6 +598,7 @@ def build_notbirds(raw, places_cfg, camera_names=None, notes=None):
             "id": r["id"],
             "title": r["title"] if r.get("title") and not FILENAME_TITLE.search(r["title"]) else None,
             "landmark": note.get("landmark"),
+            "featured": fav.get(r["id"]),
             "place_source": place_source,
             "taken": r.get("date_taken"),
             "src": f"https://live.staticflickr.com/{r['server']}/{r['id']}_{r['secret']}",

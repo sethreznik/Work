@@ -282,8 +282,81 @@
     renderGrid();
   }
 
+  // ------------------------------------------------------------ featured rotator
+  // Photos tagged bird_favorite / build_favorite on Flickr, in album order.
+  // Shown above the grid on the unfiltered Photos view; only the current and
+  // next slides' images are loaded.
+  const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let heroI = 0, heroTimer = null, heroFor = null, heroSlides = [];
+  function renderHero() {
+    const hero = $("#hero");
+    const filtersOn = state.q || state.group || state.species || state.place || CAM_FIELDS.some(([k]) => state[k]);
+    const pool = isNB() ? (NB ? NB.photos : []) : DATA.photos;
+    const slides = pool.filter((p) => p.featured != null).sort((a, b) => a.featured - b.featured);
+    hero.hidden = !!filtersOn || state.view !== "photos" || !slides.length;
+    if (hero.hidden) { stopHero(); heroFor = null; return; }
+    if (heroFor === state.set && heroSlides.length === slides.length) { if (!heroTimer) startHero(); return; }
+    heroFor = state.set; heroSlides = slides; heroI = 0;
+    $("#hero-track").innerHTML = slides.map((p, k) => {
+      const title = p.species || p.landmark || p.place || (p.taken ? fmtDate(p.taken, false) : "");
+      const where = p.species || p.landmark ? p.place : (p.place ? p.region : null);
+      const sub = [where, p.taken && (p.species || p.landmark || p.place) ? fmtDate(p.taken, false) : ""].filter(Boolean).join(" · ");
+      const big = (p.big || {}).k || (p.big || {}).h || img(p, "b");
+      return `<figure class="slide${p.h > p.w ? " portrait" : ""}${k ? "" : " on"}" data-id="${p.id}" role="group"
+          aria-roledescription="slide" aria-label="${k + 1} of ${slides.length}">
+        <img data-src="${big}" data-fallback="${img(p, "b")}" alt="${esc(title)}">
+        <figcaption><strong>${esc(title)}</strong>${sub ? `<span>${esc(sub)}</span>` : ""}</figcaption></figure>`;
+    }).join("");
+    $("#hero-dots").innerHTML = slides.length > 1 ? slides.map((_, k) =>
+      `<button data-k="${k}" aria-label="Show featured photo ${k + 1}"${k ? "" : ' class="on" aria-current="true"'}></button>`).join("") : "";
+    $("#hero-prev").hidden = $("#hero-next").hidden = slides.length < 2;
+    loadSlides();
+    startHero();
+  }
+  function loadSlides() {
+    const els = document.querySelectorAll("#hero-track .slide img");
+    [heroI, (heroI + 1) % els.length].forEach((k) => {
+      const im = els[k];
+      if (!im || im.getAttribute("src")) return;
+      im.addEventListener("error", () => { if (im.src !== im.dataset.fallback) im.src = im.dataset.fallback; }, { once: true });
+      im.src = im.dataset.src;
+    });
+  }
+  function heroGo(k) {
+    const slides = document.querySelectorAll("#hero-track .slide"), dots = document.querySelectorAll("#hero-dots button");
+    if (!slides.length) return;
+    heroI = (k + slides.length) % slides.length;
+    slides.forEach((s, j) => s.classList.toggle("on", j === heroI));
+    dots.forEach((d, j) => { d.classList.toggle("on", j === heroI); d.toggleAttribute("aria-current", j === heroI); });
+    loadSlides();
+  }
+  function startHero() {
+    stopHero();
+    if (!reduceMotion && heroSlides.length > 1) heroTimer = setInterval(() => heroGo(heroI + 1), 6000);
+  }
+  function stopHero() { clearInterval(heroTimer); heroTimer = null; }
+  const heroManual = (k) => { heroGo(k); stopHero(); };  // picking a slide stops auto-advance
+  $("#hero-prev").addEventListener("click", () => heroManual(heroI - 1));
+  $("#hero-next").addEventListener("click", () => heroManual(heroI + 1));
+  $("#hero-dots").addEventListener("click", (e) => { const d = e.target.closest("[data-k]"); if (d) heroManual(+d.dataset.k); });
+  $("#hero").addEventListener("mouseenter", stopHero);
+  $("#hero").addEventListener("mouseleave", () => { if (!$("#hero").hidden) startHero(); });
+  let heroTouchX = null;
+  $("#hero").addEventListener("touchstart", (e) => { heroTouchX = e.touches[0].clientX; }, { passive: true });
+  $("#hero").addEventListener("touchend", (e) => {
+    if (heroTouchX == null) return;
+    const dx = e.changedTouches[0].clientX - heroTouchX; heroTouchX = null;
+    if (Math.abs(dx) > 50) heroManual(heroI + (dx < 0 ? 1 : -1));
+  });
+  $("#hero-track").addEventListener("click", (e) => {
+    const s = e.target.closest(".slide"); if (!s) return;
+    const i = filtered.findIndex((p) => p.id === s.dataset.id);
+    if (i >= 0) { stopHero(); openLightbox(i); }
+  });
+
   function render() {
     syncSetSwitch();
+    setTimeout(renderHero, 0);
     if (isNB()) return renderNotBirds();
     syncControls();
     applyFilters();
