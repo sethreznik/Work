@@ -43,6 +43,8 @@
 
   <nav class="toolbar" aria-label="Filters">
     <div class="wrap toolbar-inner">
+      <!-- compact Birds / Not Birds switch, shown once the header has scrolled away -->
+      <span class="sets sets-mini" role="group" aria-label="Photo set"><button type="button" data-set="birds" aria-pressed="true">Birds</button><span class="slash" aria-hidden="true">/</span><button type="button" data-set="notbirds" aria-pressed="false">Not Birds</button></span>
       <div class="tabs birds-only" role="tablist">
         <button role="tab" data-view="photos" aria-selected="true">Photos</button>
         <button role="tab" data-view="species" aria-selected="false">Species</button>

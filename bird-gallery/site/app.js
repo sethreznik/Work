@@ -746,6 +746,11 @@
   });
 
   // Header switch: Birds / Not Birds (filters belong to Birds, so they reset).
+  // Show the compact switch in the sticky bar once the header is out of view.
+  new IntersectionObserver(([entry]) => {
+    document.body.classList.toggle("toolbar-stuck", !entry.isIntersecting);
+  }).observe($(".masthead"));
+
   document.querySelectorAll(".sets button").forEach((b) => b.addEventListener("click", () => {
     if (b.dataset.set === state.set) return;
     set({ ...NO_CAM, set: b.dataset.set, view: "photos", q: "", group: "", species: "", place: "", photo: null });
