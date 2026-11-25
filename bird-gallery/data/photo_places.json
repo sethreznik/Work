@@ -1,0 +1,13 @@
+{
+  "_comment": "Manual locations for bird photos that have no GPS (or a wrong one). Photo id -> the name of a place in places.json. Overrides GPS-derived and same-day-inferred locations.",
+  "photos": {
+    "54887282903": "Farmington Bay",
+    "54886185107": "Farmington Bay",
+    "54887300484": "Farmington Bay",
+    "54887299879": "Farmington Bay",
+    "54887298829": "Farmington Bay",
+    "54887297929": "Farmington Bay",
+    "54887297294": "Farmington Bay",
+    "54887059766": "Farmington Bay"
+  }
+}

@@ -414,14 +414,19 @@ def last_change(raw):
     return when.strftime("%Y-%m-%dT%H:%M:%SZ")
 
 
-def build(raw, species_index, places_cfg):
+def build(raw, species_index, places_cfg, manual_places=None):
     places = places_cfg.get("places", [])
     region_names = places_cfg.get("region_names", {})
+    by_name = {pl["name"]: pl for pl in places}
     photos, used = [], {}
     for r in raw:
         species, note = species_index.resolve(r["title"])
         place, area, region, country = place_for(r, places, region_names,
                                                  places_cfg.get("county_names"), places_cfg.get("locality_names"))
+        # Manual location (data/photo_places.json): photo id -> named place
+        manual = by_name.get((manual_places or {}).get(r["id"]))
+        if manual:
+            place, area, region, country = manual["name"], manual.get("area"), manual.get("region"), manual.get("country")
         photos.append({
             "id": r["id"],
             "species": species,
@@ -739,7 +744,7 @@ def main():
             with open(os.environ["GITHUB_STEP_SUMMARY"], "a") as f:
                 f.write("\n### Not Birds landmarks\n\n" + "\n".join(nb_lines) + "\n")
 
-    out = build(raw, species_index, places)
+    out = build(raw, species_index, places, load_json(DATA / "photo_places.json", {}).get("photos", {}))
     write_json(SITE / "photos.json", out, indent=None)
     nb = build_notbirds(raw_nb, places, load_json(DATA / "cameras.json", {}),
                         load_json(DATA / "notbirds_notes.json", {}).get("photos", {}))
