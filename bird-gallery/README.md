@@ -60,7 +60,12 @@ otherwise by its place (Chicago, Antelope Island), otherwise by its date.
 Landmarks and locations for photos without GPS live in
 `data/notbirds_notes.json`. Those locations come from the photo's other Flickr
 album, from recognizing the place in the photo, or from same-day photos, and
-the site marks them "approximate".
+the site shows them like any other location. New photos are reviewed
+automatically: the sync sends each one to Claude (needs `ANTHROPIC_API_KEY`),
+which names a landmark when the photo's subject is a specific building or
+structure, and a place when the photo has no GPS and the location is clear.
+Its entries are marked `"auto"` for review, and each photo is reviewed once
+(an empty entry means nothing was found).
 
 ## Updating
 
