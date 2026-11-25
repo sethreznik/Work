@@ -24,6 +24,7 @@
     { "name": "Rockaway & Jamaica Bay",       "area": "Queens",       "region": "New York", "country": "United States", "lat": 40.6070, "lon": -73.7870, "radius_km": 3.0 },
     { "name": "Sapsucker Woods",              "area": "Ithaca",       "region": "New York", "country": "United States", "lat": 42.4799, "lon": -76.4519, "radius_km": 1.0 },
     { "name": "Cornell University",           "area": "Ithaca",       "region": "New York", "country": "United States", "lat": 42.4490, "lon": -76.4780, "radius_km": 1.5 },
+    { "name": "Brooklyn Botanic Garden",      "area": "Brooklyn",     "region": "New York", "country": "United States", "lat": 40.6694, "lon": -73.9624, "radius_km": 0, "_note": "radius 0: only set by hand in photo_places.json (it sits inside the Prospect Park circle)" },
     { "name": "Montezuma Wildlife Refuge",    "area": "Seneca Falls", "region": "New York", "country": "United States", "lat": 42.9677, "lon": -76.7406, "radius_km": 8.0 },
     { "name": "Farmington Bay",               "area": "Davis County", "region": "Utah",     "country": "United States", "lat": 40.9550, "lon": -111.9250, "radius_km": 3.0 },
     { "name": "Costanera Sur Ecological Reserve", "area": "Buenos Aires", "region": "Buenos Aires City", "country": "Argentina", "lat": -34.6083, "lon": -58.3570, "radius_km": 1.6 },
