@@ -67,6 +67,16 @@ structure, and a place when the photo has no GPS and the location is clear.
 Its entries are marked `"auto"` for review, and each photo is reviewed once
 (an empty entry means nothing was found).
 
+## Featured rotator
+
+A rotating banner above each set's photo grid shows your favorites. Tag a photo
+on Flickr with `bird_favorite` (Birds) or `build_favorite` (Not Birds); Flickr
+stores these as `birdfavorite` / `buildfavorite`, and either tag works in
+either set. They appear in the album's order, so rearrange the album in
+Flickr's Organizr to choose which comes first. The banner hides while filters
+are on or on the Species / Places tabs, and stops rotating when a visitor
+picks a slide or prefers reduced motion.
+
 ## Updating
 
 The sync re-reads the whole album every time, so it picks up:
