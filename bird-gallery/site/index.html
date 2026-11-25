@@ -86,9 +86,11 @@
     <!-- Featured rotator: photos tagged bird_favorite / build_favorite on Flickr -->
     <section class="hero" id="hero" aria-label="Featured photos" aria-roledescription="carousel" hidden>
       <div class="hero-track" id="hero-track"></div>
-      <button class="hero-nav prev" id="hero-prev" aria-label="Previous featured photo">‹</button>
-      <button class="hero-nav next" id="hero-next" aria-label="Next featured photo">›</button>
-      <div class="hero-dots" id="hero-dots"></div>
+      <div class="hero-controls">
+        <button class="hero-nav prev" id="hero-prev" aria-label="Previous featured photo">‹</button>
+        <span class="hero-count" id="hero-count" aria-live="polite"></span>
+        <button class="hero-nav next" id="hero-next" aria-label="Next featured photo">›</button>
+      </div>
     </section>
     <div class="resultbar">
       <p id="summary" aria-live="polite"></p>
