@@ -495,6 +495,67 @@ def camera_info(exif, names):
                               "shutter_s": secs, "aperture": ap, "iso": iso}.items() if v is not None}
 
 
+def photo_albums(key, photo_id):
+    """Titles of the other Flickr albums a photo is in (for context)."""
+    try:
+        sets = flickr("flickr.photos.getAllContexts", key, photo_id=photo_id).get("set", [])
+        return [s["title"] for s in sets if s.get("title") not in ("Not Birds", "Birds!")]
+    except Exception:
+        return []
+
+
+def add_new_notbirds_notes(raw_nb, notes_doc, places_cfg, key):
+    """Ask Claude to name landmarks (and, without GPS, places) for Not Birds
+    photos that have no entry in notbirds_notes.json yet. Every reviewed photo
+    gets an entry (empty if nothing found) so it's never re-sent; API failures
+    retry next sync. Returns report lines."""
+    notes = notes_doc.setdefault("photos", {})
+    todo = [r for r in raw_nb if r["id"] not in notes]
+    if not todo:
+        return []
+    from landmark_writer import identify
+    places = places_cfg.get("places", [])
+    region_names = places_cfg.get("region_names", {})
+    reqs = []
+    for r in todo:
+        place, area, region, _ = place_for(r, places, region_names,
+                                           places_cfg.get("county_names"), places_cfg.get("locality_names"))
+        gps = ", ".join(x for x in (place, area, region) if x) if r.get("latitude") is not None else None
+        reqs.append({"id": r["id"], "taken": r.get("date_taken"), "gps_place": gps,
+                     "albums": photo_albums(key, r["id"]) if key else [],
+                     "image": f"https://live.staticflickr.com/{r['server']}/{r['id']}_{r['secret']}_b.jpg",
+                     "has_gps": r.get("latitude") is not None})
+    print(f"New Not Birds photos to review: {len(reqs)}", file=sys.stderr)
+    today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+    lines = []
+    for req, res, err in identify(reqs):
+        if err:
+            lines.append(f"- **not reviewed yet** photo {req['id']}: {err} (will retry next sync)")
+            continue
+        entry = {}
+        if res.get("landmark", "").strip():
+            entry["landmark"] = res["landmark"].strip()
+        if not req["has_gps"] and res.get("place", "").strip():
+            entry.update({"place": res["place"].strip(), "area": res.get("area") or None,
+                          "region": res.get("region") or None, "country": res.get("country") or None,
+                          "source": "visual"})
+        if entry:
+            entry["auto"] = today
+        notes[req["id"]] = entry
+        found = ", ".join(x for x in (entry.get("landmark"), entry.get("place")) if x) or "nothing specific"
+        lines.append(f"- **reviewed** photo {req['id']}: {found}")
+    write_notes_file(notes_doc)
+    return lines
+
+
+def write_notes_file(doc):
+    """notbirds_notes.json, one photo per line."""
+    body = ",\n".join(f'    "{k}": ' + json.dumps(v, ensure_ascii=False) for k, v in sorted(doc["photos"].items()))
+    (DATA / "notbirds_notes.json").write_text(
+        "{\n  \"_comment\": " + json.dumps(doc.get("_comment", ""), ensure_ascii=False) +
+        ",\n  \"photos\": {\n" + body + "\n  }\n}\n")
+
+
 def build_notbirds(raw, places_cfg, camera_names=None, notes=None):
     """Photo list for the Not Birds set: no species or filters, but place names
     and coordinates for geotagged photos (named the same way as the birds).
@@ -620,7 +681,7 @@ def write_photo_pages(out, notbirds=None):
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--fetch", action="store_true", help="pull fresh metadata from Flickr (needs FLICKR_API_KEY)")
-    ap.add_argument("--no-write", action="store_true", help="don't ask Claude to write entries for new species")
+    ap.add_argument("--no-write", action="store_true", help="don't ask Claude to write species entries or review new Not Birds photos")
     ap.add_argument("--user-id", default=os.environ.get("FLICKR_USER_ID", DEFAULT_USER_ID))
     ap.add_argument("--album-id", default=os.environ.get("FLICKR_ALBUM_ID", DEFAULT_ALBUM_ID))
     ap.add_argument("--notbirds-album-id", default=os.environ.get("FLICKR_NOTBIRDS_ALBUM_ID", DEFAULT_NOTBIRDS_ALBUM_ID))
@@ -670,6 +731,13 @@ def main():
         if lines and os.environ.get("GITHUB_STEP_SUMMARY"):
             with open(os.environ["GITHUB_STEP_SUMMARY"], "a") as f:
                 f.write("\n### Species entries\n\n" + "\n".join(lines) + "\n")
+        nb_notes_doc = load_json(DATA / "notbirds_notes.json", {"photos": {}})
+        nb_lines = add_new_notbirds_notes(raw_nb, nb_notes_doc, places, os.environ.get("FLICKR_API_KEY"))
+        for line in nb_lines:
+            print("  " + line.replace("**", ""), file=sys.stderr)
+        if nb_lines and os.environ.get("GITHUB_STEP_SUMMARY"):
+            with open(os.environ["GITHUB_STEP_SUMMARY"], "a") as f:
+                f.write("\n### Not Birds landmarks\n\n" + "\n".join(nb_lines) + "\n")
 
     out = build(raw, species_index, places)
     write_json(SITE / "photos.json", out, indent=None)
